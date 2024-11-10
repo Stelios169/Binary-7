@@ -1,5 +1,5 @@
 public class Hello {
-    public String test() {
+    public static void main[String args] {
         return "hello there";
     }
 }
