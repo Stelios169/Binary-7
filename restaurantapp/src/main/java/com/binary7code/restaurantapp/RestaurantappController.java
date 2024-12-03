@@ -8,6 +8,6 @@ import org.springframework.stereotype.Controller;
 public class RestaurantappController {
     @GetMapping("/")
     public String index() {
-        return "redirect:/index.html";
+        return "index";
     }
 }
