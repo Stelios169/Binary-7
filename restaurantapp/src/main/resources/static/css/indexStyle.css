@@ -12,7 +12,12 @@ body, html {
     background-color: rgb(0, 0, 0);
     font-family:Arial, Helvetica, sans-serif;
     max-width:190px;
-    height:100vh;
+    height:99vh; 
+    border:5px solid hsl(51, 70%, 67%);
+    transition: border-color 0.3s ease;
+}
+#sidebar:hover {
+    border-color:rgba(146, 56, 168, 0.89);
 }
 #keys {
     display:grid;
@@ -34,10 +39,10 @@ body, html {
 .other-buttons:hover {
     background-color:hsl(51, 70%, 77%);
     transform: scale(1.1);  
-    box-shadow: 0px 4px 15px rgba(219, 192, 73, 0.973);
+    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
 }
 .other-buttons:active {
-    background-color:hsl(51, 70%, 83%);
+    background-color:hsl(51, 70%, 82%);
 }
 #login {
     position:absolute;
@@ -57,7 +62,7 @@ body, html {
 #login:hover {
     background-color:hsl(51, 70%, 77%);
     transform: scale(1.1);  
-    box-shadow: 0px 4px 15px rgba(219, 192, 73, 0.973);
+    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
 }
 #login:active {
     background-color:hsl(51, 70%, 83%);
@@ -65,6 +70,8 @@ body, html {
 .content {
     flex:1;
     background-color: blanchedalmond;
+    background-image: url(../images/pexels-furkanfdemir-10821040.jpg);
+    background-size: cover;
 }
 .header {
     background-color:hsl(51, 70%, 67%);
