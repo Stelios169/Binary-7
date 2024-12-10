@@ -1,3 +1,5 @@
+DROP SCHEMA Progr CASCADE;
+
 CREATE SCHEMA Progr;
 
 CREATE TABLE Progr.Restaurant (
