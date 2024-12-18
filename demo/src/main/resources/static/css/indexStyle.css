@@ -106,7 +106,6 @@ body, html {
     height: 0px;
 }
 
-
 .scroll-box h2 {
     font-size: 1.5rem;
     font-weight: bold;
@@ -114,19 +113,6 @@ body, html {
     margin-bottom: 10px;
     color: #4a3a29; 
 }
-
-
-.scroll-box::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px; 
-    border-radius: 12px;
-}
-
-
 .scroll-box p {
     font-size: 1rem;
     line-height: 1.6;
