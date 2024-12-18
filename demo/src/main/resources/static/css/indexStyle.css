@@ -127,7 +127,6 @@ body, html {
     border: 3px solid #d6b28b;
     border-radius: 12px;
     background: linear-gradient(45deg, #f4e1c1, #d6b28b);
-    z-index: -1; 
 }
 
 
