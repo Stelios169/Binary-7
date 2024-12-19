@@ -1,5 +1,3 @@
-DROP SCHEMA Progr CASCADE;
-
 CREATE SCHEMA Progr;
 
 CREATE TABLE Progr.Restaurant (
@@ -77,3 +75,5 @@ order_subtotal FLOAT CHECK (order_subtotal >= 0),
 FOREIGN KEY (table_id) REFERENCES Progr.RTable (table_id),
 FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id)
 );
+
+DROP SCHEMA Progr CASCADE;
