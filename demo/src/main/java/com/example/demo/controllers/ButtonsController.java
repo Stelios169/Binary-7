@@ -15,4 +15,9 @@ public class ButtonsController {
     public String aboutUs() {
         return "aboutUs";
     }
+
+    @RequestMapping("/menu")
+    public String menu() {
+        return "menu";
+    }
 }
