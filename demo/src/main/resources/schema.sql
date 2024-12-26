@@ -66,7 +66,7 @@ review_comment VARCHAR(200),
 FOREIGN KEY (table_id) REFERENCES Progr.RTable (table_id)
 );
 
-CREATE TABLE Progr.Ordrer (
+CREATE TABLE Progr.Orders (
 order_id INT NOT NULL PRIMARY KEY,
 table_id INT,
 dish_id INT,
