@@ -8,8 +8,8 @@
             "type": "java",
             "name": "DemoApplication",
             "request": "launch",
-            "mainClass": "src.main.java.com.example.demo.DemoApplication",
-            "projectName": "myRestaurant"
+            "mainClass": "com.example.demo.DemoApplication",
+            "projectName": "demo"
         },
         {
             "type": "java",
