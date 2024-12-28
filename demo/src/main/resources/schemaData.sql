@@ -42,7 +42,7 @@ VALUES
     (8, 'Rice', 1.5, 'kg', 100.0, '2025-12-31', 2),
     (9, 'Nori Seaweed', 0.8, 'kg', 50.0, '2025-12-31', 2),
     (10, 'Shrimp', 8.0, 'kg', 10.0, '2025-12-31', 2),
-    (11, 'Soy Sauce', 2.0, 'litre', 30.0, '2025-12-31', 2),
+    (11, 'Soy Sauce', 2.0, 'lt', 30.0, '2025-12-31', 2),
     (12, 'Tempura Flour', 3.0, 'kg', 20.0, '2025-12-31', 2);
 
 INSERT INTO Progr.DishIngredients (dish_id, ingredient_id, ingredient_quantity, restaurant_id)
@@ -53,7 +53,7 @@ VALUES
     (2, 2, 0.3, 1),
     (2, 3, 0.5, 1),
     (4, 5, 0.1, 1),
-    (4, 6, 0.05, 1),
+    (4, 6, 0.05, 1), 
     (5, 1, 0.15, 1),
     (5, 6, 0.1, 1),
     -- Sushi World Dish Ingredients
