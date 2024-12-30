@@ -4,7 +4,8 @@ INSERT INTO Progr.DishCategory (category_id, category_name)
 VALUES
     (1, 'Appetizers'),
     (2, 'Main Course'),
-    (3, 'Desserts');
+    (3, 'Desserts'),
+    (4, 'Drinks');
 
 INSERT INTO Progr.Restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_tel, restaurant_afm, restaurant_email, restaurant_rating, restaurant_password)
 VALUES

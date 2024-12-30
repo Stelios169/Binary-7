@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS Progr.Orders (
     table_id INT NOT NULL,
     restaurant_id INT NOT NULL,
     order_total FLOAT CHECK (order_total >= 0),
+    order_status BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (table_id, restaurant_id) REFERENCES Progr.RTable (table_id, restaurant_id)
 );
 
