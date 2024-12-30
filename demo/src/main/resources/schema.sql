@@ -1,5 +1,4 @@
 --Creates the schema only if it doesn't exist (will only happen in the first time of running the application)
-
 CREATE SCHEMA IF NOT EXISTS Progr;
 
 -- Stores basic information about each restaurant
@@ -21,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Progr.Dish (
     dish_id INT NOT NULL PRIMARY KEY,
     restaurant_id INT NOT NULL,
     dish_name VARCHAR(60) NOT NULL,
-    dish_category INT NOT NULL,
+    dish_category VARCHAR(60) NOT NULL,
     dish_price FLOAT NOT NULL CHECK (dish_price >= 0),
     dish_image_url NVARCHAR(2083),
     dish_description VARCHAR(1000),
@@ -58,8 +57,6 @@ CREATE TABLE IF NOT EXISTS Progr.Purchase (
     ingredient_id INT NOT NULL,
     purchase_quantity FLOAT NOT NULL CHECK (purchase_quantity >= 0),
     purchase_date DATE NOT NULL,
-    restaurant_id INT NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id),
     FOREIGN KEY (ingredient_id) REFERENCES Progr.Ingredient (ingredient_id)
 );
 
@@ -77,7 +74,7 @@ CREATE TABLE IF NOT EXISTS Progr.RTable (
 CREATE TABLE IF NOT EXISTS Progr.Review (
     review_id INT NOT NULL PRIMARY KEY,
     restaurant_id INT NOT NULL,
-    review_rating INT NOT NULL CHECK (review_rating >= 0 AND review_rating <= 5),
+    review_rating FLOAT NOT NULL CHECK (review_rating >= 0 AND review_rating <= 5),
     review_comment VARCHAR(2000),
     FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
 );
@@ -104,3 +101,7 @@ CREATE TABLE IF NOT EXISTS Progr.OrderPerDish (
     FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id),
     FOREIGN KEY (order_id) REFERENCES Progr.Orders (order_id)
 );
+
+-- Recreates the schema
+-- ! DO NOT RUN THE FOLLOWING LINE IF NOT NESESERY !
+-- DROP SCHEMA Progr CASCADE;
