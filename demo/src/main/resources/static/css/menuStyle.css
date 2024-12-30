@@ -47,6 +47,7 @@ body, html {
 .other-buttons:active {
     background-color:hsl(51, 70%, 82%);
 }
+
 #login {
     position:absolute;
     bottom:10px;
@@ -95,6 +96,7 @@ body, html {
 .tables {
     display:flex;
     justify-content: space-evenly;
+    
 }
 
 .menu {
@@ -161,7 +163,7 @@ body, html {
     font-family: 'Tangerine',serif;
     font-size: 2.5em;
 }
-.menu::-webkit-scrollbar {
+.menu::-webkit-scrollbar    {
     width:0px;
     height:0px;
 }
@@ -173,11 +175,11 @@ body, html {
     position: relative;
     overflow: auto;
 }
-
 .preferences::-webkit-scrollbar {
     width:0px;
     height:0px;
 }
+
 
 .order {
     position: sticky;
@@ -200,3 +202,4 @@ body, html {
     box-shadow: none;
     transform: translateY(5px);
 }
+
