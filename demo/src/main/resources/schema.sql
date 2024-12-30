@@ -15,26 +15,18 @@ CREATE TABLE IF NOT EXISTS Progr.Restaurant (
     restaurant_password VARCHAR(255) NOT NULL
 );
 
--- Stores the categories of dishes that can appear in a restaurant's menu
-
-CREATE TABLE IF NOT EXISTS Progr.DishCategory (
-    category_id INT NOT NULL PRIMARY KEY,
-    category_name VARCHAR(60) NOT NULL
-);
-
 --Stores all the dishes that each restaurant offers
 
 CREATE TABLE IF NOT EXISTS Progr.Dish (
     dish_id INT NOT NULL PRIMARY KEY,
     restaurant_id INT NOT NULL,
     dish_name VARCHAR(60) NOT NULL,
-    category_id INT NOT NULL,
+    dish_category INT NOT NULL,
     dish_price FLOAT NOT NULL CHECK (dish_price >= 0),
     dish_image_url NVARCHAR(2083),
     dish_description VARCHAR(1000),
     dish_availability BOOLEAN NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id),
-    FOREIGN KEY (category_id) REFERENCES Progr.DishCategory (category_id)
+    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
 );
 
 -- Stores all ingredients that a restaurant may use in dish preparation
@@ -45,9 +37,7 @@ CREATE TABLE IF NOT EXISTS Progr.Ingredient (
     ingredient_cost FLOAT CHECK (ingredient_cost >= 0),
     ingredient_unit VARCHAR(3) NOT NULL,
     ingredient_stock FLOAT CHECK (ingredient_stock >= 0),
-    ingredient_exp_date DATE NOT NULL,
-    restaurant_id INT NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
+    ingredient_exp_date DATE NOT NULL
 );
 
 -- Stores the ingredients used in the preparation of specific dishes
@@ -56,11 +46,9 @@ CREATE TABLE IF NOT EXISTS Progr.DishIngredients (
     dish_id INT NOT NULL,
     ingredient_id INT NOT NULL,
     ingredient_quantity FLOAT NOT NULL CHECK (ingredient_quantity >= 0),
-    restaurant_id INT NOT NULL,
     PRIMARY KEY (dish_id, ingredient_id),
     FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id),
-    FOREIGN KEY (ingredient_id) REFERENCES Progr.Ingredient (ingredient_id),
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
+    FOREIGN KEY (ingredient_id) REFERENCES Progr.Ingredient (ingredient_id)
 );
 
 -- Tracks the purchases of ingredients made by restaurants
@@ -102,18 +90,7 @@ CREATE TABLE IF NOT EXISTS Progr.Orders (
     restaurant_id INT NOT NULL,
     order_total FLOAT CHECK (order_total >= 0),
     order_status BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (table_id, restaurant_id) REFERENCES Progr.RTable (table_id, restaurant_id)
-);
-
--- Stores details of individual orders
-
-CREATE TABLE IF NOT EXISTS Progr.NewOrder (
-    order_id INT NOT NULL,
-    table_id INT NOT NULL,
-    restaurant_id INT NOT NULL,
-    order_datetime TIMESTAMP NOT NULL,
-    PRIMARY KEY (order_id),
-    FOREIGN KEY (order_id) REFERENCES Progr.Orders (order_id),
+    order_datetime DATETIME,
     FOREIGN KEY (table_id, restaurant_id) REFERENCES Progr.RTable (table_id, restaurant_id)
 );
 

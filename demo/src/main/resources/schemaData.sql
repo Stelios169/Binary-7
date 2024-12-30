@@ -29,45 +29,45 @@ VALUES
     (10, 1, 'Tiramisu', 3, 6.99, 'http://example.com/tiramisu.jpg', 'Classic Italian dessert with coffee-soaked ladyfingers', TRUE),
     (11, 2, 'Green Tea Ice Cream', 3, 5.99, 'http://example.com/green_tea_ice_cream.jpg', 'Creamy ice cream made with green tea', TRUE);
 
-INSERT INTO Progr.Ingredient (ingredient_id, ingredient_name, ingredient_cost, ingredient_unit, ingredient_stock, ingredient_exp_date, restaurant_id)
+INSERT INTO Progr.Ingredient (ingredient_id, ingredient_name, ingredient_cost, ingredient_unit, ingredient_stock, ingredient_exp_date)
 VALUES
     -- Pizza Place Ingredients
-    (1, 'Tomato', 1.2, 'kg', 50.0, '2025-12-31', 1),
-    (2, 'Mozzarella Cheese', 3.0, 'kg', 30.0, '2025-12-31', 1),
-    (3, 'Pepperoni', 5.0, 'kg', 20.0, '2025-12-31', 1),
-    (5, 'Garlic', 0.5, 'kg', 10.0, '2025-12-31', 1),
-    (6, 'Basil', 2.0, 'kg', 15.0, '2025-12-31', 1),
+    (1, 'Tomato', 1.2, 'kg', 50.0, '2025-12-31'),
+    (2, 'Mozzarella Cheese', 3.0, 'kg', 30.0, '2025-12-31'),
+    (3, 'Pepperoni', 5.0, 'kg', 20.0, '2025-12-31'),
+    (5, 'Garlic', 0.5, 'kg', 10.0, '2025-12-31'),
+    (6, 'Basil', 2.0, 'kg', 15.0, '2025-12-31'),
     -- Sushi World Ingredients
-    (4, 'Salmon', 10.0, 'kg', 15.0, '2025-12-31', 2),
-    (7, 'Tuna', 12.0, 'kg', 10.0, '2025-12-31', 2),
-    (8, 'Rice', 1.5, 'kg', 100.0, '2025-12-31', 2),
-    (9, 'Nori Seaweed', 0.8, 'kg', 50.0, '2025-12-31', 2),
-    (10, 'Shrimp', 8.0, 'kg', 10.0, '2025-12-31', 2),
-    (11, 'Soy Sauce', 2.0, 'lt', 30.0, '2025-12-31', 2),
-    (12, 'Tempura Flour', 3.0, 'kg', 20.0, '2025-12-31', 2);
+    (4, 'Salmon', 10.0, 'kg', 15.0, '2025-12-31',
+    (7, 'Tuna', 12.0, 'kg', 10.0, '2025-12-31'),
+    (8, 'Rice', 1.5, 'kg', 100.0, '2025-12-31'),
+    (9, 'Nori Seaweed', 0.8, 'kg', 50.0, '2025-12-31'),
+    (10, 'Shrimp', 8.0, 'kg', 10.0, '2025-12-31'),
+    (11, 'Soy Sauce', 2.0, 'lt', 30.0, '2025-12-31'),
+    (12, 'Tempura Flour', 3.0, 'kg', 20.0, '2025-12-31');
 
-INSERT INTO Progr.DishIngredients (dish_id, ingredient_id, ingredient_quantity, restaurant_id)
+INSERT INTO Progr.DishIngredients (dish_id, ingredient_id, ingredient_quantity)
 VALUES
     -- Pizza Place Dish Ingredients
-    (1, 1, 0.2, 1),
-    (1, 2, 0.3, 1),
-    (2, 2, 0.3, 1),
-    (2, 3, 0.5, 1),
-    (4, 5, 0.1, 1),
-    (4, 6, 0.05, 1), 
-    (5, 1, 0.15, 1),
-    (5, 6, 0.1, 1),
+    (1, 1, 0.2),
+    (1, 2, 0.3),
+    (2, 2, 0.3),
+    (2, 3, 0.5),
+    (4, 5, 0.1),
+    (4, 6, 0.05), 
+    (5, 1, 0.15),
+    (5, 6, 0.1),
     -- Sushi World Dish Ingredients
-    (3, 4, 0.1, 2),
-    (3, 8, 0.2, 2),
-    (6, 7, 0.1, 2),
-    (7, 9, 0.05, 2),
-    (7, 8, 0.1, 2),
-    (8, 10, 0.2, 2),
-    (9, 10, 0.3, 2),
-    (9, 12, 0.1, 2),
-    (10, 4, 0.1, 2),
-    (11, 4, 0.05, 2);
+    (3, 4, 0.1),
+    (3, 8, 0.2),
+    (6, 7, 0.1),
+    (7, 9, 0.05),
+    (7, 8, 0.1),
+    (8, 10, 0.2),
+    (9, 10, 0.3),
+    (9, 12, 0.1),
+    (10, 4, 0.1),
+    (11, 4, 0.05);
 
 
 INSERT INTO Progr.RTable (table_id, restaurant_id)
