@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
+=======
+    "tako.dataRecordingConsent": "Enable",
+>>>>>>> 6d06a8e49decd7d949518b750c19a52b7bfb65ad
     "java.compile.nullAnalysis.mode": "automatic"
 }
