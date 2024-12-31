@@ -8,6 +8,7 @@ body, html {
     height:100vh;
     display:flex;
     margin:0; 
+    position: relative;
 }
 #sidebar {
     background-color: rgb(0, 0, 0);
@@ -69,40 +70,45 @@ body, html {
     background-color:hsl(51, 70%, 83%);
 }
 .content{
-    border:5px solid hsl(51, 70%, 67%);
-    flex:1;
+    border:10px solid hsl(51, 70%, 67%);
     background-color: blanchedalmond;
 }
 .background{
-    border: 10px solid #000000;
-    flex: 1;
-    position: absolute;
-    height: 70%;
+    border: 2px solid#fcb229;
+    position: relative;
+    height:99vh;
     width: 100%;
-    background-size: cover;
-    display: grid;
-    place-items: start center;
+    background-repeat: no-repeat;
+    background-size:cover; 
+    display: flex;
     background-image: url(../images/aboutUs.jpg);
-    filter: blur(2px);
-    z-index: -1;
 }
 .hello h1 {
     position: relative;
-    color:black;
+    color:(0,0,0);
     border-radius: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 160%;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(to right, hsl(51, 70%, 67%), #fcb229); 
     border: 5px inset black;
-    width:250px;
+    background: linear-gradient(to right, hsl(51, 70%, 67%), rgb(252, 178, 41));
+    width:300px;
+    height: 60px;
+    justify-content: center;
+    font-family:'Courier New', Courier, monospace;
+    padding-top: 2px;
+    padding: 8px;
+    word-spacing: 5px;
 }
 
 .description p{
-    color: rgb(36, 26, 26);
+    color:rgb(252, 178, 41);
+    text-align: center;
     position: relative;
-    text-align: center;
-    text-align: center;
-    top: 510px;
+    top: 40%;
+    right: 11%;
+    font-style: italic;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
 }
