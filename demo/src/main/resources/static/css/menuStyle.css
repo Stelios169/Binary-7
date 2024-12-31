@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
 body, html {
     margin: 0;
     padding: 0;
@@ -11,16 +9,17 @@ body, html {
     display:flex;
     margin:0; 
 }
+
 #sidebar {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(235, 240, 240);
     font-family: "Poppins",sans-serif;
     max-width:190px;
-    height:99vh; 
-    border:5px solid hsl(51, 70%, 67%);
+    height:100vh; 
+    border-right:5px solid hsl(195, 17%, 63%);
     transition: border-color 0.3s ease;
 }
 #sidebar:hover {
-    border-color:rgba(146, 56, 168, 0.89);
+    border-color:hsl(187, 84%, 71%);
 }
 #keys {
     display:grid;
@@ -30,7 +29,7 @@ body, html {
 .other-buttons {
     width: 120px;
     height: 50px;
-    background-color:hsl(51, 70%, 67%);
+    background-color:hsl(195, 17%, 63%);
     border: none;
     border-radius: 20px;
     color:black;
@@ -40,14 +39,14 @@ body, html {
     transition: all 0.5s ease;
 }
 .other-buttons:hover {
-    background-color:hsl(51, 70%, 77%);
-    transform: scale(1.1);  
-    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
+    background-color:hsl(187, 84%, 71%);
+    transform: scale(1.03) translateX(20%) rotate(360deg);  
+    box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
+    
 }
 .other-buttons:active {
-    background-color:hsl(51, 70%, 82%);
+    background-color:hsl(187, 100%, 83%);
 }
-
 #login {
     position:absolute;
     bottom:10px;
@@ -55,7 +54,7 @@ body, html {
     width: 80px;
     height:25px;
     border-radius:20px;
-    background-color:hsl(51, 70%, 67%);
+    background-color:hsl(195, 17%, 63%);
     border:none;
     font-size:1rem;
     font-weight: bold;
@@ -64,16 +63,16 @@ body, html {
     transition: all 0.5s ease;
 }
 #login:hover {
-    background-color:hsl(51, 70%, 77%);
-    transform: scale(1.1);  
-    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
+    background-color:hsl(187, 84%, 71%);
+    transform: scale(1.03);
+    box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
 #login:active {
-    background-color:hsl(51, 70%, 83%);
+    background-color:hsl(187, 100%, 83%);
 }
 
 .menu_order {
-    background: hsl(51, 70%, 67%);
+    background: rgb(197, 221, 221);
     width:100%;
     display:flex;
     flex-direction: column;
@@ -86,11 +85,12 @@ body, html {
 }
 
 .header {
-    color:hsl(51, 70%, 67%);
+    color:black;
     width:36vw;
     text-align: center;
-    background: black;
+    background: hsl(195, 17%, 63%);
     border-radius: 20px;
+    box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
 
 .tables {
@@ -112,9 +112,10 @@ body, html {
     position: fixed;
     width: 36vw;
     height: 84vh;
-    background:url(../images/menu.jpg) no-repeat center/cover;
+    background:url(../images/menu2.jpg) no-repeat center/cover;
     filter: blur(4px); 
     z-index: 0; 
+    border-radius: 5%;
 }
 
 .menu h1 {
@@ -174,6 +175,7 @@ body, html {
     height: 84vh;
     position: relative;
     overflow: auto;
+    border-radius: 5%;
 }
 .preferences::-webkit-scrollbar {
     width:0px;
@@ -189,8 +191,8 @@ body, html {
     right:20px;
     border:none;
     outline:none;
-    background-color: hsl(51, 70%, 67%);
-    box-shadow: 0 5px 0 hsl(51, 41%, 49%);
+    background-color: hsl(187, 84%, 71%);
+    box-shadow: 0 5px 0 hsl(187, 35%, 49%);
     cursor:pointer;
     border-radius: 15px;
     font-size:1em;

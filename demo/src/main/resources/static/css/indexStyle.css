@@ -66,6 +66,7 @@ body, html {
     background-color:hsl(187, 84%, 71%);
     transform: scale(1.03);
     box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
+    z-index: 10000;
 }
 #login:active {
     background-color:hsl(187, 100%, 83%);
