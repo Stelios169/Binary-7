@@ -40,8 +40,9 @@ body, html {
 }
 .other-buttons:hover {
     background-color:hsl(187, 84%, 71%);
-    transform: scale(1.1);  
+    transform: scale(1.03) translateX(20%) rotate(360deg);  
     box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
+    
 }
 .other-buttons:active {
     background-color:hsl(187, 100%, 83%);
@@ -63,7 +64,7 @@ body, html {
 }
 #login:hover {
     background-color:hsl(187, 84%, 71%);
-    transform: scale(1.1);  
+    transform: scale(1.03);
     box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
 #login:active {
