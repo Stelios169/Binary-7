@@ -11,15 +11,15 @@ body, html {
 }
 
 #sidebar {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(235, 240, 240);
     font-family: "Poppins",sans-serif;
     max-width:190px;
-    height:99vh; 
-    border:5px solid hsl(51, 70%, 67%);
+    height:100vh; 
+    border-right:5px solid hsl(195, 17%, 63%);
     transition: border-color 0.3s ease;
 }
 #sidebar:hover {
-    border-color:rgba(146, 56, 168, 0.89);
+    border-color:hsl(187, 84%, 71%);
 }
 #keys {
     display:grid;
@@ -29,7 +29,7 @@ body, html {
 .other-buttons {
     width: 120px;
     height: 50px;
-    background-color:hsl(51, 70%, 67%);
+    background-color:hsl(195, 17%, 63%);
     border: none;
     border-radius: 20px;
     color:black;
@@ -39,12 +39,12 @@ body, html {
     transition: all 0.5s ease;
 }
 .other-buttons:hover {
-    background-color:hsl(51, 70%, 77%);
+    background-color:hsl(187, 84%, 71%);
     transform: scale(1.1);  
-    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
+    box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
 .other-buttons:active {
-    background-color:hsl(51, 70%, 82%);
+    background-color:hsl(187, 100%, 83%);
 }
 #login {
     position:absolute;
@@ -53,7 +53,7 @@ body, html {
     width: 80px;
     height:25px;
     border-radius:20px;
-    background-color:hsl(51, 70%, 67%);
+    background-color:hsl(195, 17%, 63%);
     border:none;
     font-size:1rem;
     font-weight: bold;
@@ -62,19 +62,18 @@ body, html {
     transition: all 0.5s ease;
 }
 #login:hover {
-    background-color:hsl(51, 70%, 77%);
+    background-color:hsl(187, 84%, 71%);
     transform: scale(1.1);  
-    box-shadow: 5px 3px 6px 0px rgba(146, 56, 168, 0.89);
+    box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
 #login:active {
-    background-color:hsl(51, 70%, 83%);
+    background-color:hsl(187, 100%, 83%);
 }
 .content {
-    border:5px solid hsl(51, 70%, 67%);
     flex:1;
     background-color: blanchedalmond;
-    background-image: url(../images/pexels-furkanfdemir-10821040.jpg);
-    background-size: cover;
+    background-image: url(../images/index4.jpg) ;
+    background-size:cover;
     display: grid;
     place-items: start center;
 }
@@ -85,17 +84,17 @@ body, html {
     text-align:center;
     justify-content: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(to right, hsl(51, 70%, 67%), #fcb229); 
+    background: linear-gradient(to right, hsl(195, 17%, 63%), hsl(194, 69%, 75%)); 
     border: 5px inset black;
     width:250px;
 }
 .scroll-box {
-    width: 300px;
-    height: 400px;
-    background-color: #f4e1c1; 
+    width: 20vw;
+    height: 40vh;
+    background-color: #c2e0e4; 
     padding: 20px;
     margin: 20px;
-    border: 1px solid #d6b28b; 
+    border: 1px solid hsl(195, 17%, 63%); 
     border-radius: 15px; 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); 
     overflow: hidden; 
@@ -114,10 +113,10 @@ body, html {
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    color: #4a3a29; 
+    color: #000000; 
 }
 .scroll-box p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #3d2a1f; 
+    color: #000000; 
 }
