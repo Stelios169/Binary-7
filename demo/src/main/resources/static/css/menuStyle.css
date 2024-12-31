@@ -87,7 +87,7 @@ body, html {
 
 .header {
     color:hsl(51, 70%, 67%);
-    width:700px;
+    width:36vw;
     text-align: center;
     background: black;
     border-radius: 20px;
@@ -100,8 +100,8 @@ body, html {
 }
 
 .menu {
-    width:700px;
-    height: 800px;
+    width:36vw;
+    height: 84vh;
     position: relative;
     overflow-x: hidden;
     overflow-y:auto;
@@ -110,8 +110,8 @@ body, html {
 .menu::before {
     content: "";
     position: fixed;
-    width: 700px;
-    height: 800px;
+    width: 36vw;
+    height: 84vh;
     background:url(../images/menu.jpg) no-repeat center/cover;
     filter: blur(4px); 
     z-index: 0; 
@@ -170,8 +170,8 @@ body, html {
 
 .preferences {
     background:white;
-    width:700px;
-    height:800px;
+    width:36vw;
+    height: 84vh;
     position: relative;
     overflow: auto;
 }
