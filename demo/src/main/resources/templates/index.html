@@ -3,7 +3,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Restaurant App</title>
-        <link rel="stylesheet" href="/css/indexStyle.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="\demo\src\main\resources\static\css\indexStyle.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
@@ -37,5 +38,19 @@
                 </div>
             </div>
         </div>
+        <script>
+            const button = document.getElementById('login');
+            const body = document.body;
+    
+            button.addEventListener('mouseover', () => {
+                
+                const randomX = Math.random() * (window.innerWidth - button.offsetWidth);
+                const randomY = Math.random() * (window.innerHeight - button.offsetHeight);
+    
+                
+                button.style.left = `${randomX}px`;
+                button.style.top = `${randomY}px`;
+            });
+        </script>
     </body>
 </html>
