@@ -62,3 +62,8 @@ VALUES
     (2, 2),
     (3, 2),
     (4, 2);
+
+INSERT INTO Progr.Review (review_id, restaurant_id, review_rating, review_comment)
+VALUES
+    (1, 1, 5, 'Best pizza in town!!!'),
+    (2, 1, 3, 'The food was good, but the service could be better :(');
