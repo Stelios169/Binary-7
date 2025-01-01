@@ -21,6 +21,11 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "Restaurant_Id")
     private Restaurant restaurant;
-}
-    
 
+    public void setReviewComment(String review_comment) {
+        this.review_comment = review_comment;
+    }
+    public void setReviewRating(double review_rating) {
+        this.review_rating = review_rating;
+    }
+}
