@@ -14,15 +14,12 @@ public class DishIngredients {
     @EmbeddedId
     private DId id;
     @ManyToOne
-    @JoinColumn(name = "Ingredient_Id")
+    @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)
     private Ingredient ingredient;
 
     @ManyToOne
-    @JoinColumn(name = "Dish_Id")
+    @JoinColumn(name = "dish_id", insertable = false, updatable = false)
     private Dish dish;
 
     private int ingredient_quantity; // Επιπλέον γνώρισμα
 }
-    
-    
-

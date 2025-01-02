@@ -16,7 +16,7 @@ public class Purchase {
     private double purchase_quantity;
     private LocalDate purchase_date;
     @ManyToOne
-    @JoinColumn(name = "IngredientId")
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
     public Purchase(int purchase_id, double purchase_quantity, LocalDate purchase_date) {
         this.purchase_id = purchase_id;

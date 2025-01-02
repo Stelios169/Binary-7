@@ -15,7 +15,7 @@ public class RTable {
 
     @ManyToOne
     @MapsId("restaurant_id")
-    @JoinColumn(name = "Restaurant_Id")
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
     @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders = new ArrayList<>();    

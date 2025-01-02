@@ -20,9 +20,10 @@ public class Dish {
     private String dish_description;
     private boolean dish_availability;
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderPerDish> orderPerDish = new ArrayList<>();
+    private List<OrderPerDish> orders = new ArrayList<>();
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DishIngredients> dishIngredients = new ArrayList<>();
+    private List<DishIngredients> Ingredients = new ArrayList<>();
+    @ManyToMany(mappedBy = "dishes")
     private List<Restaurant> restaurant = new ArrayList<>();
     private double score; // Σκορ προτεραιότητας της συνταγής
     public Dish(String dish_name, int dish_id, double dish_price, String dish_category, String dish_description, boolean dish_availability, String dish_image_url, double score) {
