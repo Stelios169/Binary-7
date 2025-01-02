@@ -85,21 +85,45 @@ body, html {
     background-image: url(../images/aboutUs.jpg);
 }
 .hello h1 {
+    cursor: pointer;
     position: relative;
-    color:(0,0,0);
-    border-radius: 10px;
     display: flex;
-    left: 160%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    border: 5px inset black;
-    background: linear-gradient(to right, hsl(51, 70%, 67%), rgb(252, 178, 41));
-    width:300px;
-    height: 60px;
     justify-content: center;
-    font-family:'Courier New', Courier, monospace;
-    padding-top: 2px;
-    padding: 8px;
-    word-spacing: 5px;
+    align-items: center;
+    font-size: 3rem;
+    width: 300px;
+    height: 60px;
+    left: 160% 
+    linear-gradient(to bottom, #000, #000 60%, #fff 60%, #fff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-repeat: no-repeat;
+    transition: background 0.2s ease-out;
+    white-space: nowrap;
+  }
+  
+span {
+    position: relative;
+}
+  
+span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: #000;
+    bottom: 9px;
+    transition: all 0.2s ease-out;
+}
+  
+p:hover {
+    background-position: 0 11px;
+}
+  
+span:hover:before {
+    transform: translateY(10px)
 }
 
 .description p{
@@ -113,7 +137,7 @@ body, html {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
-.description:hover{
+.description:hover p{
     color:rgb(252, 178, 41);
     text-align: center;
     position: relative;
