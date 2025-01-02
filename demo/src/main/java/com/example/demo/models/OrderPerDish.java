@@ -1,5 +1,5 @@
 package com.example.demo.models;
-
+ 
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -25,4 +25,6 @@ public class OrderPerDish {
     @JoinColumn(name = "dish_Id")
     private Dish dish;
     private int orderPerDish_quantity; // Επιπλέον γνώρισμα
+    
+    
 }

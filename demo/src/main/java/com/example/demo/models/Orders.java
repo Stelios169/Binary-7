@@ -39,4 +39,15 @@ public class Orders {
     private RTable table;  
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderPerDish> dishes = new ArrayList<>(); 
+
+    public void setOrderStatus(boolean order_status){
+        this.order_status = order_status;
+    }
+
+    public double getOrdersTotal() {
+        return order_total;
+    }
+
+    
+    
 }

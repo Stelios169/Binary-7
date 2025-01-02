@@ -36,4 +36,5 @@ public class Dish {
         this.dish_image_url = dish_image_url;
         this.score = score;
     }
+    
 }
