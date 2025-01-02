@@ -113,3 +113,14 @@ body, html {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
+.description:hover{
+    color:rgb(252, 178, 41);
+    text-align: center;
+    position: relative;
+    top: 40%;
+    right: 11%;
+    font-style: italic;
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
