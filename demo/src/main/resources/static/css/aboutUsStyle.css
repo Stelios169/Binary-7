@@ -82,7 +82,16 @@ body, html {
     background-repeat: no-repeat;
     background-size:cover; 
     display: flex;
-    background-image: url(../images/aboutUs.jpg);
+    background-image: url(../images/AboutUs2.jpg);
+}
+.hello {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: 10%;
+    left: 40%;
+    transform: translateY(-50%);
 }
 .hello h1 {
     cursor: pointer;
@@ -90,18 +99,17 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 45px;
     width: 300px;
     height: 60px;
-    left: 160% 
-    linear-gradient(to bottom, #000, #000 60%, #fff 60%, #fff 100%);
+    background: hsl(195, 17%, 63%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-repeat: no-repeat;
     transition: background 0.2s ease-out;
     white-space: nowrap;
-  }
+}
   
 span {
     position: relative;
@@ -112,39 +120,43 @@ span:before {
     position: absolute;
     left: 0;
     right: 0;
-    height: 15px;
-    background: #000;
-    bottom: 9px;
+    height: 10px;
+    background-color:hsl(195, 17%, 63%) ;
+    top: 58px;
     transition: all 0.2s ease-out;
 }
   
-p:hover {
+.hello:hover h1{
     background-position: 0 11px;
 }
   
 span:hover:before {
-    transform: translateY(10px)
+    transform: translateY(20px);
+    background: rgb(145, 169, 177);
 }
 
 .description p{
-    color:rgb(252, 178, 41);
+    cursor: pointer;
+    color:hsl(187, 100%, 83%);
     text-align: center;
     position: relative;
     top: 40%;
     right: 11%;
     font-style: italic;
     font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(145, 169, 177, 0.4);
     border-radius: 10px;
+    backdrop-filter: blur(5px);
 }
 .description:hover p{
-    color:rgb(252, 178, 41);
+    color:hsl(188, 100%, 89%);
     text-align: center;
     position: relative;
     top: 40%;
     right: 11%;
     font-style: italic;
-    font-size: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 27px;
+    background-color: rgba(145, 169, 177, 0.7);
     border-radius: 10px;
+    backdrop-filter: blur(7px);
 }
