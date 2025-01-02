@@ -71,7 +71,7 @@ public class MenuService {
 
         return ingredientRepository.findByDishId(dishId);
 
-    }
+    } 
 
 }
 

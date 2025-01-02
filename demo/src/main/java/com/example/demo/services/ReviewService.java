@@ -38,5 +38,5 @@ public class ReviewService {
 
     public void removeReview(int reviewId) {
         reviewRepository.deleteById(reviewId);
-    }
+    } 
 }

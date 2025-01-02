@@ -34,6 +34,6 @@ public class MenuController {
         List<DishProfit> dishProfits = menuService.calculateAndSortDishProfit();
         return menuService.filterMenuByUserInput(dishProfits, filterRequest.getCategory(),
                 filterRequest.getMaxPrice(), filterRequest.getAllergens());
-    }
+    } 
 }
 

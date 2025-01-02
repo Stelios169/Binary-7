@@ -22,7 +22,7 @@ public class Dish {
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderPerDish> orders = new ArrayList<>();
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DishIngredients> Ingredients = new ArrayList<>();
+    private List<DishIngredients> ingredients = new ArrayList<>();
     @ManyToMany(mappedBy = "dishes")
     private List<Restaurant> restaurant = new ArrayList<>();
     private double score; // Σκορ προτεραιότητας της συνταγής
