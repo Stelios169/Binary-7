@@ -67,3 +67,17 @@ INSERT INTO Progr.Review (review_id, restaurant_id, review_rating, review_commen
 VALUES
     (1, 1, 5, 'Best pizza in town!!!'),
     (2, 1, 3, 'The food was good, but the service could be better :(');
+
+INSERT INTO Progr.RestaurantDishes (restaurant_id, dish_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 3),
+    (1, 4),
+    (1, 5),
+    (2, 6),
+    (2, 7),
+    (2, 8),
+    (2, 9),
+    (1, 10),
+    (2, 11);

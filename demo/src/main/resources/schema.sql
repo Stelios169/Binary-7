@@ -102,6 +102,16 @@ CREATE TABLE IF NOT EXISTS Progr.OrderPerDish (
     FOREIGN KEY (order_id) REFERENCES Progr.Orders (order_id)
 );
 
+-- Connects restaurants to their tables
+ 
+CREATE TABLE IF NOT EXISTS Progr.RestaurantDishes (
+    restaurant_id INT NOT NULL,
+    dish_id INT NOT NULL,
+    PRIMARY KEY (restaurant_id, dish_id),
+    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id),
+    FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id)
+);
+
 -- Recreates the schema
 -- ! DO NOT RUN THE FOLLOWING LINE IF NOT NESESERY !
 -- DROP SCHEMA Progr CASCADE;
