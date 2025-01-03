@@ -30,13 +30,8 @@ public class Restaurant {
         this.restaurant_afm = restaurant_afm;
         this.restaurant_tel = restaurant_tel;   
     }
-    @ManyToMany
-    @JoinTable(
-        name = "RestaurantDishes", // Ονόμα της join table
-        joinColumns = @JoinColumn(name = "restaurant_id"),
-        inverseJoinColumns = @JoinColumn(name = "dish_id")
-    )  
-    private List<Dish> dishes = new ArrayList<>(); 
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RestaurantDishes> restaurantDishes = new ArrayList<>();
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RTable> tables = new ArrayList<>();
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
