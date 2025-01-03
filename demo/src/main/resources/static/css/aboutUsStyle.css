@@ -186,5 +186,6 @@ body, html {
     transition: background-size 0.5s ease;
 }  
 .info span:hover {
+    font-size: 120%;
     background-size: 100% 100%;
 }

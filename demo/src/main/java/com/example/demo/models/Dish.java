@@ -20,11 +20,11 @@ public class Dish {
     private String dish_description;
     private boolean dish_availability;
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RestaurantDishes> restaurantDishes = new ArrayList<>();
+    @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderPerDish> orders = new ArrayList<>();
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DishIngredients> ingredients = new ArrayList<>();
-    @ManyToMany(mappedBy = "dishes")
-    private List<Restaurant> restaurant = new ArrayList<>();
     private double score; // Σκορ προτεραιότητας της συνταγής
     public Dish(String dish_name, int dish_id, double dish_price, String dish_category, String dish_description, boolean dish_availability, String dish_image_url, double score) {
         this.dish_name = dish_name;
@@ -35,6 +35,5 @@ public class Dish {
         this.dish_availability = dish_availability;
         this.dish_image_url = dish_image_url;
         this.score = score;
-    }
-    
+    }  
 }
