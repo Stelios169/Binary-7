@@ -32,7 +32,7 @@ public class Restaurant {
     }
     @ManyToMany
     @JoinTable(
-        name = "restaurantDishes", // Ονόμα της join table
+        name = "RestaurantDishes", // Ονόμα της join table
         joinColumns = @JoinColumn(name = "restaurant_id"),
         inverseJoinColumns = @JoinColumn(name = "dish_id")
     )  
