@@ -1,6 +1,10 @@
 package com.example.demo;
-
+import java.sql.Statement;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.sql.DataSource;
 
@@ -14,6 +18,27 @@ import org.springframework.jdbc.datasource.init.ScriptUtils;
 public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+
+        String jdbcURL = "jdbc:h2:file:./data/testdb";
+        String dbUser = "sa";
+        String dbPassword = "";
+
+        String sqlFilePath = "C:\\cygwin64\\home\\Maria Kontopoulou\\Binary-7\\demo\\src\\main\\resources\\DatabaseInserter.sql";
+
+        try (Connection conn = DriverManager.getConnection(jdbcURL, dbUser, dbPassword)) {
+  
+            String sql = new String(Files.readAllBytes(Paths.get(sqlFilePath)));
+
+            Statement stmt = conn.createStatement();
+
+            stmt.executeUpdate(sql);
+
+            System.out.println("SQL file executed successfully!");
+        } catch (IOException e) {
+            System.err.println("Error reading the SQL file: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error executing SQL: " + e.getMessage());
+        }
 	}
 
 	 public CommandLineRunner loadData(DataSource dataSource) {
