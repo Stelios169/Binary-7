@@ -3,6 +3,8 @@ package com.example.demo.models;
 import jakarta.persistence.CascadeType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +28,12 @@ public class Orders {
     private int order_id;
     private double order_total;
     private boolean order_status;
-    public Orders(int order_id, double order_total, boolean order_status) {
+    private LocalDateTime order_datetime;
+    public Orders(int order_id, double order_total, boolean order_status, LocalDateTime order_datetime) {
         this.order_id = order_id;
         this.order_total = order_total;
         this.order_status = order_status;
+        this.order_datetime = order_datetime;
     } 
     @ManyToOne
     @JoinColumns({

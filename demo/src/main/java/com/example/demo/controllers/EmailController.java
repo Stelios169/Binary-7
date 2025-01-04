@@ -57,5 +57,5 @@ public class EmailController {
             e.printStackTrace();
             return "Failed to send email";
         }
-    }    
+    }  
 }

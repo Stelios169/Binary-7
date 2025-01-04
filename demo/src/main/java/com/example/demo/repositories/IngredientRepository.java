@@ -11,5 +11,5 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
        "JOIN DishIngredients di ON i.ingredient_id = di.id.ingredient_id " +
        "JOIN Dish d ON di.id.dish_id = d.dish_id " +
        "WHERE i.ingredient_exp_date <= :expiryThreshold")
-    List<Ingredient> findExpiringIngredientsForRestaurant(int restaurant_id, LocalDate expiryThreshold);   
+    List<Ingredient> findExpiringIngredientsForRestaurant(int restaurant_id, LocalDate expiryThreshold); 
 }
