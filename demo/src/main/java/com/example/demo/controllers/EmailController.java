@@ -43,6 +43,7 @@ public class EmailController {
             }
             for (Restaurant restaurant : restaurants) {
                 List<Ingredient> expiringIngredients = ingredientRepository.findExpiringIngredientsForRestaurant(restaurant.getRestaurant_id(), expiryThreshold);
+                System.out.println("found ingredients" + expiringIngredients);
                 if (expiringIngredients.isEmpty()) {
                     return "No expiring ingredients";
                 }

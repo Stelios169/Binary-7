@@ -23,7 +23,7 @@ public class DemoApplication {
         String dbUser = "sa";
         String dbPassword = "";
 
-        String sqlFilePath = "C:\\cygwin64\\home\\Maria Kontopoulou\\Binary-7\\demo\\src\\main\\resources\\DatabaseInserter.sql";
+        String sqlFilePath = "..\\Binary-7\\demo\\src\\main\\resources\\DatabaseInserter.sql";
 
         try (Connection conn = DriverManager.getConnection(jdbcURL, dbUser, dbPassword)) {
   
