@@ -32,8 +32,7 @@ public class DemoApplication {
             Statement stmt = conn.createStatement();
 
             stmt.executeUpdate(sql);
-
-            System.out.println("SQL file executed successfully!");
+            
         } catch (IOException e) {
             System.err.println("Error reading the SQL file: " + e.getMessage());
         } catch (Exception e) {

@@ -18,14 +18,12 @@ CREATE TABLE IF NOT EXISTS Progr.Restaurant (
 
 CREATE TABLE IF NOT EXISTS Progr.Dish (
     dish_id INT NOT NULL PRIMARY KEY,
-    restaurant_id INT NOT NULL,
     dish_name VARCHAR(60) NOT NULL,
     dish_category VARCHAR(60) NOT NULL,
     dish_price FLOAT NOT NULL CHECK (dish_price >= 0),
     dish_image_url NVARCHAR(2083),
     dish_description VARCHAR(1000),
-    dish_availability BOOLEAN NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
+    dish_availability BOOLEAN NOT NULL
 );
 
 -- Stores all ingredients that a restaurant may use in dish preparation
@@ -69,6 +67,16 @@ CREATE TABLE IF NOT EXISTS Progr.RTable (
     FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id)
 );
 
+-- Connects restaurants to their tables
+ 
+CREATE TABLE IF NOT EXISTS Progr.RestaurantDishes (
+    restaurant_id INT NOT NULL,
+    dish_id INT NOT NULL,
+    PRIMARY KEY (restaurant_id, dish_id),
+    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id),
+    FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id)
+);
+
 -- Stores customer reviews for restaurants
 
 CREATE TABLE IF NOT EXISTS Progr.Review (
@@ -100,16 +108,6 @@ CREATE TABLE IF NOT EXISTS Progr.OrderPerDish (
     PRIMARY KEY (dish_id, order_id),
     FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id),
     FOREIGN KEY (order_id) REFERENCES Progr.Orders (order_id)
-);
-
--- Connects restaurants to their tables
- 
-CREATE TABLE IF NOT EXISTS Progr.RestaurantDishes (
-    restaurant_id INT NOT NULL,
-    dish_id INT NOT NULL,
-    PRIMARY KEY (restaurant_id, dish_id),
-    FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id),
-    FOREIGN KEY (dish_id) REFERENCES Progr.Dish (dish_id)
 );
 
 -- Recreates the schema
