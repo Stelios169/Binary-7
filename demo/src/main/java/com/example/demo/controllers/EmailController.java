@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import com.example.demo.models.Ingredient;
 import com.example.demo.models.Restaurant;
-
 import java.time.LocalDate;
-
-
 
 @Controller
 @RestController
@@ -48,14 +45,15 @@ public class EmailController {
                 List<Ingredient> expiringIngredients = ingredientRepository.findExpiringIngredientsForRestaurant(restaurant.getRestaurant_id(), expiryThreshold);
                 if (expiringIngredients.isEmpty()) {
                     return "No expiring ingredients";
-                }else {
-                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), "Ingredients that expire soon",expiringIngredients, text);
+                }
+                if (!expiringIngredients.isEmpty()) {
+                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), subject, expiringIngredients, text);
                 }
             }
             return "Emails sent succesfully.";    
         } catch (Exception e) {
             e.printStackTrace();
-            return "Failed to send email";
+            return "Failed to send emails";
         }
     }  
 }

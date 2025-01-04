@@ -9,5 +9,5 @@ import com.example.demo.models.Dish;
 import java.util.Optional;
  
 public interface DishRepository extends JpaRepository<Dish, Integer> {
-    
+
 }

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class RestaurantDishes {
     @EmbeddedId
     private RDId id;
+
     @ManyToOne
     @JoinColumn(name = "restaurant_id", insertable = false, updatable = false)
     private Restaurant restaurant;
@@ -20,10 +21,11 @@ public class RestaurantDishes {
     @JoinColumn(name = "dish_id", insertable = false, updatable = false)
     private Dish dish;
     public RestaurantDishes(RDId id, Restaurant restaurant, Dish dish) {
-        this.id = id;
+        this.id = id;;
         this.restaurant = restaurant;
         this.dish = dish;
     }
 }
+
     
 

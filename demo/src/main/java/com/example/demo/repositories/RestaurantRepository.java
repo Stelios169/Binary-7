@@ -13,14 +13,16 @@ import com.example.demo.models.Restaurant;
  
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
     @Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " +
-    "JOIN RestaurantDishes rd ON  rd.restaurant_id = r.restaurant_id " + 
-    "JOIN Dish d ON d.dish_id = rd.dish_id " +
-    "JOIN DishIngredients di ON d.dish_id = di.dish_id ")
-    Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId);
-   @Query("SELECT DISTINCT r FROM Restaurant r " +
-       "JOIN r.dishes d " + // Χρησιμοποιούμε τη σχέση για τα dishes
-       "JOIN DishIngredients di ON d.dish_id = di.id.dish_id " +
-       "JOIN Ingredient i ON di.id.ingredient_id = i.ingredient_id " +
-       "WHERE i.ingredient_exp_date <= :expiryThreshold")
-    List<Restaurant> findRestaurantsWithExpiringIngredients(LocalDate expiryThreshold);
+       "JOIN r.restaurantDishes rd " +
+       "JOIN rd.dish d " +
+       "JOIN d.ingredients di " +
+       "WHERE di.id.ingredient_id = :ingredient_id")
+Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId);
+    @Query("SELECT DISTINCT r FROM Restaurant r " +
+        "JOIN r.restaurantDishes rd " +
+        "JOIN rd.dish d " +
+        "JOIN d.ingredients di " +
+        "JOIN di.ingredient i " +
+        "WHERE i.ingredient_exp_date <= :expiryThreshold")
+List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);
 }
