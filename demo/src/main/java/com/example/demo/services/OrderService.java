@@ -11,6 +11,7 @@ import com.example.demo.repositories.OrdersRepository;
 import com.example.demo.repositories.RTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -25,9 +26,9 @@ public class OrderService {
 
     @Autowired
     public OrderService(OrdersRepository ordersRepository,
-                        OrderPerDishRepository orderPerDishRepository,
-                        DishRepository dishRepository,
-                        RTableRepository rTableRepository) {
+            OrderPerDishRepository orderPerDishRepository,
+            DishRepository dishRepository,
+            RTableRepository rTableRepository) {
         this.ordersRepository = ordersRepository;
         this.orderPerDishRepository = orderPerDishRepository;
         this.dishRepository = dishRepository;
@@ -35,9 +36,10 @@ public class OrderService {
     }
 
     public Orders createOrder(int tableId, int restaurantId) {
-        Optional<RTable> optionalRTable = rTableRepository.findById(new TId());
+        Optional<RTable> optionalRTable = rTableRepository.findById(new TId(tableId, restaurantId));
         if (optionalRTable.isEmpty()) {
-            throw new RuntimeException("Table not found with tableId: " + tableId + " and restaurantId: " + restaurantId);
+            throw new RuntimeException(
+                    "Table not found with tableId: " + tableId + " and restaurantId: " + restaurantId);
         }
 
         Orders order = new Orders();
@@ -48,31 +50,32 @@ public class OrderService {
 
         return ordersRepository.save(order);
     }
+
     public void addDishToOrder(int orderId, int dishId, int quantity) {
         Optional<Orders> optionalOrder = ordersRepository.findById(orderId);
         if (optionalOrder.isEmpty()) {
             throw new RuntimeException("Order not found with ID: " + orderId);
         }
-    
+
         Optional<Dish> optionalDish = dishRepository.findById(dishId);
         if (optionalDish.isEmpty()) {
             throw new RuntimeException("Dish not found with ID: " + dishId);
         }
-    
+
         Orders order = optionalOrder.get();
         Dish dish = optionalDish.get();
         double dishTotal = dish.getDish_price() * quantity;
-    
+
         OrderPerDish orderPerDish = new OrderPerDish();
         orderPerDish.setDish(dish);
         orderPerDish.setOrder(order);
-        orderPerDish.setOrderPerDish_quantity(quantity);    
+        orderPerDish.setOrderPerDish_quantity(quantity);
         orderPerDishRepository.save(orderPerDish);
-    
+
         order.setOrder_total(order.getOrder_total() + dishTotal);
         ordersRepository.save(order);
     }
-    
+
     public void removeOrder(Integer orderId) {
         Optional<Orders> optionalOrder = ordersRepository.findById(orderId);
         if (optionalOrder.isEmpty()) {
@@ -82,5 +85,5 @@ public class OrderService {
         orderPerDishRepository.deleteByOrder_id(orderId);
 
         ordersRepository.deleteById(orderId);
-    } 
+    }
 }

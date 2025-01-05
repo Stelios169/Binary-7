@@ -4,6 +4,7 @@ import com.example.demo.models.Orders;
 import com.example.demo.services.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 @RestController
 @RequestMapping("/orders")
@@ -14,27 +15,58 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    
+
     @PostMapping("/create")
-    public ResponseEntity<Orders> createOrder(
-            @RequestParam int tableId,
-            @RequestParam int restaurantId) {
+    public String createOrder(@RequestParam int tableId,
+            @RequestParam int restaurantId,
+            Model model) {
+
         Orders order = orderService.createOrder(tableId, restaurantId);
-        return ResponseEntity.ok(order);
+
+        model.addAttribute("orderId", order.getOrder_id());
+
+        return "add-dishes";
     }
 
     @PostMapping("/{orderId}/add-dish")
-    public ResponseEntity<String> addDishToOrder(
-            @PathVariable int orderId,
+    public String addDishToOrder(@PathVariable int orderId,
             @RequestParam int dishId,
-            @RequestParam int quantity) {
+            @RequestParam int quantity,
+            Model model) {
         try {
+            // Προσθήκη του πιάτου στην παραγγελία
             orderService.addDishToOrder(orderId, dishId, quantity);
-            return ResponseEntity.ok("Dish added successfully to the order.");
+
+            // Επιστροφή στην ίδια σελίδα για να προσθέσει άλλα πιάτα
+            model.addAttribute("orderId", orderId);
+            model.addAttribute("message", "Dish added successfully!");
+            return "add-dishes";
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            model.addAttribute("error", e.getMessage());
+            return "add-dishes"; // Επιστροφή αν υπάρχει σφάλμα
         }
     }
+
+    // @PostMapping("/create")
+    // public ResponseEntity<Orders> createOrder(
+    // @RequestParam int tableId,
+    // @RequestParam int restaurantId) {
+    // Orders order = orderService.createOrder(tableId, restaurantId);
+    // return ResponseEntity.ok(order);
+    // }
+
+    // @PostMapping("/{orderId}/add-dish")
+    // public ResponseEntity<String> addDishToOrder(
+    // @PathVariable int orderId,
+    // @RequestParam int dishId,
+    // @RequestParam int quantity) {
+    // try {
+    // orderService.addDishToOrder(orderId, dishId, quantity);
+    // return ResponseEntity.ok("Dish added successfully to the order.");
+    // } catch (RuntimeException e) {
+    // return ResponseEntity.badRequest().body(e.getMessage());
+    // }
+    // }
 
     @DeleteMapping("/{orderId}")
     public ResponseEntity<String> removeOrder(@PathVariable Integer orderId) {
@@ -44,5 +76,5 @@ public class OrderController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-    } 
+    }
 }

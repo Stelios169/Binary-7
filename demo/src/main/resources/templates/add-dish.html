@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Dishes to Order</title>
+</head>
+<body>
+    <h1>Add Dishes to Your Order</h1>
+    <form th:action="@{/orders/{orderId}/add-dish}" method="post">
+        <input type="hidden" name="orderId" th:value="${orderId}" />
+
+        <label for="dishId">Dish ID:</label>
+        <input type="number" id="dishId" name="dishId" required>
+        <br>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <br>
+
+        <button type="submit">Add Dish</button>
+    </form>
+</body>
+</html>
