@@ -25,7 +25,7 @@ public class OrderController {
 
         model.addAttribute("orderId", order.getOrder_id());
 
-        return "add-dishes";
+        return "add-dish";
     }
 
     @PostMapping("/{orderId}/add-dish")
@@ -40,10 +40,10 @@ public class OrderController {
             // Επιστροφή στην ίδια σελίδα για να προσθέσει άλλα πιάτα
             model.addAttribute("orderId", orderId);
             model.addAttribute("message", "Dish added successfully!");
-            return "add-dishes";
+            return "add-dish";
         } catch (RuntimeException e) {
             model.addAttribute("error", e.getMessage());
-            return "add-dishes"; // Επιστροφή αν υπάρχει σφάλμα
+            return "add-dish"; // Επιστροφή αν υπάρχει σφάλμα
         }
     }
 

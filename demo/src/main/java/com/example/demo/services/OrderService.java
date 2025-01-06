@@ -36,10 +36,12 @@ public class OrderService {
     }
 
     public Orders createOrder(int tableId, int restaurantId) {
-        Optional<RTable> optionalRTable = rTableRepository.findById(new TId(tableId, restaurantId));
+        Optional<RTable> optionalRTable = rTableRepository.findById(new TId(tableId,
+                restaurantId));
         if (optionalRTable.isEmpty()) {
             throw new RuntimeException(
-                    "Table not found with tableId: " + tableId + " and restaurantId: " + restaurantId);
+                    "Table not found with tableId: " + tableId + " and restaurantId: " +
+                            restaurantId);
         }
 
         Orders order = new Orders();

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class RTable {
+
     @EmbeddedId
     private TId tableId;
 
@@ -18,5 +19,5 @@ public class RTable {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
     @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orders> orders = new ArrayList<>();    
+    private List<Orders> orders = new ArrayList<>();
 }

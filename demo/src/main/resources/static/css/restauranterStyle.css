@@ -1,0 +1,105 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins",sans-serif;
+}
+.big-container {
+    width: 100%;
+    height:100%;
+    display:flex;
+}
+
+.container2 {
+    width:88vw;
+    background:hsl(197, 14%, 10%);
+}
+.container {
+    height:100vh;
+    width:12vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    background: rgb(0, 0, 0);
+}
+
+.btn {
+    font-size: 1.5rem;
+    color: #39FF14;
+    text-shadow: 0 0 1px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 
+                 0 0 40px #00FF00, 0 0 40px #00FF00, 0 0 30px #00FF00;
+    width:100%;
+    height: 5vh;
+    background: black;
+    outline:none;
+    border:2px solid #39FF14;
+    cursor:pointer;
+}
+
+.btn:active {
+    color:black;
+    background: #39FF14;
+    box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 2px #39FF14, 
+                 0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 20px #00FF00;
+}
+.tables {
+    font-size: 1.5rem;
+    color: #00FFFF;
+    text-shadow: 0 0 1px hsl(180, 100%, 50%), 0 0 10px #00FFFF, 0 0 20px #00FFFF, 
+                 0 0 40px hsl(190, 100%, 46%), 0 0 40px hsl(190, 100%, 46%), 0 0 30px hsl(190, 100%, 46%);
+    width:100%;
+    height: 5vh;
+    background: black;
+    outline:none;
+    border:2px solid hsl(180, 100%, 50%);
+    cursor:pointer;
+}
+
+.tables:active {
+    color:black;
+    background: hsl(180, 100%, 50%);
+    box-shadow: 0 0 5px hsl(180, 100%, 50%), 0 0 10px hsl(180, 100%, 50%), 0 0 2px hsl(180, 100%, 50%), 
+                 0 0 4px hsl(190, 100%, 46%), 0 0 8px hsl(190, 100%, 46%), 0 0 20px hsl(190, 100%, 46%);
+}
+
+.ingredients {
+    font-size: 1.5rem;
+    color: #9400D3;
+    text-shadow: 0 0 1px hsl(282, 100%, 41%), 0 0 1px #9400D3, 0 0 20px #9400D3, 
+                 0 0 20px hsl(288, 100%, 35%), 0 0 4px hsl(288, 100%, 35%), 0 0 30px hsl(288, 100%, 35%);
+    width:100%;
+    height: 5vh;
+    background: black;
+    outline:none;
+    border:2px solid hsl(282, 100%, 41%);
+    cursor:pointer;
+}
+
+.ingredients:active {
+    color:black;
+    background: hsl(282, 100%, 41%);
+    box-shadow: 0 0 5px hsl(282, 100%, 41%), 0 0 10px hsl(282, 100%, 41%), 0 0 2px hsl(282, 100%, 41%), 
+                 0 0 4px hsl(288, 100%, 35%), 0 0 8px hsl(288, 100%, 35%), 0 0 20px hsl(288, 100%, 35%);
+}
+
+.statistics {
+    font-size: 1.5rem;
+    color: hsl(300, 100%, 50%);
+    text-shadow: 0 0 1px hsl(300, 100%, 50%), 0 0 1px #FF00FF, 0 0 2px #FF00FF, 
+                 0 0 20px hsl(310, 100%, 45%), 0 0 4px hsl(310, 100%, 45%), 0 0 30px hsl(310, 100%, 45%);
+    width:100%;
+    height: 5vh;
+    background: black;
+    outline:none;
+    border:2px solid hsl(300, 100%, 50%);
+    cursor:pointer;
+}
+
+.statistics:active {
+    color:black;
+    background: hsl(300, 100%, 50%);
+    box-shadow: 0 0 5px hsl(300, 100%, 50%), 0 0 10px hsl(300, 100%, 50%), 0 0 2px hsl(300, 100%, 50%), 
+                 0 0 4px hsl(310, 100%, 45%), 0 0 8px hsl(310, 100%, 45%), 0 0 20px hsl(310, 100%, 45%);
+}
+
