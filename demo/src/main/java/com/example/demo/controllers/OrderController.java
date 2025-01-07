@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/menu")
 public class OrderController {
 
     private final OrderService orderService;

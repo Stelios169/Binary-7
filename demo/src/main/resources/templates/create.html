@@ -3,13 +3,13 @@
 <head>
     <title>Create Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="\demo\src\main\resources\static\css\create-orderStyle.css">
+    <link rel="stylesheet" href="\demo\src\main\resources\static\css\createStyle.css">
 </head>
 <body>
     
     <div class="container">
         
-        <form th:action="@{/orders/create}" method="post">
+        <form th:action="@{/menu/create}" method="post">
             <h1>Create a new order!</h1>
             <div class="inputs">
                 <input list="numbers" placeholder="Table" required>
@@ -19,7 +19,7 @@
                 <input list="numbers2" placeholder="Restaurant" required>
                 <datalist id="numbers2"></datalist>
             </div>
-            <button onclick="location.href='/add-dish';" type="submit" class="btn">Create Order</button>
+            <button type="submit" class="btn">Create Order</button>
         </form>
     </div>
     <button onclick="location.href='/menu';" class="btn-back">Back</button>

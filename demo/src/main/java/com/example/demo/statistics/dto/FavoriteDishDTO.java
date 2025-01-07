@@ -15,5 +15,3 @@ public class FavoriteDishDTO {
         this.dish_name = dish_name;
     }
 }
-
-    
