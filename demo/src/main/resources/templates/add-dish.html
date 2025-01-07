@@ -2,21 +2,83 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Add Dishes to Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\demo\src\main\resources\static\css\add-dishStyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple'>
 </head>
 <body>
-    <h1>Add Dishes to Your Order</h1>
-    <form th:action="@{/orders/{orderId}/add-dish}" method="post">
-        <input type="hidden" name="orderId" th:value="${orderId}" />
-
-        <label for="dishId">Dish ID:</label>
-        <input type="number" id="dishId" name="dishId" required>
-        <br>
+    <div class="menu_order">
+    <div  class="font-effect-shadow-multiple">
+        <div class="header">
+            <h1>Menu</h1>
+        </div>
+        <div class="header">
+            <h1>Add Dish to Order</h1>
+        </div>
+    </div>
+    <div class="tables">
+        <div class="menu">
+            <h1>Starters</h1>
+            <div class="product-list">
+                <div class="product-item">
+                    <p class="name">Garlic Bread</p>
+                    <p class="price">5.99 <i class='bx bx-euro'></i>(Id=1)</p>
+                </div>
+                <p class="description">Toasted bread with garlic butter and herbs</p>
+                <div class="product-item">
+                    <p class="name">Bruschetta</p>
+                    <p class="price">6.99 <i class='bx bx-euro'></i>(Id=2)</p>
+                </div>
+                <p class="description">Grilled bread topped with tomato, garlic, and basil</p>
+            </div>
+            <h1>Main</h1>
+            <div class="product-list">
+                <div class="product-item">
+                    <p class="name">Margherita Pizza</p>
+                    <p class="price">9.99 <i class='bx bx-euro'></i>(Id=3)</p>
+                </div>
+                <p class="description">Classic pizza with tomatoes and mozzarella</p>
+                <div class="product-item">
+                    <p class="name">Pepperoni Pizza</p>
+                    <p class="price">12.99 <i class='bx bx-euro'></i>(Id=4)</p>
+                </div>
+                <p class="description">Pizza topped with pepperoni and cheese</p>
+            </div>
+            <h1>Desserts</h1>
+            <div class="product-list">
+                <div class="product-item">
+                    <p class="name">Tiramisu</p>
+                    <p class="price">6.99 <i class='bx bx-euro'></i>(Id=5)</p>
+                </div>
+                <p class="description">Classic Italian dessert with coffee-soaked ladyfingers</p>
+            </div>
+        </div>
+        <div class="preferences">
+            <form th:action="@{/menu/{orderId}/add-dish(orderId=${orderId})}" method="post">
+                <h1>Add Dish to Order</h1>
+            
+            <div class="inputs">
+                <input type="number" id="dishId" name="dishId" required class="form-control" placeholder="Enter dish ID">
+            </div>
         
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required>
-        <br>
-
-        <button type="submit">Add Dish</button>
-    </form>
+           
+            <div class="inputs">
+                <input type="number" id="quantity" name="quantity" required class="form-control" placeholder="Enter quantity">
+            </div>
+        
+            <button type="submit" class="btn">Add Dish</button>
+            </form>
+            <div th:if="${message}" class="alert alert-success">
+                <p th:text="${message}"></p>
+            </div>
+            
+            <div th:if="${error}" class="alert alert-danger">
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
