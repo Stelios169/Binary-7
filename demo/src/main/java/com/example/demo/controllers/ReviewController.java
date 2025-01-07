@@ -1,8 +1,9 @@
 package com.example.demo.controllers;
 
-import org.springframework.web.bind.annotation.*;
-import com.example.demo.services.ReviewService;
 import com.example.demo.models.Review;
+import com.example.demo.services.ReviewService;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -26,8 +27,8 @@ public class ReviewController {
     }
 
     @PostMapping
-    public Review addReview(@RequestBody Review review) {
-        return reviewService.addReview(review);
+    public Review addReview(@RequestBody Review review, @RequestParam int restaurantId) {
+        return reviewService.addReview(review, restaurantId);
     }
 
     @PutMapping("/{id}")
@@ -38,5 +39,5 @@ public class ReviewController {
     @DeleteMapping("/{id}")
     public void removeReview(@PathVariable int id) {
         reviewService.removeReview(id);
-    } 
+    }
 }

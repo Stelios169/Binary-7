@@ -1,16 +1,22 @@
 package com.example.demo.services;
 
-import com.example.demo.repositories.*;
-import org.springframework.stereotype.Service;
+import com.example.demo.repositories.ReviewRepository;
 import com.example.demo.models.Review;
+import com.example.demo.models.Restaurant;
+import com.example.demo.repositories.RestaurantRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class ReviewService {
     private final ReviewRepository reviewRepository;
+    private final RestaurantRepository restaurantRepository;
 
-    public ReviewService(ReviewRepository reviewRepository) {
+    public ReviewService(ReviewRepository reviewRepository, RestaurantRepository restaurantRepository) {
         this.reviewRepository = reviewRepository;
+        this.restaurantRepository = restaurantRepository;
     }
 
     public List<Review> getAllReviews() {
@@ -21,7 +27,11 @@ public class ReviewService {
         return reviewRepository.findById(reviewId);
     }
 
-    public Review addReview(Review review) {
+    public Review addReview(Review review, int restaurantId) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        review.setRestaurant(restaurant);
         return reviewRepository.save(review);
     }
 
@@ -38,5 +48,6 @@ public class ReviewService {
 
     public void removeReview(int reviewId) {
         reviewRepository.deleteById(reviewId);
-    } 
+    }
 }
+
