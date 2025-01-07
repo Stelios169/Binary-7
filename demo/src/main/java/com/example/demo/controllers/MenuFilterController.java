@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Dish;
 import com.example.demo.services.MenuFilterService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class MenuFilterController {
 
     private final MenuFilterService menuFilterService;
 
-    @Autowired
     public MenuFilterController(MenuFilterService menuFilterService) {
         this.menuFilterService = menuFilterService;
     }

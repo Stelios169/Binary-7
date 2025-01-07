@@ -4,10 +4,8 @@ import com.example.demo.models.Dish;
 import com.example.demo.models.Ingredient;
 import com.example.demo.repositories.DishRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @Service
@@ -15,7 +13,6 @@ public class MenuFilterService {
 
     private final DishRepository dishRepository;
 
-    @Autowired
     public MenuFilterService(DishRepository dishRepository) {
         this.dishRepository = dishRepository;
     }
