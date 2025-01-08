@@ -27,5 +27,5 @@ public class MenuFilterController {
                                  @RequestParam String[] categories,
                                  @RequestParam String[] allergies) {
         return menuFilterService.filterMenu(budget, categories, allergies);
-    }
+    } 
 }

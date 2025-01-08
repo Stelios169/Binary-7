@@ -35,7 +35,6 @@ public class Dish {
         this.dish_availability = dish_availability;
         this.dish_image_url = dish_image_url;
     }
-
     /**
      * Υπολογισμός του συνολικού κόστους των υλικών.
      * @return το συνολικό κόστος παραγωγής του πιάτου
