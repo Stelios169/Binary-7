@@ -3,7 +3,7 @@
 <head>
     <title>Create Order</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="\demo\src\main\resources\static\css\createStyle.css">
+    <link rel="stylesheet" href="\css\createStyle.css">
 </head>
 <body>
     
@@ -12,11 +12,11 @@
         <form th:action="@{/menu/create}" method="post">
             <h1>Create a new order!</h1>
             <div class="inputs">
-                <input list="numbers" placeholder="Table" required>
+                <input list="numbers" name="tableId" placeholder="Table" required>
                 <datalist id="numbers"></datalist>
             </div>
             <div class="inputs">
-                <input list="numbers2" placeholder="Restaurant" required>
+                <input list="numbers2" name="restaurantId" placeholder="Restaurant" required>
                 <datalist id="numbers2"></datalist>
             </div>
             <button type="submit" class="btn">Create Order</button>

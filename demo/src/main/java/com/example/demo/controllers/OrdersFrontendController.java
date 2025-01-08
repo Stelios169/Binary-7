@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class OrdersFrontendController {
-    @GetMapping("/create-order")
+    @GetMapping("/menu/create")
     public String showCreateOrderForm() {
-        return "create-order";
+        return "create";
     }
 }
