@@ -88,7 +88,7 @@ body, html {
     color:black;
     width:36vw;
     text-align: center;
-    background: hsl(195, 17%, 63%);
+    background: hsl(195, 17%, 63%)hs;
     border-radius: 20px;
     box-shadow: 5px 3px 6px 0px rgba(6, 3, 7, 0.89);
 }
@@ -207,3 +207,58 @@ body, html {
     transform: translateY(5px);
 }
 
+.preferences {
+    width:36vw;
+    height: 84vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y:auto;
+}
+
+.preferences::before {
+    content: "";
+    position: fixed;
+    width: 36vw;
+    height: 84vh;
+    background:url(../images/menu2.jpg) no-repeat center/cover;
+    filter: blur(4px); 
+    z-index: 0; 
+    border-radius: 5%;
+}
+.preferences h1 {
+    position: relative;
+    font-family: 'Tangerine',serif;
+    z-index: 1; 
+    color: black;
+    text-align: center;
+    font-size:3em;
+    margin:5px;
+    letter-spacing: 3.5px;
+    text-shadow: 
+                0 0 1px #000,   
+                0 0 2px #000,   
+                0 0 10px black;
+}
+
+.filter {
+    position:relative;
+    width:100%;
+    margin:30px 0;
+}
+
+.filter input {
+    position: relative;
+    display: flex;
+    left:8%;
+    width: 70%;
+    height: 100%;
+    align-items: center;
+    background:hsl(195, 17%, 63%);
+    border:none;
+    outline:none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius:40px;
+    font-size:16px;
+    color:rgb(0, 0, 0);
+    padding:20px 45px 20px 20px;
+}
