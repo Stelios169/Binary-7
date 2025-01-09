@@ -10,19 +10,21 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.models.Restaurant;
- 
+
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
     @Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " +
-       "JOIN r.restaurantDishes rd " +
-       "JOIN rd.dish d " +
-       "JOIN d.ingredients di " +
-       "WHERE di.id.ingredient_id = :ingredient_id")
-Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId);
+            "JOIN r.restaurantDishes rd " +
+            "JOIN rd.dish d " +
+            "JOIN d.ingredients di " +
+            "WHERE di.id.ingredient_id = :ingredient_id")
+    Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId);
+
     @Query("SELECT DISTINCT r FROM Restaurant r " +
-        "JOIN r.restaurantDishes rd " +
-        "JOIN rd.dish d " +
-        "JOIN d.ingredients di " +
-        "JOIN di.ingredient i " +
-        "WHERE i.ingredient_exp_date <= :expiryThreshold")
-List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);
+            "JOIN r.restaurantDishes rd " +
+            "JOIN rd.dish d " +
+            "JOIN d.ingredients di " +
+            "JOIN di.ingredient i " +
+            "WHERE i.ingredient_exp_date <= :expiryThreshold")
+    List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);
+
 }

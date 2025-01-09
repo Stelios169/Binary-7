@@ -4,9 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginController {
+public class Login3Controller {
     @RequestMapping("/login")
-    public String login() {
+    public String shwLoginForm() {
         return "login";
     }
+
 }

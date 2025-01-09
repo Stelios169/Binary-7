@@ -3,10 +3,11 @@ package com.example.demo.controllers;
 import com.example.demo.models.Orders;
 import com.example.demo.services.OrderService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-@RestController
+@Controller
 @RequestMapping("/menu")
 public class OrderController {
 
