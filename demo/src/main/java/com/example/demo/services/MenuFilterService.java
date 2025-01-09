@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class MenuFilterService {
-    
     private final DishRepository dishRepository;
 
     public MenuFilterService(DishRepository dishRepository) {
@@ -62,5 +61,5 @@ public class MenuFilterService {
             }
         }
         return false;
-    }
+    } 
 }

@@ -72,3 +72,6 @@ CREATE TABLE IF NOT EXISTS Progr.Orders ( order_id BIGINT AUTO_INCREMENT INT NOT
 2025-01-08 13:10:19.099501+02:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS Progr.Orders ( order_id BIGINT AUTO_INCREMENT [*]INT NOT NULL PRIMARY KEY, table_id INT NOT NULL, restaurant_id INT NOT NULL, order_total FLOAT CHECK (order_total >= 0), order_status BOOLEAN DEFAULT TRUE, order_datetime DATETIME, FOREIGN KEY (table_id, restaurant_id) REFERENCES Progr.RTable (table_id, restaurant_id) )"; expected "(, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
 CREATE TABLE IF NOT EXISTS Progr.Orders ( order_id BIGINT AUTO_INCREMENT INT NOT NULL PRIMARY KEY, table_id INT NOT NULL, restaurant_id INT NOT NULL, order_total FLOAT CHECK (order_total >= 0), order_status BOOLEAN DEFAULT TRUE, order_datetime DATETIME, FOREIGN KEY (table_id, restaurant_id) REFERENCES Progr.RTable (table_id, restaurant_id) ) [42001-232]
+2025-01-09 19:07:28.618913+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM DISH DISH_INGREDIENTS [*]INGREDIENT"; SQL statement:
+SELECT * FROM DISH DISH_INGREDIENTS INGREDIENT [42000-232]

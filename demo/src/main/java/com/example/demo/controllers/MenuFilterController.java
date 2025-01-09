@@ -10,7 +10,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/menu")
 public class MenuFilterController {
-
     private final MenuFilterService menuFilterService;
 
     public MenuFilterController(MenuFilterService menuFilterService) {
