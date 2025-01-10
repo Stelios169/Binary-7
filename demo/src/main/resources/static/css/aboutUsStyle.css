@@ -11,22 +11,18 @@ body, html {
 }
 
 #sidebar {
-    position:fixed;
-    left:-190px;
     background-color: rgb(235, 240, 240);
     font-family: "Poppins",sans-serif;
     max-width:190px;
     height:100vh; 
     border-right:5px solid hsl(195, 17%, 63%);
     transition: border-color 0.3s ease;
-    transition:left 0.3s ease;
 }
 #sidebar:hover {
     border-color:hsl(187, 84%, 71%);
 }
 #keys {
-    display:flex;
-    flex-direction: column;
+    display:grid;
     gap:20px;
     padding:30px;
 }
@@ -51,9 +47,6 @@ body, html {
 .other-buttons:active {
     background-color:hsl(187, 100%, 83%);
 }
-#sidebar-toggle {
-    display: none;
-}
 #login {
     position:absolute;
     bottom:10px;
@@ -77,12 +70,20 @@ body, html {
 #login:active {
     background-color:hsl(187, 100%, 83%);
 }
+
+container{
+    max-height: fit-content;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
 .content{
-    border:10px solid hsl(51, 70%, 67%);
-    background-color: blanchedalmond;
+    border:10px solid hsl(187, 100%, 83%);
+    background-color: hsl(187, 84%, 71%);
 }
 .background{
-    border: 2px solid#fcb229;
+    border: 2px solid hsl(187, 100%, 83%);
     position: relative;
     height:99vh;
     width: 100%;
@@ -90,7 +91,7 @@ body, html {
     background-size:cover; 
     display: flex;
     background-image: url(../images/AboutUs2.jpg);
-    margin-left:190px;
+
 }
 .hello {
     display: flex;
@@ -155,6 +156,9 @@ body, html {
     background-color: rgba(145, 169, 177, 0.4);
     border-radius: 10px;
     backdrop-filter: blur(5px);
+    max-width: 80%;
+    max-height: 40%;
+    overflow: hidden;
 }
 .description:hover p{
     color:hsl(188, 100%, 89%);
