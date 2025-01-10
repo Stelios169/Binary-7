@@ -20,8 +20,8 @@ public class PaymentService {
 
         float totalAmount = 0;
         for (Orders orders : activeOrders) {
-            totalAmount += orders.getOrdersTotal();
-            orders.setOrderStatus(false);
+            totalAmount += orders.getOrder_total();
+            orders.setOrder_status(false);
         }
 
         if (!activeOrders.isEmpty()) {

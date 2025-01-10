@@ -45,12 +45,52 @@ public class Orders {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderPerDish> dishes = new ArrayList<>();
 
-    public void setOrderStatus(boolean order_status) {
-        this.order_status = order_status;
+    // Getters and Setters
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public double getOrdersTotal() {
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public double getOrder_total() {
         return order_total;
     }
 
+    public void setOrder_total(double order_total) {
+        this.order_total = order_total;
+    }
+
+    public boolean isOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(boolean order_status) {
+        this.order_status = order_status;
+    }
+
+    public LocalDateTime getOrder_datetime() {
+        return order_datetime;
+    }
+
+    public void setOrder_datetime(LocalDateTime order_datetime) {
+        this.order_datetime = order_datetime;
+    }
+
+    public RTable getTable() {
+        return table;
+    }
+
+    public void setTable(RTable table) {
+        this.table = table;
+    }
+
+    public List<OrderPerDish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<OrderPerDish> dishes) {
+        this.dishes = dishes;
+    }
 }

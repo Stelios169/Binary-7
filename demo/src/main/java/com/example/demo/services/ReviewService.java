@@ -5,6 +5,7 @@ import com.example.demo.models.Review;
 import com.example.demo.models.Restaurant;
 import com.example.demo.repositories.RestaurantRepository;
 import org.springframework.stereotype.Service;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,11 +44,13 @@ public class ReviewService {
             review.setReviewComment(newComment);
             return reviewRepository.save(review);
         }
-        throw new RuntimeException("Review not found with id " + reviewId);
+        throw new EntityNotFoundException("Review not found with id " + reviewId);
     }
 
     public void removeReview(int reviewId) {
+        if (!reviewRepository.existsById(reviewId)) {
+            throw new EntityNotFoundException("Review not found with id " + reviewId);
+        }
         reviewRepository.deleteById(reviewId);
     }
 }
-

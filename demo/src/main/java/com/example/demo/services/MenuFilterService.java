@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Dish;
+import com.example.demo.models.DishIngredients;
 import com.example.demo.models.Ingredient;
 import com.example.demo.repositories.DishRepository;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,13 @@ public class MenuFilterService {
     private double calculateProfit(Dish dish) {
         // Υπολογισμός κέρδους ως διαφορά μεταξύ τιμής πιάτου και κόστους συστατικών
         double ingredientCost = dish.getIngredients().stream()
-                .mapToDouble(ingredient -> ingredient.getIngredient().getIngredient_cost() * ingredient.getIngredient_quantity())
-                .sum();
+        .mapToDouble(dishIngredient -> {
+            // Υπολογισμός κόστους για κάθε συστατικό
+            Ingredient ingredient = dishIngredient.getIngredient();
+            int ingredientQuantity = dishIngredient.getIngredient_quantity();
+            return ingredient.getIngredient_cost() * ingredientQuantity; // Υπολογισμός κόστους συστατικού
+        })
+        .sum();
         return dish.getDish_price() - ingredientCost;
     }
 
@@ -54,9 +60,10 @@ public class MenuFilterService {
 
     private boolean containsAllergens(Dish dish, String[] allergies) {
         for (String allergen : allergies) {
-            for (Ingredient ingredient : dish.getIngredients().stream().map(di -> di.getIngredient()).toList()) {
+            for (DishIngredients dishIngredient : dish.getIngredients()) {
+                Ingredient ingredient = dishIngredient.getIngredient();  // Βρίσκουμε το συστατικό
                 if (ingredient.getIngredient_name().equalsIgnoreCase(allergen.trim())) {
-                    return true;
+                    return true;  // Βρέθηκε αλλεργιογόνο
                 }
             }
         }

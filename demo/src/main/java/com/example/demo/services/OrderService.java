@@ -44,7 +44,7 @@ public class OrderService {
                             restaurantId);
         }
 
-        Orders order = new Orders();
+        Orders order = new Orders(1, 26, true, LocalDateTime.now() );
         order.setTable(optionalRTable.get());
         order.setOrder_total(0.0); // Αρχική τιμή
         order.setOrder_status(true); // Ενεργή παραγγελία
