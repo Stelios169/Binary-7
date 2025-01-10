@@ -12,6 +12,9 @@ import java.util.Optional;
 import com.example.demo.models.Restaurant;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
+    @Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " )
+    Optional<Restaurant> findByEmail(@Param("restaurant_email") String restaurant_email);
+
     @Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " +
             "JOIN r.restaurantDishes rd " +
             "JOIN rd.dish d " +
