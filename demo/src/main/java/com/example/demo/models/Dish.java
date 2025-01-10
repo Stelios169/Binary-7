@@ -36,4 +36,14 @@ public class Dish {
         this.dish_availability = dish_availability;
         this.dish_image_url = dish_image_url;
     }
+
+    // Getter για το score
+    public double getScore() {
+        return score;
+    }
+
+    // Setter για το score
+    public void setScore(double score) {
+        this.score = score;
+    }
 }
