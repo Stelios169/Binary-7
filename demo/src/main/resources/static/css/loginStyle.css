@@ -144,3 +144,10 @@ body {
     background:black;
     color:white;
 }
+
+.wrong {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color:red;
+} 

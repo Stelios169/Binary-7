@@ -104,3 +104,10 @@ body {
     background:hsl(187, 84%, 71%);
     color:black;
 }
+
+.alert {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color:red;
+}

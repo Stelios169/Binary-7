@@ -26,6 +26,9 @@
                 <p>Don't have an account? <a href="#">Register</a></p>
             </div>
         </form>
+        <div th:if="${error}" class="wrong">
+            <p th:text="${error}"></p>
+        </div>
     </div>
     <button onclick="location.href='/';" class="btn-back">Back</button>
 </body>

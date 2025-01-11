@@ -21,6 +21,9 @@
             </div>
             <button type="submit" onclick="location.href='/afterMenu';" class="btn">Create Order</button> <!--aggelos -->
         </form>
+        <div th:if="${error}" class="alert">
+          <span th:text="${error}"></span>
+      </div>
     </div>
     <button onclick="location.href='/menu';" class="btn-back">Back</button>
     <script>

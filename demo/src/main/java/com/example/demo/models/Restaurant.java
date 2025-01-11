@@ -46,6 +46,9 @@ public class Restaurant {
         this.restaurant_id = restaurant_id;
     }
 
+    public Restaurant() {
+    }
+
     public String getRestaurant_password() {
         return restaurant_password;
     }

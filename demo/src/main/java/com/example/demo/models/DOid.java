@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 @NoArgsConstructor
-@Data 
+@Data
 public class DOid implements Serializable {
     private int order_id;
-    private int dish_id;    
+    private int dish_id;
+
 }

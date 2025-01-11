@@ -69,16 +69,16 @@
             </div>
         
             <button type="submit" class="btn">Add Dish</button>
+                <div th:if="${error}" class="alert">
+                    <p th:text="${error}"></p>
+                <div th:if="${message}" class="success">
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
             </form>
-            <div th:if="${message}" class="alert alert-success">
-                <p th:text="${message}"></p>
-            </div>
-            
-            <div th:if="${error}" class="alert alert-danger">
-                <p th:text="${error}"></p>
-            </div>
         </div>
     </div>
 </div>
+<button onclick="location.href='/menu/create';" class="btn-back">Back</button>
 </body>
 </html>

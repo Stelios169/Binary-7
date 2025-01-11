@@ -182,3 +182,43 @@ body, html {
     width:0px;
     height:0px;
 }
+
+.alert {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color:red;
+}
+
+.success {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color:rgb(17, 185, 17);
+}
+
+.btn-back {
+    position: absolute;
+    top:20px;
+    left:20px;
+    width: 120px;
+    height: 50px;
+    background: black;
+    color:hsl(187, 84%, 71%);
+    border:none;
+    outline:none;
+    border-radius:10px;
+    font-size:20px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    transform: scale(1.04); 
+}
+
+.btn-back:active {
+    background:hsl(187, 84%, 71%);
+    color:black;
+}

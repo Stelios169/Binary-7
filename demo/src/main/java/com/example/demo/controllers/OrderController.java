@@ -21,12 +21,16 @@ public class OrderController {
     public String createOrder(@RequestParam int tableId,
             @RequestParam int restaurantId,
             Model model) {
+        try {
+            Orders order = orderService.createOrder(tableId, restaurantId);
 
-        Orders order = orderService.createOrder(tableId, restaurantId);
+            model.addAttribute("orderId", order.getOrder_id());
 
-        model.addAttribute("orderId", order.getOrder_id());
-
-        return "add-dish";
+            return "add-dish";
+        } catch (Exception e) {
+            model.addAttribute("error", "Could not create order. Please check the table and restaurant IDs.");
+            return "create";
+        }
     }
 
     @PostMapping("/{orderId}/add-dish")
@@ -43,7 +47,7 @@ public class OrderController {
             model.addAttribute("message", "Dish added successfully!");
             return "add-dish";
         } catch (RuntimeException e) {
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("error", "Could not find a dish with this Id");
             return "add-dish"; // Επιστροφή αν υπάρχει σφάλμα
         }
     }
