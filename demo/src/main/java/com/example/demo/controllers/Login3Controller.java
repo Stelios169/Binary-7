@@ -9,5 +9,4 @@ public class Login3Controller {
     public String shwLoginForm() {
         return "login";
     }
-
 }

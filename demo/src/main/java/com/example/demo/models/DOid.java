@@ -12,4 +12,11 @@ public class DOid implements Serializable {
     private int order_id;
     private int dish_id;
 
+    public int getDish_id() {
+        return dish_id;
+    }
+
+    public void setDish_id(int dish_id) {
+        this.dish_id = dish_id;
+    }
 }

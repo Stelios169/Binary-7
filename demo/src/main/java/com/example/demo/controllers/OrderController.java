@@ -47,11 +47,11 @@ public class OrderController {
             model.addAttribute("message", "Dish added successfully!");
             return "add-dish";
         } catch (RuntimeException e) {
-            model.addAttribute("error", "Could not find a dish with this Id");
+            model.addAttribute("error", "Error: " + e.getMessage());
             return "add-dish"; // Επιστροφή αν υπάρχει σφάλμα
         }
     }
-
+    // "error", "Could not find a dish with this Id"
     // @PostMapping("/create")
     // public ResponseEntity<Orders> createOrder(
     // @RequestParam int tableId,

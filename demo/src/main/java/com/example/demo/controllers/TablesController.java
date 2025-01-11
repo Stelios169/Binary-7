@@ -9,4 +9,14 @@ public class TablesController {
     public String login() {
         return "tables";
     }
+
+    @RequestMapping("/ingredients")
+    public String ingr() {
+        return "ingredients";
+    }
+
+    @RequestMapping("/statistics")
+    public String stats() {
+        return "statistics";
+    }
 }

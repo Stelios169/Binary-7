@@ -7,8 +7,8 @@ import lombok.Data;
 
 @Embeddable
 @NoArgsConstructor
-@Data 
-public class RDId implements Serializable{
+@Data
+public class RDId implements Serializable {
     private int restaurant_id;
-    private int dish_id;   
+    private int dish_id;
 }

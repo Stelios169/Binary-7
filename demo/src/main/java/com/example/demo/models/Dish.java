@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import jakarta.persistence.*; 
+import jakarta.persistence.*;
 import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,8 +26,10 @@ public class Dish {
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DishIngredients> ingredients = new ArrayList<>();
     @Transient
-    private double score; //Σκορ προτεραιότητας πιάτων
-    public Dish(String dish_name, int dish_id, double dish_price, String dish_category, String dish_description, boolean dish_availability, String dish_image_url) {
+    private double score; // Σκορ προτεραιότητας πιάτων
+
+    public Dish(String dish_name, int dish_id, double dish_price, String dish_category, String dish_description,
+            boolean dish_availability, String dish_image_url) {
         this.dish_name = dish_name;
         this.dish_id = dish_id;
         this.dish_category = dish_category;
@@ -37,8 +39,8 @@ public class Dish {
         this.dish_image_url = dish_image_url;
     }
 
-     // Getters and Setters
-     public int getDish_id() {
+    // Getters and Setters
+    public int getDish_id() {
         return dish_id;
     }
 
@@ -63,7 +65,7 @@ public class Dish {
             throw new IllegalArgumentException("Η τιμή του πιάτου πρέπει να είναι μεγαλύτερη από 0.");
         }
         this.dish_price = dish_price;
-    }    
+    }
 
     public String getDish_category() {
         return dish_category;
