@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RestaurantService {
@@ -20,8 +19,8 @@ public class RestaurantService {
     }
 
     // Μέθοδος για την ανάκτηση email ενός εστιατορίου από ένα ingredient ID
-    public List<Restaurant> getRestaurantEmailByIngredientId(int ingredientId) {
-        return restaurantRepository.findRestaurantEmailByIngredientId(ingredientId);
+    public List<Restaurant> getRestaurantEmailByIngredientId(int ingredientId, LocalDate expiryThreshold) {
+        return restaurantRepository.findRestaurantEmailByIngredientId(ingredientId, expiryThreshold);
     }
 
     // Μέθοδος για την ανάκτηση εστιατορίων με συστατικά που λήγουν

@@ -1,11 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Dish;
 import com.example.demo.models.Orders;
-import com.example.demo.services.DishService;
 import com.example.demo.services.OrderService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

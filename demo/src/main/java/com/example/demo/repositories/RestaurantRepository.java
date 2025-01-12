@@ -24,12 +24,13 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
         Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId); */
 
         @Query("SELECT DISTINCT r FROM Restaurant r " +
-                "JOIN r.restaurantDishes rd " +
-                "JOIN rd.dish d " +
-                "JOIN d.ingredients di " +
-                "WHERE di.ingredient.id = :ingredient_id " +
-                "AND di.ingredient_exp_date <= :expiryThreshold)")
-        List<Restaurant> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredient_id);
+       "JOIN r.restaurantDishes rd " +
+       "JOIN rd.dish d " +
+       "JOIN d.ingredients di " +
+       "WHERE di.id.ingredient_id = :ingredient_id " +
+       "AND di.ingredient.ingredient_exp_date <= :expiryThreshold")
+        List<Restaurant> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredient_id, 
+                                                   @Param("expiryThreshold") LocalDate expiryThreshold);
 
 
         /*@Query("SELECT DISTINCT r FROM Restaurant r " +

@@ -5,7 +5,6 @@ import com.example.demo.statistics.dto.FavoriteDishDTO;
 import com.example.demo.statistics.dto.DishProfitDTO;
 import com.example.demo.statistics.dto.TotalProfitDTO;
 import com.example.demo.statistics.dto.SalesDTO;
-import com.example.demo.models.Dish;
 import com.example.demo.repositories.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

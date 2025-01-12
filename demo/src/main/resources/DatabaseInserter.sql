@@ -93,13 +93,6 @@
 --     (1, 1, 5, 'Best pizza in town!!!'),
 --     (2, 1, 3, 'The food was good, but the service could be better :(');
 
--- INSERT INTO Progr.Orders (order_id, table_id, restaurant_id, order_total, order_status, order_datetime)
--- VALUES
---     (1, 1, 1, 40.0, TRUE, '2025-01-04 18:30:00'),
---     (2, 2, 2, 35.0, TRUE, '2025-01-04 19:00:00'),
---     (3, 3, 1, 50.0, FALSE, '2025-01-04 19:15:00'),
---     (4, 1, 1, 120.0, TRUE, '2025-01-04 19:12:00');
-
 -- INSERT INTO Progr.OrderPerDish (dish_id, order_id, orderPerDish_quantity)
 -- VALUES
 --     (1, 1, 2),
