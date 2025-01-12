@@ -10,6 +10,7 @@ import com.example.demo.statistics.dto.DishProfitDTO;
 import com.example.demo.statistics.dto.FavoriteDishDTO;
 import com.example.demo.statistics.dto.SalesDTO;
 import java.util.List;
+import java.util.Optional;
 import java.time.LocalDate;
 
  
@@ -69,4 +70,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
            "JOIN Ingredient i ON di.ingredient.ingredient_id = i.ingredient_id " +
            "WHERE o.order_datetime >= :startDate")
     List<TotalProfitDTO> findAnnualTotalProfit(@Param("startDate") LocalDate startDate);
+
+    @Query("SELECT d FROM Dish d WHERE d.dish_id = :id")
+    Optional<Dish> findById(@Param("id") Integer id);
 }
