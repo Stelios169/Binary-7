@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
-    private final RestaurantService restaurantService;
+    /*private final RestaurantService restaurantService;
 
     @Autowired
     public RestaurantController(RestaurantService restaurantService) {
@@ -23,18 +23,28 @@ public class RestaurantController {
 
     // Endpoint για να πάρουμε το email ενός εστιατορίου με βάση το ingredient ID
     @GetMapping("/email/{ingredientId}")
-    public ResponseEntity<String> getRestaurantEmailByIngredientId(@PathVariable int ingredientId) {
-        Optional<String> email = restaurantService.getRestaurantEmailByIngredientId(ingredientId);
-        return email.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<List<Restaurant>> getRestaurantEmailByIngredientId(@PathVariable int ingredientId) {
+        List<Restaurant> email = restaurantService.getRestaurantEmailByIngredientId(ingredientId);
+        if (restaurants.isEmpty()) {
+            return ResponseEntity.notFound().build(); // Επιστρέφει 404 αν δεν βρεθούν εστιατόρια
+        }
+        return ResponseEntity.ok(restaurants); // Επιστρέφει τα εστιατόρια αν βρεθούν
+    }
+        //return email.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Endpoint για να πάρουμε τα εστιατόρια με συστατικά που λήγουν
     @GetMapping("/expiring-ingredients")
-    public ResponseEntity<List<Restaurant>> getRestaurantsWithExpiringIngredients(
+    public ResponseEntity<Optional<Restaurant>> getRestaurantsWithExpiringIngredients(
             @RequestParam("expiryThreshold") LocalDate expiryThreshold) {
         List<Restaurant> restaurants = restaurantService.getRestaurantsWithExpiringIngredients(expiryThreshold);
-        return ResponseEntity.ok(restaurants);
+        if (restaurants.isEmpty()) {
+            return ResponseEntity.notFound().build(); // Επιστρέφει 404 αν δεν βρεθούν εστιατόρια
+        }
+        return ResponseEntity.ok(restaurants); // Επιστρέφει τα εστιατόρια αν βρεθούν
     }
+        //return ResponseEntity.ok(restaurants);
+    
 
     // Endpoint για να πάρουμε όλα τα εστιατόρια
     @GetMapping("/")
@@ -47,6 +57,6 @@ public class RestaurantController {
     @PostMapping("/")
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
         Restaurant savedRestaurant = restaurantService.saveRestaurant(restaurant);
-        return ResponseEntity.ok(savedRestaurant);
+        return ResponseEntity.ok(savedRestaurant); */
     }
-}
+

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/login")
@@ -19,8 +20,15 @@ public class RecipeController {
         this.recipeOptimizerService = recipeOptimizerService;
     }
 
-    @GetMapping("/optimize")
-    public List<Recipe> getOptimizedRecipes(@RequestParam int budget) {
-        return recipeOptimizerService.findOptimizedRecipes(LocalDate.now().plusDays(7), budget);
+    @GetMapping("/ingredients")
+    public String getOptimizedRecipes(@RequestParam int budget, Model model) {
+        // Λαμβάνουμε τις βελτιστοποιημένες συνταγές
+        List<Recipe> recipes = recipeOptimizerService.findOptimizedRecipes(LocalDate.now().plusDays(7), budget);
+
+        // Προσθέτουμε τις συνταγές στο μοντέλο
+        model.addAttribute("recipes", recipes);
+
+        // Επιστρέφουμε το όνομα του HTML template (θα το βρει στον φάκελο templates)
+        return "ingredients";  // Το όνομα του αρχείου HTML χωρίς την κατάληξη .html
     }
 }

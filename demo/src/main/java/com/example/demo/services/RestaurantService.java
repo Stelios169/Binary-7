@@ -20,7 +20,7 @@ public class RestaurantService {
     }
 
     // Μέθοδος για την ανάκτηση email ενός εστιατορίου από ένα ingredient ID
-    public Optional<String> getRestaurantEmailByIngredientId(int ingredientId) {
+    public List<Restaurant> getRestaurantEmailByIngredientId(int ingredientId) {
         return restaurantRepository.findRestaurantEmailByIngredientId(ingredientId);
     }
 
