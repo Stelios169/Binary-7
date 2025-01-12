@@ -10,12 +10,12 @@ public class TablesController {
         return "tables";
     }
 
-    @RequestMapping("/ingredients")
+    @RequestMapping("/login/ingredients")
     public String ingr() {
         return "ingredients";
     }
 
-    @RequestMapping("/statistics")
+    @RequestMapping("/login/statistics")
     public String stats() {
         return "statistics";
     }

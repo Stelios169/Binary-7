@@ -15,7 +15,11 @@
                 <button class="statistics">Statistics</button>
             </div>
             <div class="container2">
-
+                <tr th:each="favoriteDish : ${favoriteDishes}">
+                    <td th:text="${favoriteDish.dishName}">Dish Name</td>
+                    <td th:text="${favoriteDish.totalQuantity}">Total Quantity</td>
+                </tr>
+                <h1>hello</h1>
             </div>
     </div>
     </body>
