@@ -20,89 +20,131 @@ public class StatisticsController {
     @Autowired
     private DishService dishService;
 
-    // Endpoint για αγαπημένο πιάτο εβδομαδιαιώς
-    // @GetMapping("/statistics")
-    // public List<FavoriteDishDTO> getFavoriteDish() {
-    // return dishService.getFavoriteDishForLastMonth();
-    // }
     @GetMapping("/statistics")
-    public String getFavoriteDishPage(Model model) {
-        List<FavoriteDishDTO> favoriteDishes = dishService.getFavoriteDishForLastMonth();
-        model.addAttribute("favoriteDishes", favoriteDishes);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    public String getAllStatistics(Model model) {
+        model.addAttribute("favoriteDishes", getFavoriteDishForMonth());
+        model.addAttribute("favoriteDishes2", getFavoriteDishForWeek());
+        model.addAttribute("dishCost", getDishCost());
+        model.addAttribute("dishProfit", getDishProfit());
+        model.addAttribute("sales", getSales());
+        model.addAttribute("totalProfit", getMonthlyProfit());
+        model.addAttribute("totalProfit2", getAnnualProfit());
+        return "statistics";
     }
 
-    @GetMapping("/statistics")
-    public String getFavoriteDish2Page(Model model) {
-        List<FavoriteDishDTO> favoriteDishes2 = dishService.getFavoriteDishForLastWeek();
-        model.addAttribute("favoriteDishes2", favoriteDishes2);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    // Ξεχωριστές μέθοδοι για κάθε λειτουργία
+    private List<FavoriteDishDTO> getFavoriteDishForMonth() {
+        return dishService.getFavoriteDishForLastMonth();
     }
 
-    // Endpoint για το κόστος πιάτου
-    // @GetMapping("/statistics")
-    // public List<DishCostDTO> getDishCost() {
-    // return dishService.getDishCost();
-    // }
-    @GetMapping("/statistics")
-    public String getDishCostPage(Model model) {
-        List<DishCostDTO> dishcost = dishService.getDishCost();
-        model.addAttribute("dishCost", dishcost);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    private List<FavoriteDishDTO> getFavoriteDishForWeek() {
+        return dishService.getFavoriteDishForLastWeek();
     }
 
-    // // Endpoint για το κέρδος πιάτου
-    // @GetMapping("/statistics")
-    // public List<DishProfitDTO> getDishProfit() {
-    // return dishService.getDishProfit();
-    // }
-
-    @GetMapping("/statistics")
-    public String getDishProfitPage(Model model) {
-        List<DishProfitDTO> dishprofit = dishService.getDishProfit();
-        model.addAttribute("dishprofit", dishprofit);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    private List<DishCostDTO> getDishCost() {
+        return dishService.getDishCost();
     }
 
-    // // Endpoint για πωλήσεις ανά πιάτο
-    // @GetMapping("/statistics")
-    // public List<SalesDTO> getDishSales() {
-    // return dishService.getDishSales();
-    // }
-
-    @GetMapping("/statistics")
-    public String getSalesPage(Model model) {
-        List<SalesDTO> sales = dishService.getDishSales();
-        model.addAttribute("sales", sales);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    private List<DishProfitDTO> getDishProfit() {
+        return dishService.getDishProfit();
     }
 
-    // // Endpoint για το συνολικό κέρδος μηνιαίως
-    // @GetMapping("/statistics")
-    // public List<TotalProfitDTO> getMonthlyTotalProfit() {
-    // return dishService.getMonthlyTotalProfit();
-    // }
-
-    @GetMapping("/statistics")
-    public String getTotalProfitPage(Model model) {
-        List<TotalProfitDTO> totalprofit = dishService.getMonthlyTotalProfit();
-        model.addAttribute("totalprofit", totalprofit);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    private List<SalesDTO> getSales() {
+        return dishService.getDishSales();
     }
 
-    // // Endpoint για το συνολικό κέρδος ετησίως
-    // @GetMapping("/statistics")
-    // public List<TotalProfitDTO> getAnnualTotalProfit() {
-    // return dishService.getAnnualTotalProfit();
-    // }
-    // }
-
-    @GetMapping("/statistics")
-    public String getTotalProfit2Page(Model model) {
-        List<TotalProfitDTO> totalprofit2 = dishService.getAnnualTotalProfit();
-        model.addAttribute("totalprofit2", totalprofit2);
-        return "statistics"; // Το όνομα του Thymeleaf template
+    private List<TotalProfitDTO> getMonthlyProfit() {
+        return dishService.getMonthlyTotalProfit();
     }
 
+    private List<TotalProfitDTO> getAnnualProfit() {
+        return dishService.getAnnualTotalProfit();
+    }
 }
+// @GetMapping("/statistics")
+// public String getFavoriteDishPage(Model model) {
+// List<FavoriteDishDTO> favoriteDishes =
+// dishService.getFavoriteDishForLastMonth();
+// model.addAttribute("favoriteDishes", favoriteDishes);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
 
+// @GetMapping("/statistics")
+// public String getFavoriteDish2Page(Model model) {
+// List<FavoriteDishDTO> favoriteDishes2 =
+// dishService.getFavoriteDishForLastWeek();
+// model.addAttribute("favoriteDishes2", favoriteDishes2);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// @GetMapping("/statistics")
+// public String getDishCostPage(Model model) {
+// List<DishCostDTO> dishcost = dishService.getDishCost();
+// model.addAttribute("dishCost", dishcost);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// @GetMapping("/statistics")
+// public String getDishProfitPage(Model model) {
+// List<DishProfitDTO> dishprofit = dishService.getDishProfit();
+// model.addAttribute("dishprofit", dishprofit);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// @GetMapping("/statistics")
+// public String getSalesPage(Model model) {
+// List<SalesDTO> sales = dishService.getDishSales();
+// model.addAttribute("sales", sales);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// @GetMapping("/statistics")
+// public String getTotalProfitPage(Model model) {
+// List<TotalProfitDTO> totalprofit = dishService.getMonthlyTotalProfit();
+// model.addAttribute("totalprofit", totalprofit);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// @GetMapping("/statistics")
+// public String getTotalProfit2Page(Model model) {
+// List<TotalProfitDTO> totalprofit2 = dishService.getAnnualTotalProfit();
+// model.addAttribute("totalprofit2", totalprofit2);
+// return "statistics"; // Το όνομα του Thymeleaf template
+// }
+
+// Endpoint για αγαπημένο πιάτο εβδομαδιαιώς
+// @GetMapping("/statistics")
+// public List<FavoriteDishDTO> getFavoriteDish() {
+// return dishService.getFavoriteDishForLastMonth();
+// }
+
+// Endpoint για το κόστος πιάτου
+// @GetMapping("/statistics")
+// public List<DishCostDTO> getDishCost() {
+// return dishService.getDishCost();
+// }
+
+// // Endpoint για το κέρδος πιάτου
+// @GetMapping("/statistics")
+// public List<DishProfitDTO> getDishProfit() {
+// return dishService.getDishProfit();
+// }
+
+// // Endpoint για πωλήσεις ανά πιάτο
+// @GetMapping("/statistics")
+// public List<SalesDTO> getDishSales() {
+// return dishService.getDishSales();
+// }
+
+// // Endpoint για το συνολικό κέρδος μηνιαίως
+// @GetMapping("/statistics")
+// public List<TotalProfitDTO> getMonthlyTotalProfit() {
+// return dishService.getMonthlyTotalProfit();
+// }
+
+// // Endpoint για το συνολικό κέρδος ετησίως
+// @GetMapping("/statistics")
+// public List<TotalProfitDTO> getAnnualTotalProfit() {
+// return dishService.getAnnualTotalProfit();
+// }
+// }

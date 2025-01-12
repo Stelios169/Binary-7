@@ -62,7 +62,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
                      "JOIN Dish d ON od.dish.dish_id = d.dish_id " +
                      "JOIN DishIngredients di ON d.dish_id = di.dish.dish_id " +
                      "JOIN Ingredient i ON di.ingredient.ingredient_id = i.ingredient_id " +
-                     "WHERE o.order_datetime >= :startDate")
+                     "WHERE CAST(o.order_datetime AS date) >= :startDate ")
        List<TotalProfitDTO> findMonthlyTotalProfit(@Param("startDate") LocalDate startDate);
 
        // Query για το συνολικό κέρδος ετησίως
@@ -73,7 +73,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
                      "JOIN Dish d ON od.dish.dish_id = d.dish_id " +
                      "JOIN DishIngredients di ON d.dish_id = di.dish.dish_id " +
                      "JOIN Ingredient i ON di.ingredient.ingredient_id = i.ingredient_id " +
-                     "WHERE o.order_datetime >= :startDate")
+                     "WHERE CAST(o.order_datetime AS date) >= :startDate ")
        List<TotalProfitDTO> findAnnualTotalProfit(@Param("startDate") LocalDate startDate);
 
        @Query("SELECT d FROM Dish d WHERE d.dish_id = :id")
