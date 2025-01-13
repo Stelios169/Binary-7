@@ -1,14 +1,16 @@
+
 package com.example.demo.controllers;
 
 import com.example.demo.models.Review;
 import com.example.demo.services.ReviewService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/reviews")
+@Controller
+@RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
 
@@ -16,31 +18,17 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping
-    public String getAllReviews(Model model) {
-        List<Review> reviews = reviewService.getAllReviews();
+    @GetMapping("/{restaurant_id}")
+    public String getReviewsByRestaurant(@RequestParam int restaurant_id, Model model) {
+        List<Review> reviews = reviewService.getReviewsByRestaurant(restaurant_id);
         model.addAttribute("reviews", reviews);
-        return "reviewList";
+        return "reviewList"; 
     }
 
     @PostMapping
-    public String addReview(@RequestBody Review review, @RequestParam int restaurantId, Model model) {
-        Review addedReview = reviewService.addReview(review, restaurantId);
-        model.addAttribute("review", addedReview);
-        return "reviewAdded";
-    }
-
-    @PutMapping("/{id}")
-    public String editReview(@PathVariable int id, @RequestParam int newRating, @RequestParam String newComment, Model model) {
-        Review updatedReview = reviewService.editReview(id, newRating, newComment);
-        model.addAttribute("review", updatedReview);
-        return "reviewEdited"; 
-    }
-
-    @DeleteMapping("/{id}")
-    public String removeReview(@PathVariable int id, Model model) {
-        reviewService.removeReview(id);
-        model.addAttribute("message", "Review removed successfully.");
-        return "reviewRemoved"; 
-    }
+    public String addReview(@ModelAttribute Review review, @RequestParam int restaurant_id, Model model) {
+        Review savedReview = reviewService.addReview(review, restaurant_id);
+        model.addAttribute("review", savedReview);
+        return "reviewAdded"; 
+}
 }

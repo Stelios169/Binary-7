@@ -1,14 +1,13 @@
 package com.example.demo.services;
 
-import com.example.demo.repositories.ReviewRepository;
 import com.example.demo.models.Review;
 import com.example.demo.models.Restaurant;
+import com.example.demo.repositories.ReviewRepository;
 import com.example.demo.repositories.RestaurantRepository;
-import org.springframework.stereotype.Service;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -20,33 +19,14 @@ public class ReviewService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public List<Review> getAllReviews() {
-        return reviewRepository.findAll();
+    public List<Review> getReviewsByRestaurant(int restaurant_id) {
+        return reviewRepository.findByRestaurant_RestaurantId(restaurant_id);
     }
 
-    public Review addReview(Review review, int restaurantId) {
-        Restaurant restaurant = restaurantRepository.findById(restaurantId)
-                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
-
+    public Review addReview(Review review, int restaurant_id) {
+        Restaurant restaurant = restaurantRepository.findById(restaurant_id)
+                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found with id " + restaurant_id));
         review.setRestaurant(restaurant);
         return reviewRepository.save(review);
-    }
-
-    public Review editReview(int reviewId, int newRating, String newComment) {
-        Optional<Review> reviewOptional = reviewRepository.findById(reviewId);
-        if (reviewOptional.isPresent()) {
-            Review review = reviewOptional.get();
-            review.setReviewRating(newRating);
-            review.setReviewComment(newComment);
-            return reviewRepository.save(review);
-        }
-        throw new EntityNotFoundException("Review not found with id " + reviewId);
-    }
-
-    public void removeReview(int reviewId) {
-        if (!reviewRepository.existsById(reviewId)) {
-            throw new EntityNotFoundException("Review not found with id " + reviewId);
-        }
-        reviewRepository.deleteById(reviewId);
     }
 }
