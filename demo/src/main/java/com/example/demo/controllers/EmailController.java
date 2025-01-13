@@ -13,7 +13,6 @@ import com.example.demo.models.Ingredient;
 import com.example.demo.models.Restaurant;
 import java.time.LocalDate;
 
-@Controller
 @RestController
 @RequestMapping("/api")
 public class EmailController {
@@ -26,9 +25,7 @@ public class EmailController {
         this.restaurantRepository = restaurantRepository;
     }
     @PostMapping("/sendExpiringIngredientsEmail")
-    public String sendExpiringIngredientsEmail(@RequestParam String to,
-                                               @RequestParam String subject,
-                                               @RequestParam String text) {
+    public String sendExpiringIngredientsEmail() {
         try{
             // Ορισμός του χρονικού ορίου (7 ημέρες από σήμερα)
             LocalDate expiryThreshold = LocalDate.now().plusDays(7);
@@ -45,7 +42,7 @@ public class EmailController {
                     return "No expiring ingredients";
                 }
                 if (!expiringIngredients.isEmpty()) {
-                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), subject, expiringIngredients, text);
+                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), "Expiring Ingredients: ", expiringIngredients, "Attention! The following ingredients will expire soon ");
                 }
             }
             return "Emails sent succesfully.";    

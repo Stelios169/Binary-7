@@ -16,37 +16,43 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
         @Query("SELECT r FROM Restaurant r WHERE r.restaurant_email = :restaurant_email")
         Optional<Restaurant> findByEmail(@Param("restaurant_email") String restaurant_email);
 
-        /*@Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " +
+        @Query("SELECT DISTINCT r.restaurant_email FROM Restaurant r " +
                         "JOIN r.restaurantDishes rd " +
                         "JOIN rd.dish d " +
                         "JOIN d.ingredients di " +
                         "WHERE di.id.ingredient_id = :ingredient_id")
-        Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId); */
+        Optional<String> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredientId); 
 
-        @Query("SELECT DISTINCT r FROM Restaurant r " +
+        /*@Query("SELECT DISTINCT r FROM Restaurant r " +
        "JOIN r.restaurantDishes rd " +
        "JOIN rd.dish d " +
        "JOIN d.ingredients di " +
        "WHERE di.id.ingredient_id = :ingredient_id " +
        "AND di.ingredient.ingredient_exp_date <= :expiryThreshold")
         List<Restaurant> findRestaurantEmailByIngredientId(@Param("ingredient_id") int ingredient_id, 
-                                                   @Param("expiryThreshold") LocalDate expiryThreshold);
+                                                   @Param("expiryThreshold") LocalDate expiryThreshold);*/
 
 
-        /*@Query("SELECT DISTINCT r FROM Restaurant r " +
+
+
+
+         @Query("SELECT DISTINCT r FROM Restaurant r " +
                         "JOIN r.restaurantDishes rd " +
                         "JOIN rd.dish d " +
                         "JOIN d.ingredients di " +
                         "JOIN di.ingredient i " +
                         "WHERE i.ingredient_exp_date <= :expiryThreshold")
-        List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);*/
+        List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold); 
 
-        @Query("SELECT r FROM Restaurant r " +
+
+
+
+        /*@Query("SELECT r FROM Restaurant r " +
                 "JOIN r.restaurantDishes rd " +
                 "JOIN rd.dish d " +
                 "JOIN d.ingredients di " +
                 "JOIN di.ingredient i " +
                 "WHERE i.ingredient_exp_date <= :expiryThreshold")
-        List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);
+        List<Restaurant> findRestaurantsWithExpiringIngredients(@Param("expiryThreshold") LocalDate expiryThreshold);*/
 
 }
