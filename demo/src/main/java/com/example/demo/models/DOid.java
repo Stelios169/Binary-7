@@ -19,4 +19,8 @@ public class DOid implements Serializable {
     public void setDish_id(int dish_id) {
         this.dish_id = dish_id;
     }
+
+    public DOid(int orderId, int dishId) {
+        
+    }
 }

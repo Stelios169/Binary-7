@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.models.DOid;
 import com.example.demo.models.Dish;
 import com.example.demo.models.OrderPerDish;
 import com.example.demo.models.Orders;
@@ -65,8 +66,9 @@ public class OrderService {
         Orders order = optionalOrder.get();
         Dish dish = optionalDish.get();
         double dishTotal = dish.getDish_price() * quantity;
-
+        DOid compositeKey = new DOid(orderId, dishId);
         OrderPerDish orderPerDish = new OrderPerDish();
+        orderPerDish.setId(compositeKey);
         orderPerDish.setDish(dish);
         orderPerDish.setOrder(order);
         orderPerDish.setOrderPerDish_quantity(quantity);
