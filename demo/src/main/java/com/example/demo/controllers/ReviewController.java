@@ -2,10 +2,10 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Review;
 import com.example.demo.services.ReviewService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/reviews")
@@ -17,27 +17,30 @@ public class ReviewController {
     }
 
     @GetMapping
-    public List<Review> getAllReviews() {
-        return reviewService.getAllReviews();
-    }
-
-    @GetMapping("/{id}")
-    public Optional<Review> getReviewById(@PathVariable int id) {
-        return reviewService.getReviewById(id);
+    public String getAllReviews(Model model) {
+        List<Review> reviews = reviewService.getAllReviews();
+        model.addAttribute("reviews", reviews);
+        return "reviewList";
     }
 
     @PostMapping
-    public Review addReview(@RequestBody Review review, @RequestParam int restaurantId) {
-        return reviewService.addReview(review, restaurantId);
+    public String addReview(@RequestBody Review review, @RequestParam int restaurantId, Model model) {
+        Review addedReview = reviewService.addReview(review, restaurantId);
+        model.addAttribute("review", addedReview);
+        return "reviewAdded";
     }
 
     @PutMapping("/{id}")
-    public Review editReview(@PathVariable int id, @RequestParam int newRating, @RequestParam String newComment) {
-        return reviewService.editReview(id, newRating, newComment);
+    public String editReview(@PathVariable int id, @RequestParam int newRating, @RequestParam String newComment, Model model) {
+        Review updatedReview = reviewService.editReview(id, newRating, newComment);
+        model.addAttribute("review", updatedReview);
+        return "reviewEdited"; 
     }
 
     @DeleteMapping("/{id}")
-    public void removeReview(@PathVariable int id) {
+    public String removeReview(@PathVariable int id, Model model) {
         reviewService.removeReview(id);
+        model.addAttribute("message", "Review removed successfully.");
+        return "reviewRemoved"; 
     }
 }

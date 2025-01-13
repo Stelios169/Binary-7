@@ -24,10 +24,6 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public Optional<Review> getReviewById(int reviewId) {
-        return reviewRepository.findById(reviewId);
-    }
-
     public Review addReview(Review review, int restaurantId) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
