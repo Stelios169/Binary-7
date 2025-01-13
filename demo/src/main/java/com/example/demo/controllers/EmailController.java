@@ -39,7 +39,7 @@ public class EmailController {
                 List<Ingredient> expiringIngredients = ingredientRepository.findExpiringIngredientsForRestaurant(restaurant.getRestaurant_id(), expiryThreshold);
                 System.out.println("found ingredients" + expiringIngredients);
                 if (expiringIngredients.isEmpty()) {
-                    return "No expiring ingredients";
+                    continue;
                 }
                 if (!expiringIngredients.isEmpty()) {
                     emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), "Expiring Ingredients: ", expiringIngredients, "Attention! The following ingredients will expire soon ");
