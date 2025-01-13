@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Dish;
 import com.example.demo.services.MenuFilterService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,14 +18,19 @@ public class MenuFilterController {
     }
 
     @GetMapping("/view")
-    public Map<String, List<Dish>> viewMenu() {
-        return menuFilterService.viewMenu();
+    public String viewMenu(Model model) {
+        Map<String, List<Dish>> menu = menuFilterService.viewMenu();
+        model.addAttribute("menu", menu);
+        return "menuView";
     }
 
     @PostMapping("/filter")
-    public List<Dish> filterMenu(@RequestParam double budget,
-                                 @RequestParam String[] categories,
-                                 @RequestParam String[] allergies) {
-        return menuFilterService.filterMenu(budget, categories, allergies);
-    } 
+    public String filterMenu(@RequestParam double budget,
+                             @RequestParam String[] categories,
+                             @RequestParam String[] allergies,
+                             Model model) {
+        List<Dish> filteredDishes = menuFilterService.filterMenu(budget, categories, allergies);
+        model.addAttribute("filteredDishes", filteredDishes);
+        return "menuFiltered";
+    }
 }
