@@ -2,6 +2,8 @@ package com.example.demo.models;
 
 import lombok.Data;
 import java.io.Serializable;
+import java.util.Objects;
+
 import jakarta.persistence.Embeddable;
 import lombok.NoArgsConstructor;
 
@@ -22,5 +24,18 @@ public class DOid implements Serializable {
 
     public DOid(int orderId, int dishId) {
         
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DOid dOid = (DOid) o;
+        return Objects.equals(dish_id, dOid.dish_id) && Objects.equals(order_id, dOid.order_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dish_id, order_id);
     }
 }

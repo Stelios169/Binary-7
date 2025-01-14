@@ -13,11 +13,6 @@ public interface OrderPerDishRepository extends JpaRepository<OrderPerDish, DOid
     @Modifying
     @Query("DELETE FROM OrderPerDish opd WHERE opd.order.order_id = :orderId")
     public void deleteByOrder_id(@Param("orderId") int orderId);
-    
-
- 
-
-
 
 } 
     

@@ -75,9 +75,10 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
                      "JOIN Ingredient i ON di.ingredient.ingredient_id = i.ingredient_id " +
                      "WHERE CAST(o.order_datetime AS date) >= :startDate ")
        List<TotalProfitDTO> findAnnualTotalProfit(@Param("startDate") LocalDate startDate);
-
+       
        @Query("SELECT d FROM Dish d WHERE d.dish_id = :id")
        Optional<Dish> findById(@Param("id") Integer id);
+
 
 }
 

@@ -43,7 +43,7 @@ public class OrderService {
                             restaurantId);
         }
 
-        Orders order = new Orders(1, 26, true, LocalDateTime.now() );
+        Orders order = new Orders();
         order.setTable(optionalRTable.get());
         order.setOrder_total(0.0); // Αρχική τιμή
         order.setOrder_status(true); // Ενεργή παραγγελία
@@ -52,7 +52,7 @@ public class OrderService {
         return ordersRepository.save(order);
     }
 
-    public void addDishToOrder(int orderId, int dishId, int quantity) {
+    public void addDishToOrder( int dishId, int orderId, int quantity) {
         Optional<Orders> optionalOrder = ordersRepository.findById(orderId);
         if (optionalOrder.isEmpty()) {
             throw new RuntimeException("Order not found with ID: " + orderId);

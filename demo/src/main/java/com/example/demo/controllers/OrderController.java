@@ -35,13 +35,13 @@ public class OrderController {
     }
 
     @PostMapping("/{orderId}/add-dish")
-    public String addDishToOrder(@PathVariable int orderId,
-            @RequestParam int dishId,
+    public String addDishToOrder(@RequestParam int dishId,
+            @PathVariable int orderId,
             @RequestParam int quantity,
             Model model) {
         try {
             // Προσθήκη του πιάτου στην παραγγελία
-            orderService.addDishToOrder(orderId, dishId, quantity);
+            orderService.addDishToOrder(dishId, orderId, quantity);
 
             // Επιστροφή στην ίδια σελίδα για να προσθέσει άλλα πιάτα
             model.addAttribute("orderId", orderId);

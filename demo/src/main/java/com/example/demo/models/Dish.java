@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dish_id")
     private int dish_id;
     private String dish_name; // Τίτλος συνταγής (π.χ. "Cake")
     private double dish_price;

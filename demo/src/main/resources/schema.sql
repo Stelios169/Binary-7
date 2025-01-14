@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS Progr.Review (
 -- Tracks open tabs for tables in a restaurant
 
 CREATE TABLE IF NOT EXISTS Progr.Orders (
-    order_id INT NOT NULL PRIMARY KEY,
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
     table_id INT NOT NULL,
     restaurant_id INT NOT NULL,
     order_total FLOAT CHECK (order_total >= 0),

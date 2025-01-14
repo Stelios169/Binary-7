@@ -1,6 +1,7 @@
 package com.example.demo.models;
  
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -21,14 +22,15 @@ public class OrderPerDish {
     
     @ManyToOne
     @MapsId("order_id")
-    @JoinColumn(name = "order_Id")
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id", insertable = false, updatable = false)
     private Orders order;
     
     @ManyToOne
     @MapsId("dish_id")
-    @JoinColumn(name = "dish_Id")
+    @JoinColumn(name = "dish_id", referencedColumnName = "dish_id", insertable = false, updatable = false)
     private Dish dish;
-    
+
+    @Column(name = "orderPerDish_quantity")
     private int orderPerDish_quantity; // Επιπλέον γνώρισμα
     
     // Getters and Setters
