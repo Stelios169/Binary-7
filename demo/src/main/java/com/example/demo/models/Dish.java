@@ -9,6 +9,7 @@ import java.util.ArrayList;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "Dish", schema = "Progr")
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

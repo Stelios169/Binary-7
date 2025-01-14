@@ -7,12 +7,14 @@ import jakarta.persistence.JoinColumn;
 
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "OrderPerDish", schema = "Progr")
 public class OrderPerDish {
     @EmbeddedId
     private DOid id;

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "RTable", schema = "Progr")
 public class RTable {
 
     @EmbeddedId

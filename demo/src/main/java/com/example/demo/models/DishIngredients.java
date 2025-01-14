@@ -4,12 +4,14 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "DishIngredients", schema = "Progr")
 public class DishIngredients {
     @EmbeddedId
     private DId id;

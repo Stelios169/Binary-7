@@ -33,7 +33,7 @@ public class MenuFilterController {
             @RequestParam String[] categories,
             @RequestParam String[] allergies,
             Model model) {
-        List<Dish> filteredDishes = menuFilterService.filterMenu(budget, categories, allergies);
+        List<Dish> filteredDishes = menuFilterService.filterMenu(budget);
         model.addAttribute("filteredDishes", filteredDishes);
         return "menu";
     }

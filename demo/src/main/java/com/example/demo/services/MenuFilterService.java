@@ -41,11 +41,9 @@ public class MenuFilterService {
     }
 
     // Μέθοδος για φιλτράρισμα με βάση προτιμήσεις πελάτη
-    public List<Dish> filterMenu(double budget, String[] categories, String[] allergies) {
+    public List<Dish> filterMenu(double budget) {
         return dishRepository.findAll().stream()
                 .filter(dish -> dish.getDish_price() <= budget)
-                .filter(dish -> containsCategory(dish, categories))
-                .filter(dish -> !containsAllergens(dish, allergies))
                 .collect(Collectors.toList());
     }
 

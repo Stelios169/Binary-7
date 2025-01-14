@@ -10,6 +10,7 @@ import lombok.Data;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "Ingredient", schema = "Progr")
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

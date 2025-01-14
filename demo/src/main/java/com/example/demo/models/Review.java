@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "Review", schema = "Progr")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

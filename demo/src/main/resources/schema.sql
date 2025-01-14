@@ -1,5 +1,6 @@
 --Creates the schema only if it doesn't exist (will only happen in the first time of running the application)
 CREATE SCHEMA IF NOT EXISTS Progr;
+SET SCHEMA Progr;
 
 -- Stores basic information about each restaurant
 
