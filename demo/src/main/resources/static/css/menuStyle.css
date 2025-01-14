@@ -208,6 +208,11 @@ body, html {
 }
 
 .preferences {
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
     width:36vw;
     height: 84vh;
     position: relative;
@@ -239,14 +244,18 @@ body, html {
                 0 0 2px #000,   
                 0 0 10px black;
 }
-
+.budget {
+    position:relative;
+    width:100%;
+    padding:20px;
+}
 .filter {
     position:relative;
     width:100%;
-    margin:30px 0;
+    padding:20px;
 }
 
-.filter input {
+.budget input {
     position: relative;
     display: flex;
     left:8%;
@@ -261,4 +270,66 @@ body, html {
     font-size:16px;
     color:rgb(0, 0, 0);
     padding:20px 45px 20px 20px;
+}
+
+.order2 {
+    position: sticky;
+    float:right;
+    padding:15px 20px;
+    align-self: flex-end;
+    margin-top:20px;
+    margin-right:20px;
+    border:none;
+    outline:none;
+    background-color: hsl(187, 84%, 71%);
+    box-shadow: 0 5px 0 hsl(187, 35%, 49%);
+    cursor:pointer;
+    border-radius: 15px;
+    font-size:1em;
+    font-weight: bold;
+    z-index: 2; 
+}
+
+.order2:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.submit {
+    position: sticky;
+    float:right;
+    padding:15px 20px;
+    bottom:20px;
+    right:20px;
+    border:none;
+    outline:none;
+    background-color: hsl(195, 17%, 63%);
+    box-shadow: 0 5px 0 hsl(193, 5%, 39%);
+    cursor:pointer;
+    border-radius: 15px;
+    font-size:1em;
+    font-weight: bold;
+    z-index: 2; 
+}
+
+.submit:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+.labels {
+    color: hsl(193, 5%, 39%);
+    font-family: 'Tangerine',serif;
+    font-size:3em;
+    margin:5px;
+    letter-spacing: 3.5px;
+    text-shadow: 
+                0 0 1px #000,   
+                0 0 2px #000,   
+                0 0 10px black;
+}
+
+.wrong {
+    z-index:5;
+    font-weight: bold;
 }

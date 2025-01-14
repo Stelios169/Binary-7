@@ -21,14 +21,21 @@ public class RecipeController {
     }
 
     @GetMapping("/ingredients")
+    public String getIngredientsPage(Model model) {
+        // Επιστρέφει την κενή φόρμα για να εισαγάγει ο χρήστης τον προϋπολογισμό
+        model.addAttribute("budget", 0); // Ή οποιαδήποτε προεπιλεγμένη τιμή
+        return "ingredients"; // Επιστρέφει το template
+    }
+
+    @GetMapping("/ingredients/submit")
     public String getOptimizedRecipes(@RequestParam int budget, Model model) {
-        // Λαμβάνουμε τις βελτιστοποιημένες συνταγές
+
         List<Recipe> recipes = recipeOptimizerService.findOptimizedRecipes(LocalDate.now().plusDays(7), budget);
 
         // Προσθέτουμε τις συνταγές στο μοντέλο
         model.addAttribute("recipes", recipes);
+        model.addAttribute("budget", budget); // Επιστρέφουμε τον προϋπολογισμό για να εμφανίζεται στη σελίδα
 
-        // Επιστρέφουμε το όνομα του HTML template (θα το βρει στον φάκελο templates)
-        return "ingredients";  // Το όνομα του αρχείου HTML χωρίς την κατάληξη .html
+        return "ingredients"; // Επιστρέφουμε το ίδιο template
     }
 }

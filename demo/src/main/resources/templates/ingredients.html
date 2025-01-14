@@ -15,7 +15,26 @@
                 <button onclick="location.href='/login/statistics';"class="statistics">Statistics</button>
             </div>
             <div class="container2">
-
+                <form th:action="@{/login/ingredients/submit}" method="get">
+                    <div class="budget">
+                        <input class="input" type="number" name="budget" step="0.01" placeholder="ex: 45.00" required />
+                    </div>
+                    <button class="submit" type="submit">Submit</button>
+               
+                </form>
+                <div th:if="${recipes != null && !recipes.isEmpty()}">
+                    <ul>
+                     
+                        <li th:each="recipe : ${recipes}">
+                            <p class="result">Recipe Name:<span th:text="${recipe.name}">Dish</span></p>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+                <div th:if="${recipes == null || recipes.isEmpty()}">
+                    <p class="result">Δεν βρέθηκαν συνταγές με τον καθορισμένο προϋπολογισμό.</p>
+                </div>
             </div>
     </div>
     </body>

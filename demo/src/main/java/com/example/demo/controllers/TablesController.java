@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TablesController {
-    @RequestMapping("/tables")
+    @RequestMapping("/login/tables")
     public String login() {
         return "tables";
     }
@@ -15,8 +15,8 @@ public class TablesController {
         return "ingredients";
     }
 
-    @RequestMapping("/login/statistics")
-    public String stats() {
-        return "statistics";
-    }
+    // @RequestMapping("/login/statistics")
+    // public String stats() {
+    // return "statistics";
+    // }
 }

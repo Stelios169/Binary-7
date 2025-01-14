@@ -47,21 +47,6 @@ public class OrderController {
             model.addAttribute("orderId", orderId);
             model.addAttribute("message", "Dish added successfully!");
             return "add-dish";
-            // try {
-            // // Ανάκτηση του πιάτου με βάση το όνομα
-            // Dish dish = dishService.findDishByName(dishName);
-
-            // // Έλεγχος αν το πιάτο βρέθηκε
-            // if (dish == null) {
-            // model.addAttribute("error", "Dish with name " + dishName + " not found.");
-            // return "add-dish"; // Επιστροφή αν το πιάτο δεν βρέθηκε
-            // }
-
-            // // Προσθήκη του πιάτου στην παραγγελία
-            // orderService.addDishToOrder(orderId, dish.getDish_id(), quantity);
-            // model.addAttribute("orderId", orderId);
-            // model.addAttribute("message", "Dish added successfully!");
-            // return "add-dish";
         } catch (RuntimeException e) {
             model.addAttribute("error", "Error: " + e.getMessage());
             return "add-dish"; // Επιστροφή αν υπάρχει σφάλμα

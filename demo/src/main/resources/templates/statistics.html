@@ -16,36 +16,43 @@
             </div>
             <div class="container2">
                 <div class="statsByCategory" th:each="dish : ${favoriteDishes}">
+                    <h2>Favorite Dish For Month</h2>
                     <p>Dish Name: <span th:text="${dish.dishName}">Dish Name</span></p>
                     <p>Total Quantity: <span th:text="${dish.totalQuantity}">Total Quantity</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="dish : ${favoriteDishes2}">
+                    <h2>Favorite Dish For Week</h2>
                     <p>Dish Name: <span th:text="${dish.dishName}">Dish Name</span></p>
                     <p>Total Quantity: <span th:text="${dish.totalQuantity}">Total Quantity</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="cost : ${dishCost}">
+                    <h2>Cost Per Dish</h2>
                     <p>Dish Name: <span th:text="${cost.dishName}">Dish Name</span></p>
                     <p>Cost: <span th:text="${cost.dishCost}">Cost</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="profit : ${dishProfit}">
+                    <h2>Profit Per Dish</h2>
                     <p>Dish Name: <span th:text="${profit.dishName}">Dish Name</span></p>
                     <p>Profit: <span th:text="${profit.dishProfit}">Profit</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="sale : ${sales}">
+                    <h2>Sales Per Dish</h2>
                     <p>Dish Name: <span th:text="${sale.dishName}">Dish Name</span></p>
                     <p>Total Sales: <span th:text="${sale.totalSales}">Total Sales</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="profit : ${totalProfit}">
+                    <h2>Monthly Profit</h2>
                     <p>Period: <span th:text="${profit.period}">Period</span></p>
                     <p>Total Profit: <span th:text="${profit.totalProfit}">Total Profit</span></p>
                 </div>
                 
                 <div class="statsByCategory" th:each="profit : ${totalProfit2}">
+                    <h2>Annual Profit</h2>
                     <p>Period: <span th:text="${profit.period}">Period</span></p>
                     <p>Total Profit: <span th:text="${profit.totalProfit}">Total Profit</span></p>
                 </div>

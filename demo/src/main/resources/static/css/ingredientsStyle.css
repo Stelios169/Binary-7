@@ -13,6 +13,10 @@
 .container2 {
     width:88vw;
     background:hsl(197, 14%, 10%);
+    display:flex;
+    gap:1em;
+    align-items: center;
+    flex-direction: column;
 }
 .container {
     height:100vh;
@@ -101,4 +105,48 @@
     background: hsl(300, 100%, 50%);
     box-shadow: 0 0 5px hsl(300, 100%, 50%), 0 0 10px hsl(300, 100%, 50%), 0 0 2px hsl(300, 100%, 50%), 
                  0 0 4px hsl(310, 100%, 45%), 0 0 8px hsl(310, 100%, 45%), 0 0 20px hsl(310, 100%, 45%);
+}
+
+.input {
+    height: 100%;
+    background:hsl(195, 17%, 63%);
+    border:none;
+    outline:none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius:40px;
+    -size:16px;
+    color:rgb(0, 0, 0);
+    padding:20px 45px 20px 20px;
+}
+
+.result {
+    font-size: 1rem;
+    padding:5px;
+    color: #39FF14;
+    text-shadow: 0 0 1px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 
+                 0 0 40px #00FF00, 0 0 40px #00FF00, 0 0 30px #00FF00;
+    width:100%;
+    
+    background: black;
+    outline:none;
+    border:2px solid #39FF14;
+}
+
+.submit {
+    padding:15px 20px;
+    border:none;
+    width:100%;
+    outline:none;
+    background-color: hsl(130, 87%, 55%);
+    box-shadow: 0 5px 0 hsl(115, 40%, 26%);
+    cursor:pointer;
+    border-radius: 15px;
+    font-size:1em;
+    font-weight: bold;
+    z-index: 2; 
+}
+
+.submit:active {
+    box-shadow: none;
+    transform: translateY(5px);
 }

@@ -122,3 +122,7 @@
     font-weight: bold;
     font-size: 1em;
 }
+
+h2 {
+    text-decoration: underline;
+}
