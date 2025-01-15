@@ -25,6 +25,7 @@ public class RecipeOptimizerService {
     public List<Recipe> findOptimizedRecipes(LocalDate thresholdDate, int budget) {
         // Step 1: Retrieve ingredients that are expiring soon
         List<Ingredient> expiringIngredients = ingredientRepository.findByIngredientExpDateBefore(thresholdDate);
+        System.out.println("Expiring Ingredients" + expiringIngredients);
 
         // Step 2: Fetch recipes based on the expiring ingredients
         List<Recipe> recipes = spoonacularClient.fetchRecipes(expiringIngredients);
