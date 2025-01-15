@@ -26,11 +26,11 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int order_id;
-    private double order_total;
+    private float order_total;
     private boolean order_status;
     private LocalDateTime order_datetime;
 
-    public Orders(int order_id, double order_total, boolean order_status, LocalDateTime order_datetime) {
+    public Orders(int order_id, float order_total, boolean order_status, LocalDateTime order_datetime) {
         this.order_id = order_id;
         this.order_total = order_total;
         this.order_status = order_status;
@@ -55,11 +55,11 @@ public class Orders {
         this.order_id = order_id;
     }
 
-    public double getOrder_total() {
+    public float getOrder_total() {
         return order_total;
     }
 
-    public void setOrder_total(double order_total) {
+    public void setOrder_total(float order_total) {
         this.order_total = order_total;
     }
 

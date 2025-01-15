@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
 public interface OrderPerDishRepository extends JpaRepository<OrderPerDish, DOid> {
 
     @Modifying
-    @Query("DELETE FROM OrderPerDish opd WHERE opd.order.order_id = :orderId")
-    public void deleteByOrder_id(@Param("orderId") int orderId);
+    @Query("DELETE FROM OrderPerDish opd WHERE opd.order.order_id = :order_id")
+    public void deleteByOrder_id(@Param("order_id") int orderId);
 
 } 
     
