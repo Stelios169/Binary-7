@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.Data;
 
+@ToString(onlyExplicitlyIncluded = true)
 @Entity
 @Data
 @NoArgsConstructor
@@ -15,11 +17,13 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ingredient_id;
-    private String ingredient_name; // Όνομα υλικού (π.χ. "flour")
     private double ingredient_stock; // Διαθέσιμη ποσότητα (π.χ. 200 γραμμάρια)
     private double ingredient_cost;
     private String ingredient_unit;
     private LocalDate ingredient_exp_date;
+    @ToString.Include
+    private String ingredient_name;
+    @ToString.Exclude
     @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DishIngredients> dishIngredients = new ArrayList<>();
     @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)

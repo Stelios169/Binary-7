@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "RestaurantDishes", schema = "Progr")
+@Table(name = "Restaurantdishes", schema = "Progr")
 public class RestaurantDishes {
     @EmbeddedId
     private RDId id;

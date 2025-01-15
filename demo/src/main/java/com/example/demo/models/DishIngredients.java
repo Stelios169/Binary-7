@@ -6,16 +6,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.Data;
 
+@ToString(onlyExplicitlyIncluded = true)
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "DishIngredients", schema = "Progr")
+@Table(name = "Dishingredients", schema = "Progr")
 public class DishIngredients {
     @EmbeddedId
     private DId id;
     
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "ingredient_id", insertable = false, updatable = false)
     private Ingredient ingredient;

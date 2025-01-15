@@ -1,9 +1,10 @@
 package com.example.demo.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import com.example.demo.repositories.IngredientRepository;
-import com.example.demo.repositories.RestaurantRepository;
 import com.example.demo.services.EmailService;
+import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
@@ -15,38 +16,35 @@ import java.time.LocalDate;
 @RequestMapping("/api")
 public class EmailController {
     private final EmailService emailService;
-    private final IngredientRepository ingredientRepository;
-    private final RestaurantRepository restaurantRepository;
-    public EmailController(EmailService emailService, IngredientRepository ingredientRepository, RestaurantRepository restaurantRepository) {
+    @Autowired
+    public EmailController(EmailService emailService) {
         this.emailService = emailService;
-        this.ingredientRepository = ingredientRepository;
-        this.restaurantRepository = restaurantRepository;
     }
     @PostMapping("/sendExpiringIngredientsEmail")
-    public String sendExpiringIngredientsEmail() {
+    public ResponseEntity<String> sendExpiringIngredientsEmail() {
         try{
             // Ορισμός του χρονικού ορίου (7 ημέρες από σήμερα)
             LocalDate expiryThreshold = LocalDate.now().plusDays(7);
+            
             // Εύρεση εστιατορίων με υλικά που λήγουν σύντομα        
-            List<Restaurant> restaurants = restaurantRepository.findRestaurantsWithExpiringIngredients(expiryThreshold);
+            List<Restaurant> restaurants = emailService.findRestaurantsWithExpiringIngredients(expiryThreshold);
             System.out.println("Found Restaurants: " + restaurants);
-            if (restaurants == null || restaurants.isEmpty()) {            
-                 return "Δεν υπάρχουν εστιατόρια με υλικά που λήγουν σύντομα."; 
+            if (restaurants.isEmpty()) {
+                return ResponseEntity.ok("No restaurants with expiring ingredients.");             
             }
             for (Restaurant restaurant : restaurants) {
-                List<Ingredient> expiringIngredients = ingredientRepository.findExpiringIngredientsForRestaurant(restaurant.getRestaurant_id(), expiryThreshold);
+                List<Ingredient> expiringIngredients = emailService.findExpiringIngredientsForRestaurant(restaurant.getRestaurant_id(), expiryThreshold);
                 System.out.println("found ingredients" + expiringIngredients);
-                if (expiringIngredients.isEmpty()) {
-                    continue;
-                }
                 if (!expiringIngredients.isEmpty()) {
-                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), "Expiring Ingredients: ", expiringIngredients, "Attention! The following ingredients will expire soon ");
+                    emailService.sendExpiringIngredientsNotification(restaurant.getRestaurant_email(), "Expiring Ingredients: ", expiringIngredients);
                 }
             }
-            return "Emails sent succesfully.";    
+            return ResponseEntity.ok("Emails sent successfully.");    
         } catch (Exception e) {
-            e.printStackTrace();
-            return "Failed to send emails";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to send emails: " + e.getMessage());
         }
     }  
 }
+
+   

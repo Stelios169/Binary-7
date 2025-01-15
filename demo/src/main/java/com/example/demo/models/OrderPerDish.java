@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "OrderPerDish", schema = "Progr")
+@Table(name = "Orderperdish", schema = "Progr")
 public class OrderPerDish {
     @EmbeddedId
     private DOid id;
