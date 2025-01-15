@@ -5,6 +5,7 @@ import com.example.demo.repositories.OrdersRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PaymentService {
@@ -16,16 +17,15 @@ public class PaymentService {
     }
 
     public float processPayment(int tableId, int restaurantId) {
-        List<Orders> activeOrders = ordersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true);
+        Optional<Orders> activeOrders = ordersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true);
 
         float totalAmount = 0;
-        for (Orders orders : activeOrders) {
-            totalAmount += orders.getOrder_total();
-            orders.setOrder_status(false);
-        }
+        if (activeOrders.isPresent()) {
+            Orders order = activeOrders.get();  // Εξαγωγή της παραγγελίας από το Optional
+            totalAmount = order.getOrder_total();
+            order.setOrder_status(false);  // Ενημέρωση της κατάστασης της παραγγελίας
 
-        if (!activeOrders.isEmpty()) {
-            ordersRepository.saveAll(activeOrders);
+            ordersRepository.save(order);  // Αποθήκευση της παραγγελίας
         }
 
         return totalAmount;
