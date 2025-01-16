@@ -76,10 +76,10 @@ public class RecipeOptimizerService {
     }
     private int calculateServings(Recipe recipe, List<Ingredient> expiringIngredients) {
         int maxServings = Integer.MAX_VALUE;
-        for (RecipeIngredient ri : recipe.getIngredients()) {
+        for (RecipeIngredient ri : recipe.getUsedIngredients()) {
             Optional<Integer> possibleServings = expiringIngredients.stream()
                     .filter(i -> i.getIngredient_name().equals(ri.getName()))
-                    .map(i -> (int) (i.getIngredient_stock() / ri.getNeededQuantity()))
+                    .map(i -> (int) (i.getIngredient_stock() / ri.getAmount()))
                     .findFirst();
     
             if (possibleServings.isPresent()) {
@@ -91,9 +91,9 @@ public class RecipeOptimizerService {
         return maxServings;
     }
     private double calculateRecipeScore(Recipe recipe) {
-        double usageScore = (double) recipe.getIngredients().size() / recipe.getIngredients().size();
-        double timeScore = 1.0 / recipe.getPreparationTime();
+        int sum = recipe.getUsedIngredients().size() + recipe.getMissedIngredients().size();
+        double usageScore = (double) recipe.getUsedIngredients().size() / sum;
         double costScore = 1.0 / recipe.getPricePerServing();
-        return usageScore * 0.5 + timeScore * 0.3 + costScore * 0.2;
+        return usageScore * 0.5 + costScore * 0.2;
     }   
 }

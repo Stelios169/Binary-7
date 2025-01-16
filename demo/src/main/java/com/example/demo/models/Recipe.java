@@ -2,9 +2,87 @@ package com.example.demo.models;
 
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
  
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Recipe {
     private int id;
+    private String title;
+    private String image;
+    private int usedIngredientCount;
+    private int missedIngredientCount;
+    private List<RecipeIngredient> usedIngredients;
+    private List<RecipeIngredient> missedIngredients;
+    private int likes;
+    @JsonProperty("pricePerServing")
+    private double pricePerServing;
+
+    public Recipe(int id, String title, String image, int usedIngredientCount, int missedIngredientCount,
+                  List<RecipeIngredient> usedIngredients, List<RecipeIngredient> missedIngredients, int likes) {
+        this.id = id;
+        this.title = title;
+        this.image = image;
+        this.usedIngredientCount = usedIngredientCount;
+        this.missedIngredientCount = missedIngredientCount;
+        this.usedIngredients = usedIngredients;
+        this.missedIngredients = missedIngredients;
+        this.likes = likes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public int getUsedIngredientCount() {
+        return usedIngredientCount;
+    }
+
+    public int getMissedIngredientCount() {
+        return missedIngredientCount;
+    }
+
+    public List<RecipeIngredient> getUsedIngredients() {
+        return usedIngredients;
+    }
+
+    public List<RecipeIngredient> getMissedIngredients() {
+        return missedIngredients;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public double getPricePerServing() {
+        return pricePerServing;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*private int id;
     private String imageUrl;
     private String name;
     private List<RecipeIngredient> ingredients;
@@ -40,5 +118,5 @@ public class Recipe {
     }
     public int getId() {
         return id;
-    }  
-}
+    }  */
+

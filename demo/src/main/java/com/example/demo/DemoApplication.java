@@ -15,6 +15,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
@@ -55,8 +56,13 @@ public class DemoApplication {
     }
 
     @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+    /*@Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
-    }
+    }*/
 
 }
