@@ -9,4 +9,9 @@ public class OrdersFrontendController {
     public String showCreateOrderForm() {
         return "create";
     }
+
+    @GetMapping("/menu/payment")
+    public String showPaymentOrderForm() {
+        return "payment";
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/reviews")
+// @RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
 
@@ -22,13 +22,13 @@ public class ReviewController {
     public String getReviewsByRestaurant(@RequestParam int restaurant_id, Model model) {
         List<Review> reviews = reviewService.getReviewsByRestaurant(restaurant_id);
         model.addAttribute("reviews", reviews);
-        return "reviewList"; 
+        return "reviewList";
     }
 
-    @PostMapping
+    @PostMapping("/reviewList")
     public String addReview(@ModelAttribute Review review, @RequestParam int restaurant_id, Model model) {
         Review savedReview = reviewService.addReview(review, restaurant_id);
         model.addAttribute("review", savedReview);
-        return "reviewAdded"; 
-}
+        return "reviewList";
+    }
 }
