@@ -17,17 +17,20 @@ public class PaymentService {
     }
 
     public float processPayment(int tableId, int restaurantId) {
-        Optional<Orders> activeOrders = ordersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true);
+        // Fetch orders: 0, single or multiple
+        List<Orders> multipleOrders = ordersRepository.findAllByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true);
 
         float totalAmount = 0;
-        if (activeOrders.isPresent()) {
-            Orders order = activeOrders.get();  // Εξαγωγή της παραγγελίας από το Optional
-            totalAmount = order.getOrder_total();
-            order.setOrder_status(false);  // Ενημέρωση της κατάστασης της παραγγελίας
 
-            ordersRepository.save(order);  // Αποθήκευση της παραγγελίας
+        if (!multipleOrders.isEmpty()) {
+
+            for (Orders order : multipleOrders) {
+                totalAmount += order.getOrder_total();
+                order.setOrder_status(false);
+                ordersRepository.save(order);
+            }
         }
 
         return totalAmount;
-    } 
+    }
 }

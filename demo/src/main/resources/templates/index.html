@@ -14,6 +14,7 @@
                     <button class="other-buttons">Home <i class='bx bxs-home-smile' ></i></button>
                     <button onclick="location.href='/menu';" class="other-buttons">Menu/Order</button>
                     <button onclick="location.href='/aboutUs';" class="other-buttons">About us</button>
+                    <button onclick="location.href='/reviewList';" class="other-buttons">Reviews</button>
                     <button onclick="location.href='/login';" id="login">Login</button>
                 </div>
             </div>
@@ -23,7 +24,7 @@
                 </div>
                 <div class="scroll-box">
                     <h2>Η απόλυτη εμπειρία ενός αναποφάσιστου καταναλωτή!</h2>
-                    <p>Στην La Pasteria δεν τρώτε απλά - ζείτε την εμπειρία
+                    <p>Στο La Pasteria δεν τρώτε απλά - ζείτε την εμπειρία
                        του φαγητού! Χρησιμοποιούμε μια καινοτόμο τεχνολογία
                        που προσαρμόζει το μενού στις δικές σας γευστικές 
                        προτιμήσεις, προσφέροντάς σας τις πιο απολαυστικές
@@ -31,25 +32,11 @@
                        το τι να παραγγείλετε στην τύχη! Το λογισμικό μας
                        αναγνωρίζει τα κατάλληλα πιάτα για εσάς και σας
                        προτείνει τα ιδανικά γεύματα που θα ικανοποιήσουν
-                       τις επιθυμίες σας. Ελάτε στο Restaurant και ανακαλύψτε
+                       τις επιθυμίες σας. Ελάτε στο La Pasteria και ανακαλύψτε
                        τη γεύση που σας ταιριάζεi. Kάθε γεύμα είναι φτιαγμένο για εσάς!
                     </p>
                 </div>
             </div>
         </div>
-        <script>
-            const button = document.getElementById('login');
-            const body = document.body;
-    
-            button.addEventListener('mouseover', () => {
-                
-                const randomX = Math.random() * (window.innerWidth - button.offsetWidth);
-                const randomY = Math.random() * (window.innerHeight - button.offsetHeight);
-    
-                
-                button.style.left = `${randomX}px`;
-                button.style.top = `${randomY}px`;
-            });
-        </script>
     </body>
 </html>
