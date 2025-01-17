@@ -45,14 +45,6 @@ public class OrderService {
                             restaurantId);
         }
 
-
-        // Έλεγχος αν υπάρχει ενεργή παραγγελία για το τραπέζι
-        Optional<Orders> activeOrders = ordersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true);
-        if (!activeOrders.isEmpty()) {
-        throw new RuntimeException("There is already an active order for this table.");
-        }
-
-    try {
         Orders order = new Orders();
         order.setTable(optionalRTable.get());
         order.setOrder_total((float) 0.0); // Αρχική τιμή
@@ -60,11 +52,6 @@ public class OrderService {
         order.setOrder_datetime(LocalDateTime.now());
 
         return ordersRepository.save(order);
-    } catch (Exception e) {
-        // Logging
-        System.err.println("Error while creating order: " + e.getMessage());
-        throw new RuntimeException("Failed to create order. Please try again.");
-    }
 }
 
     public void addDishToOrder( int dishId, int orderId, int quantity) {

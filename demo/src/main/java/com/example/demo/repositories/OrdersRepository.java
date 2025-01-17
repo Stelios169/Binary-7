@@ -14,6 +14,9 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
     Optional<Orders> findByTableIdAndRestaurantIdAndOrderStatus(@Param("table_id") Integer tableId, @Param("restaurant_id") Integer restaurantId, @Param("order_status") Boolean orderStatus); 
 
     @Query("SELECT o FROM Orders o WHERE o.order_id = :order_id AND o.order_status = true")
-    Optional<Orders> findById(@Param("order_id") Integer order_id); 
+    Optional<Orders> findById(@Param("order_id") Integer order_id);
+
+    @Query("SELECT o FROM Orders o WHERE o.table.tableId.table_id = :table_id AND o.table.tableId.restaurant_id = :restaurant_id AND o.order_status = true")
+    List<Orders> findAllByTableIdAndRestaurantIdAndOrderStatus(@Param("table_id") Integer tableId, @Param("restaurant_id") Integer restaurantId, @Param("order_status") Boolean orderStatus); 
 
 }
