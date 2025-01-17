@@ -55,5 +55,5 @@ public class ReviewControllerTest {
         verify(model, times(1)).addAttribute("restaurant_id", 1);
         verify(model, times(1)).addAttribute("review", savedReview);
         verify(model, times(1)).addAttribute("reviews", reviewService.getReviewsByRestaurant(1));
-    }
+    } 
 }

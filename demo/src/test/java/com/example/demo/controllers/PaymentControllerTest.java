@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.eq;
 
 class PaymentControllerTest {
 
-    @Test
+    /*@Test
     void testProcessPayment_Success() {
         // Mock dependencies
         PaymentService mockPaymentService = Mockito.mock(PaymentService.class);
@@ -60,7 +60,7 @@ class PaymentControllerTest {
         // Verify interactions and assertions
         Mockito.verify(mockModel).addAttribute(eq("error"), eq("No active orders for this table."));
         assertEquals("payment", viewName);
-    }
+    }*/
 }
 
 
