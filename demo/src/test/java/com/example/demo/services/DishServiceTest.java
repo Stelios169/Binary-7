@@ -15,6 +15,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import static org.hamcrest.Matchers.*;
+
+ 
 
 public class DishServiceTest {
 
@@ -41,25 +46,39 @@ public class DishServiceTest {
 
         FavoriteDishDTO result = dishService.getFavoriteDishForLastMonth();
 
-        assertEquals(mockFavoriteDishes, result);
+        assertEquals(mockFavoriteDishes.get(0), result);
         verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);
     }
 
     @Test
     void testGetFavoriteDishForLastWeek() {
         LocalDate expectedStartDate = LocalDate.now().minusWeeks(1);
-        List<FavoriteDishDTO> mockFavoriteDishes = Arrays.asList(
+        List<FavoriteDishDTO> mockFavoriteDishes = List.of(
                 new FavoriteDishDTO("Sushi", 30L),
                 new FavoriteDishDTO("Tacos", 25L)
         );
+         // Σχεδιάζουμε το mock του repository
+         when(dishRepository.findFavoriteDish(expectedStartDate)).thenReturn(mockFavoriteDishes);
 
-        when(dishRepository.findFavoriteDish(expectedStartDate)).thenReturn(mockFavoriteDishes);
+        // Καλούμε τη μέθοδο του service
+        FavoriteDishDTO result = dishService.getFavoriteDishForLastWeek();
+
+        // Χρησιμοποιούμε assertThat για σύγκριση του αποτελέσματος
+        assertThat(result, equalTo(mockFavoriteDishes.get(0)));
+        
+        // Επιβεβαιώνουμε ότι το repository κλήθηκε σωστά
+        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);
+}
+        /*when(dishRepository.findFavoriteDish(expectedStartDate)).thenReturn(mockFavoriteDishes);
 
         FavoriteDishDTO result = dishService.getFavoriteDishForLastWeek();
 
         assertEquals(mockFavoriteDishes, result);
-        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);
-    }
+        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);*/
+       // FavoriteDishDTO actualList = dishService.getFavoriteDishForLastWeek();
+
+        //assertThat(actualList).containsExactlyInAnyOrderElementsOf(expectedList);
+    
 
     @Test
     void testGetDishCost() {

@@ -1,5 +1,5 @@
 package com.example.demo.statistics.dto;
-
+import java.util.Objects;
 
 public class FavoriteDishDTO {
     private String dish_name;
@@ -25,6 +25,19 @@ public class FavoriteDishDTO {
      
     public void setTotalQuantity(Long totalQuantity) {
         this.totalQuantity = totalQuantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FavoriteDishDTO that = (FavoriteDishDTO) o;
+        return Objects.equals(dish_name, that.dish_name) && Objects.equals(totalQuantity, that.totalQuantity);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(dish_name, totalQuantity);
     }
     
 }

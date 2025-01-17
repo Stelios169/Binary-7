@@ -1,4 +1,4 @@
-package com.example.demo.services;
+/*package com.example.demo.services;
  
 import java.util.stream.Collectors;
 import org.springframework.http.HttpMethod;
@@ -56,7 +56,7 @@ public class SpoonacularClient {
         }
  
         return response.getBody();*/
-        try {
+       /* try {
             // Κάντε την κλήση στο API
             ResponseEntity<String> response = restTemplate.exchange(
                 url,
@@ -77,8 +77,91 @@ public class SpoonacularClient {
             return Collections.emptyList(); // Επιστρέψτε μια άδεια λίστα σε περίπτωση σφάλματος
         }
     }
+    }*/
+    
+    package com.example.demo.services;
+
+    import java.util.stream.Collectors;
+    import org.springframework.http.HttpMethod;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.client.RestTemplate;
+    import com.example.demo.models.Ingredient;
+    import com.example.demo.models.Recipe;
+    import com.fasterxml.jackson.databind.ObjectMapper;
+    import java.net.URLEncoder;
+    import java.util.List;
+    import java.nio.charset.StandardCharsets;
+    import java.util.Collections;
+    import com.fasterxml.jackson.core.type.TypeReference;
+    
+    @Component
+    public class SpoonacularClient {
+        private final String apiKey;
+        private final RestTemplate restTemplate;
+        ObjectMapper objectMapper = new ObjectMapper();
+    
+        public SpoonacularClient(SpoonacularProperties properties, RestTemplate restTemplate, ObjectMapper objectMapper) {
+            this.apiKey = properties.getKey();
+            this.restTemplate = restTemplate;
+            this.objectMapper = objectMapper;
+            if (this.apiKey == null || this.apiKey.isEmpty()) {        
+                throw new IllegalStateException("Spoonacular API key is missing!"); }
+        }
+    
+        // Δημιουργία του query για τα συστατικά
+        public String buildIngredientQuery(List<Ingredient> ingredients) {
+            return ingredients.stream()
+                    .map(Ingredient::getIngredient_name)
+                    .map(name -> URLEncoder.encode(name, StandardCharsets.UTF_8))
+                    .collect(Collectors.joining(","));
+        }
+    
+        public List<Recipe> fetchRecipes(List<Ingredient> ingredients) {
+            System.out.println("Entering fetchRecipes method...");
+            
+            // Χρησιμοποιούμε τη μέθοδο buildIngredientQuery για να δημιουργήσουμε το query
+            String ingredientQuery = buildIngredientQuery(ingredients);
+    
+            // Δημιουργία της URL με το query
+            String url = String.format(
+                "https://api.spoonacular.com/recipes/findByIngredients?ingredients=%s&number=5&apiKey=%s",
+                ingredientQuery,
+                apiKey
+            );
+            System.out.println("Request URL: " + url);  // Έλεγχος της URL
+    
+            try {
+                // Κάντε την κλήση στο API
+                ResponseEntity<String> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    null,
+                    String.class
+                );
+    
+                // Διαχειριστείτε την απόκριση JSON
+                String jsonResponse = response.getBody();
+                System.out.println("Response Body: " + jsonResponse); 
+    
+                // Μετατροπή JSON σε αντικείμενα Recipe
+                return objectMapper.readValue(jsonResponse, new TypeReference<List<Recipe>>() {});
+    
+            } catch (Exception e) {
+                e.printStackTrace();
+                return Collections.emptyList(); // Επιστρέψτε μια άδεια λίστα σε περίπτωση σφάλματος
+            }
+            /*try {
+               List<Recipe> recipes = objectMapper.readValue(jsonResponse, new TypeReference<List<Recipe>>() {});
+                return recipes;
+            } catch (Exception e) {
+                e.printStackTrace();  // Εκτύπωση του σφάλματος για αποσφαλμάτωση
+                return Collections.emptyList();
+            } */
+            
+        } 
     }
- 
+    
  
  
 

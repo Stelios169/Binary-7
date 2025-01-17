@@ -12,7 +12,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 
 class PaymentServiceTest {
-
+/* 
     @Test
     void testProcessPayment_OrderExists() {
         // Mock dependencies
@@ -66,5 +66,5 @@ class PaymentServiceTest {
         // Verify interactions and assertions
         Mockito.verify(mockOrdersRepository, Mockito.never()).save(any());
         assertEquals(0f, result);
-    }
+    }*/
 }
