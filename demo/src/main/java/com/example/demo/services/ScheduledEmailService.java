@@ -24,7 +24,7 @@ public class ScheduledEmailService {
      * Scheduled method to send emails every day at 9:00 AM.
      * The cron expression follows the format: second, minute, hour, day, month, day-of-week.
      */
-    @Scheduled(cron = "0 0 9 * * ?")
+    @Scheduled(cron = "0 03 19 * * ?")
     public void sendDailyExpiringIngredientsEmail() {
         try {
             // Ορισμός του χρονικού ορίου (7 ημέρες από σήμερα)

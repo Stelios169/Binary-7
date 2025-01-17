@@ -18,14 +18,18 @@ public class DishService {
     private DishRepository dishRepository;
 
     // Μέθοδοι για αγαπημένο πιάτο
-    public List<FavoriteDishDTO> getFavoriteDishForLastMonth() {
+    public FavoriteDishDTO getFavoriteDishForLastMonth() {
         LocalDate startDate = LocalDate.now().minus(1, ChronoUnit.MONTHS);
-        return dishRepository.findFavoriteDish(startDate);
+        List<FavoriteDishDTO> result = dishRepository.findFavoriteDish(startDate);
+        return result.isEmpty() ? null : result.get(0);
+        //return dishRepository.findFavoriteDish(startDate);
     }
 
-    public List<FavoriteDishDTO> getFavoriteDishForLastWeek() {
+    public FavoriteDishDTO getFavoriteDishForLastWeek() {
         LocalDate startDate = LocalDate.now().minus(1, ChronoUnit.WEEKS);
-        return dishRepository.findFavoriteDish(startDate);
+        List<FavoriteDishDTO> result = dishRepository.findFavoriteDish(startDate);
+        return result.isEmpty() ? null : result.get(0);
+        //return dishRepository.findFavoriteDish(startDate);
     }
 
     // Μέθοδοι για κόστος και κέρδος ανά πιάτο

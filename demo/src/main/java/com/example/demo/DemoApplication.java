@@ -14,6 +14,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.Builder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -55,14 +60,19 @@ public class DemoApplication {
         };
     }
 
+    
+
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 
-    /*@Bean
+    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
-    }*/
-
+    }
+    @Bean
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
+    }
 }

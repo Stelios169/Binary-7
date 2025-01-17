@@ -24,6 +24,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
                      "WHERE CAST(o.order_datetime AS date) >= :startDate " +
                      "GROUP BY d.dish_name " +
                      "ORDER BY SUM(od.orderPerDish_quantity) DESC")
+
        List<FavoriteDishDTO> findFavoriteDish(@Param("startDate") LocalDate startDate);
 
        // Query για το κόστος ανά πιάτο

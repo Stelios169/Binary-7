@@ -1,5 +1,5 @@
 package com.example.demo.services;
-
+ 
 import java.util.stream.Collectors;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -8,12 +8,12 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.models.Ingredient;
 import com.example.demo.models.Recipe;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.net.URLEncoder; 
+import java.net.URLEncoder;
 import java.util.List;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import com.fasterxml.jackson.core.type.TypeReference;
-
+ 
 @Component
 public class SpoonacularClient {
     private final String apiKey;
@@ -24,7 +24,7 @@ public class SpoonacularClient {
         this.apiKey = properties.getKey();
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
-        if (this.apiKey == null || this.apiKey.isEmpty()) {         
+        if (this.apiKey == null || this.apiKey.isEmpty()) {        
             throw new IllegalStateException("Spoonacular API key is missing!"); }
     }
  
@@ -33,16 +33,16 @@ public class SpoonacularClient {
         String ingredientQuery = ingredients.stream()
                 .map(Ingredient::getIngredient_name)
                 .map(name -> URLEncoder.encode(name, StandardCharsets.UTF_8))
-                .collect(Collectors.joining(",")); 
+                .collect(Collectors.joining(","));
  
         //String url = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredientQuery + "&number=10&apiKey=" + apiKey;
         String url = String.format(
-            "https://api.spoonacular.com/recipes/findByIngredients?ingredients=%s&number=5&apiKey=%s", 
-            ingredientQuery, 
+            "https://api.spoonacular.com/recipes/findByIngredients?ingredients=%s&number=5&apiKey=%s",
+            ingredientQuery,
             apiKey
         );
         System.out.println("Request URL: " + url);  // Έλεγχος της URL
-    
+   
         //ResponseEntity<List<Recipe>> response = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Recipe>>() {});
        /*ResponseEntity<List<Recipe>> response = restTemplate.exchange(url, org.springframework.http.HttpMethod.GET, null, new org.springframework.core.ParameterizedTypeReference<>() {
         }); */
@@ -78,4 +78,7 @@ public class SpoonacularClient {
         }
     }
     }
+ 
+ 
+ 
 

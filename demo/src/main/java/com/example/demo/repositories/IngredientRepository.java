@@ -18,6 +18,7 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
        "JOIN d.restaurantDishes rd " + // Σύνδεση με RestaurantDishes
        "JOIN rd.restaurant r " +       // Σύνδεση με Restaurant
        "WHERE r.restaurant_id = :restaurant_id " +
+       "AND i.ingredient_exp_date >= CURRENT_DATE " +  
        "AND i.ingredient_exp_date <= :expiryThreshold")
     List<Ingredient> findExpiringIngredientsForRestaurant(@Param("restaurant_id") int restaurantId, 
                                                       @Param("expiryThreshold") LocalDate expiryThreshold);
