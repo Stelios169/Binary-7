@@ -37,47 +37,30 @@
                     </select>
                 </form>
             </div>
-            <div>
-                <!-- <h1>Add a New Review</h1>
+            <div class="makeReview">
                 <form th:action="@{/reviewList}" th:object="${review}" method="post">
+                   
                     <label for="review_comment">Comment:</label>
-                        <textarea th:field="*{review_comment}" id="review_comment" required></textarea>
-                    <br>
+                    <textarea th:field="*{review_comment}" class="boxes" required></textarea>
+                    
+     
                     <label for="review_rating">Rating (1-5):</label>
-                        <input th:field="*{review_rating}" type="number" min="1" max="5" id="review_rating" required />
-                    <br>
-                    <input type="hidden" th:field="*{restaurant.restaurant_id}" th:value="${restaurant_id}" name="restaurant_id" />
-
-                    <button type="submit">Submit Review</button>
-                </form> -->
-                <form th:action="@{/reviewList}" th:object="${review}" method="post">
-                    <!-- Σχολιο -->
-                    <label for="review_comment">Comment:</label>
-                    <textarea th:field="*{review_comment}" id="review_comment" required></textarea>
-                    <br>
+                    <input th:field="*{review_rating}" type="number" min="1" max="5" class="boxes" required />
+                    
                 
-                    <!-- Βαθμολογια -->
-                    <label for="review_rating">Rating (1-5):</label>
-                    <input th:field="*{review_rating}" type="number" min="1" max="5" id="review_rating" required />
-                    <br>
-                
-                    <!-- Επιλογή Εστιατορίου -->
+                 
                     <label for="restaurant_id">Select Restaurant:</label>
-                    <!-- <select th:field="*{restaurant_id}" id="restaurant_id" required>
-                        <option value="1" th:selected="${restaurant_id == 1}">Restaurant 1</option>
-                        <option value="2" th:selected="${restaurant_id == 2}">Restaurant 2</option>
-                    </select> -->
                 
-                    <select th:field="*{restaurant.restaurant_id}" id="restaurant_id" required>
+                    <select th:field="*{restaurant.restaurant_id}" class="boxes" required>
                         <option value="1" th:selected="${restaurant_id == 1}">Restaurant 1</option>
                         <option value="2" th:selected="${restaurant_id == 2}">Restaurant 2</option>
                     </select>
-                    <br>
+                    
                     <input type="hidden" th:field="*{restaurant.restaurant_id}" value="${restaurant_id}" />
 
                 
-                    <!-- Υποβολή -->
-                    <button type="submit">Submit Review</button>
+               
+                    <button type="submit" class="boxes">Submit Review</button>
                 </form>
             </div>
         </div>
