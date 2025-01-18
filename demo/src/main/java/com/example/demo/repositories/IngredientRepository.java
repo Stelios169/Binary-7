@@ -28,6 +28,9 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
     @Query("SELECT i FROM Ingredient i WHERE i.ingredient_exp_date <= :expiryThreshold")
     List<Ingredient> findByIngredientExpDateBefore(@Param("expiryThreshold") LocalDate expiryThreshold);
 
+    @Query("SELECT i FROM Ingredient i ")
+    List<Ingredient> findIngredients(@Param("restaurant_id") int restaurant_id);
+
     @Query("SELECT i FROM Ingredient i " +
        "JOIN i.dishIngredients di " + // Χρησιμοποιούμε τη σχέση DishIngredients
        "JOIN di.dish d " +            // Χρησιμοποιούμε τη σχέση Dish

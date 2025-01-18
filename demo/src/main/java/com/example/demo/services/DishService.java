@@ -27,11 +27,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import com.example.demo.models.Ingredient;
+import com.example.demo.repositories.IngredientRepository;
 
 @Service
 public class DishService {
     @Autowired
     private DishRepository dishRepository;
+
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     // Μέθοδοι για αγαπημένο πιάτο
     public FavoriteDishDTO getFavoriteDishForLastMonth() {
@@ -72,4 +77,9 @@ public class DishService {
         LocalDate startDate = LocalDate.now().minusYears(1);
         return dishRepository.findAnnualTotalProfit(startDate);
     }
+
+    public List<Ingredient> getIngredients(int restaurant_id) {
+        return ingredientRepository.findIngredients(restaurant_id);
+    }
+
 }

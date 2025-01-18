@@ -22,12 +22,17 @@ import com.example.demo.statistics.dto.DishCostDTO;
 import com.example.demo.statistics.dto.DishProfitDTO;
 import com.example.demo.statistics.dto.SalesDTO;
 import com.example.demo.statistics.dto.TotalProfitDTO;
+import com.example.demo.models.Review;
 import com.example.demo.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+import com.example.demo.models.Ingredient;
+
+
 
 @Controller
 @RequestMapping("/login")
@@ -77,4 +82,13 @@ public class StatisticsController {
     private List<TotalProfitDTO> getAnnualProfit() {
         return dishService.getAnnualTotalProfit();
     }
+
+    @GetMapping("/ingredient")
+    public String getPurchaseTime(@RequestParam(defaultValue = "1") int restaurant_id, Model model) {
+        List<Ingredient> ingredients = dishService.getIngredients(restaurant_id);
+        model.addAttribute("restaurant_id", restaurant_id);
+        model.addAttribute("ingredients", ingredients);
+        return "ingredient";
+    }
+    
 }
