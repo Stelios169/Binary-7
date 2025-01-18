@@ -49,7 +49,7 @@ public class Login2Controller {
         Optional<Restaurant> restaurant = restaurantRepository.findByEmail(email);
         if (restaurant.isPresent()) {
             if (restaurant.get().getRestaurant_password().equals(password)) {
-                return "ingredient"; // Redirect if login successful
+                return "redirect:/login/ingredient"; // Redirect if login successful
             } else {
                 model.addAttribute("error", "Invalid password");
                 return "login";
