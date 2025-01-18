@@ -139,20 +139,24 @@ public class SpoonacularClientTest {
     @Mock
     private ObjectMapper objectMapper;
     
-    @Mock
-    private SpoonacularProperties properties;
+    /*@Mock
+    private SpoonacularProperties properties;*/
  
 
     @Mock
     private RestTemplate restTemplate;
 
-    @InjectMocks
+    @Mock
     private SpoonacularClient spoonacularClient;
 
     @BeforeEach
     public void setup() {              
-    MockitoAnnotations.openMocks(this);         
-    spoonacularClient = new SpoonacularClient(new SpoonacularProperties("dummy-api-key"), restTemplate, objectMapper); }
+    MockitoAnnotations.openMocks(this); 
+    SpoonacularProperties properties = new SpoonacularProperties("dummy-api-key");   
+        spoonacularClient = new SpoonacularClient(properties, restTemplate, objectMapper, "dummy-api-key");
+    }
+
+    //spoonacularClient = new SpoonacularClient(new SpoonacularProperties("dummy-api-key"), restTemplate, objectMapper); }
 
     /*public SpoonacularClientTest() {
         // Χρησιμοποιούμε το mock RestTemplate για να δημιουργήσουμε την SpoonacularClient
@@ -191,7 +195,7 @@ public class SpoonacularClientTest {
         when(restTemplate.exchange(anyString(), eq(HttpMethod.GET), isNull(), eq(String.class)))
             .thenReturn(mockResponse);
         
-        List<Recipe> mockRecipes = List.of(new Recipe(1, "Recipe 1", "image1", 2, 1, Collections.emptyList(), Collections.emptyList(), 100));
+        List<Recipe> mockRecipes = List.of(new Recipe(1, "Tomato Cheese Pizza", "image1", 2, 1, Collections.emptyList(), Collections.emptyList(), 100));
         when(objectMapper.readValue(anyString(), any(TypeReference.class))).thenReturn(mockRecipes);
             
         
@@ -203,7 +207,7 @@ public class SpoonacularClientTest {
 // Επαλήθευση ότι η λίστα περιέχει τη συνταγή
 assertNotNull(recipes);
 assertEquals(1, recipes.size());
-assertEquals("Recipe 1", recipes.get(0).getTitle());
+assertEquals("Tomato Cheese Pizza", recipes.get(0).getTitle());
 assertEquals(100, recipes.get(0).getLikes());
 
 // Επαλήθευση ότι το RestTemplate χρησιμοποιείται σωστά

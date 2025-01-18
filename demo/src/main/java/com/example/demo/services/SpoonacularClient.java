@@ -82,7 +82,9 @@ public class SpoonacularClient {
     package com.example.demo.services;
 
     import java.util.stream.Collectors;
-    import org.springframework.http.HttpMethod;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
     import org.springframework.http.ResponseEntity;
     import org.springframework.stereotype.Component;
     import org.springframework.web.client.RestTemplate;
@@ -94,6 +96,7 @@ public class SpoonacularClient {
     import java.nio.charset.StandardCharsets;
     import java.util.Collections;
     import com.fasterxml.jackson.core.type.TypeReference;
+    import org.springframework.beans.factory.annotation.Value;
     
     @Component
     public class SpoonacularClient {
@@ -101,12 +104,13 @@ public class SpoonacularClient {
         private final RestTemplate restTemplate;
         ObjectMapper objectMapper = new ObjectMapper();
     
-        public SpoonacularClient(SpoonacularProperties properties, RestTemplate restTemplate, ObjectMapper objectMapper) {
-            this.apiKey = properties.getKey();
+        @Autowired
+        public SpoonacularClient(SpoonacularProperties properties, RestTemplate restTemplate, ObjectMapper objectMapper, @Value("${spoonacular.api.key}") String apiKey) {
             this.restTemplate = restTemplate;
             this.objectMapper = objectMapper;
-            if (this.apiKey == null || this.apiKey.isEmpty()) {        
+            if (apiKey == null || apiKey.isEmpty()) {        
                 throw new IllegalStateException("Spoonacular API key is missing!"); }
+            this.apiKey = apiKey;
         }
     
         // Δημιουργία του query για τα συστατικά

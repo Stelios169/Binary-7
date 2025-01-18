@@ -20,5 +20,11 @@ public class SpoonacularPropertiesTest {
         // Επαλήθευση ότι το API key φορτώνεται σωστά από τις ρυθμίσεις
         assertEquals("test-api-key", spoonacularProperties.getKey(), "Το API key δεν φορτώθηκε σωστά!");
     }
+
+    @Test
+    public void debugLoadedProperties() {         
+        // Εκτυπώνει το API key για debugging        
+        System.out.println("Loaded API key: " + spoonacularProperties.getKey()); 
+    }
 }
 
