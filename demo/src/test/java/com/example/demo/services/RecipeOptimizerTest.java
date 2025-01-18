@@ -39,82 +39,78 @@ public class RecipeOptimizerTest {
 
     @Mock
     private IngredientRepository ingredientRepository;
-    
+
     @Mock
     private SpoonacularClient spoonacularClient;
-    
+
     @InjectMocks
     private RecipeOptimizerService recipeOptimizerService;
-    
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         recipeOptimizerService = new RecipeOptimizerService(ingredientRepository, spoonacularClient);
     }
-    
+
     @Test
     void testFindOptimizedRecipes() {
-    // Mock δεδομένα
-    LocalDate thresholdDate = LocalDate.now();
+        // Mock δεδομένα
+        LocalDate thresholdDate = LocalDate.now();
 
-    // Δημιουργία του αντικειμένου Ingredient με τον σωστό constructor
-    Ingredient ingredient = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", thresholdDate);  // Σωστά ορίσματα
+        // Δημιουργία του αντικειμένου Ingredient με τον σωστό constructor
+        Ingredient ingredient = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", thresholdDate); // Σωστά ορίσματα
 
-    // Δημιουργία των αντικειμένων RecipeIngredient με τον σωστό constructor
-    RecipeIngredient usedIngredient = new RecipeIngredient(1, 5.0, "kg", "Tomato", "Fresh tomato", "image_url");
-    RecipeIngredient missedIngredient = new RecipeIngredient(2, 3.0, "kg", "Tomato", "Fresh tomato", "image_url");
+        // Δημιουργία των αντικειμένων RecipeIngredient με τον σωστό constructor
+        RecipeIngredient usedIngredient = new RecipeIngredient(1, 5.0, "kg", "Tomato", "Fresh tomato", "image_url");
+        RecipeIngredient missedIngredient = new RecipeIngredient(2, 3.0, "kg", "Tomato", "Fresh tomato", "image_url");
 
-    // Δημιουργία της μεταβλητής λίστας
-    List<RecipeIngredient> usedIngredients = new ArrayList<>();
-    usedIngredients.add(usedIngredient);  // Προσθήκη του used ingredient στη λίστα
+        // Δημιουργία της μεταβλητής λίστας
+        List<RecipeIngredient> usedIngredients = new ArrayList<>();
+        usedIngredients.add(usedIngredient); // Προσθήκη του used ingredient στη λίστα
 
-    List<RecipeIngredient> missedIngredients = new ArrayList<>();
-    missedIngredients.add(missedIngredient);  // Προσθήκη του missed ingredient στη λίστα
+        List<RecipeIngredient> missedIngredients = new ArrayList<>();
+        missedIngredients.add(missedIngredient); // Προσθήκη του missed ingredient στη λίστα
 
-    // Δημιουργία του Recipe αντικειμένου με τον σωστό constructor
-    Recipe recipe = new Recipe(
-        1,                          // id
-        "Recipe 1",                 // τίτλος
-        "image_url",                // εικόνα
-        usedIngredients.size(),     // usedIngredientCount
-        missedIngredients.size(),   // missedIngredientCount
-        usedIngredients,            // usedIngredients
-        missedIngredients,          // missedIngredients
-        100                         // likes
-    );
+        // Δημιουργία του Recipe αντικειμένου με τον σωστό constructor
+        Recipe recipe = new Recipe(
+                1, // id
+                "Recipe 1", // τίτλος
+                "image_url", // εικόνα
+                usedIngredients.size(), // usedIngredientCount
+                missedIngredients.size(), // missedIngredientCount
+                usedIngredients, // usedIngredients
+                missedIngredients, // missedIngredients
+                100 // likes
+        );
 
-    // Mocking της συμπεριφοράς του repository και του client
-    when(ingredientRepository.findByIngredientExpDateBefore(thresholdDate))
-        .thenReturn(new ArrayList<>(List.of(ingredient))); // Χρησιμοποίησε μια mutable λίστα εδώ
-    when(spoonacularClient.fetchRecipes(anyList()))
-        .thenReturn(new ArrayList<>(List.of(recipe))); // Και εδώ δημιουργούμε mutable λίστα
+        // Mocking της συμπεριφοράς του repository και του client
+        when(ingredientRepository.findByIngredientExpDateBefore(thresholdDate))
+                .thenReturn(new ArrayList<>(List.of(ingredient))); // Χρησιμοποίησε μια mutable λίστα εδώ
+        when(spoonacularClient.fetchRecipes(anyList()))
+                .thenReturn(new ArrayList<>(List.of(recipe))); // Και εδώ δημιουργούμε mutable λίστα
 
-    // Κλήση της μεθόδου
-    List<Recipe> optimizedRecipes = recipeOptimizerService.findOptimizedRecipes(thresholdDate, 50);
+        // Κλήση της μεθόδου
+        List<Recipe> optimizedRecipes = recipeOptimizerService.findOptimizedRecipes(thresholdDate, 50);
 
-    // Assertions
-    assertNotNull(optimizedRecipes);
-    assertEquals(1, optimizedRecipes.size());
-    assertEquals("Recipe 1", optimizedRecipes.get(0).getTitle());
+        // Assertions
+        assertNotNull(optimizedRecipes);
+        assertEquals(1, optimizedRecipes.size());
+        assertEquals("Recipe 1", optimizedRecipes.get(0).getTitle());
 
     }
-    
+
     @Test
     void testFindOptimizedRecipes_noIngredients() {
-    // Mock data
-    LocalDate thresholdDate = LocalDate.now();
-    when(ingredientRepository.findByIngredientExpDateBefore(thresholdDate))
-    .thenReturn(Collections.emptyList());
-    
-    // Call the method
-    List<Recipe> optimizedRecipes = recipeOptimizerService.findOptimizedRecipes(thresholdDate, 50);
-    
-    // Assertions
-    assertNotNull(optimizedRecipes);
-    assertTrue(optimizedRecipes.isEmpty());
+        // Mock data
+        LocalDate thresholdDate = LocalDate.now();
+        when(ingredientRepository.findByIngredientExpDateBefore(thresholdDate))
+                .thenReturn(Collections.emptyList());
+
+        // Call the method
+        List<Recipe> optimizedRecipes = recipeOptimizerService.findOptimizedRecipes(thresholdDate, 50);
+
+        // Assertions
+        assertNotNull(optimizedRecipes);
+        assertTrue(optimizedRecipes.isEmpty());
     }
 }
-       
-
-    
- 

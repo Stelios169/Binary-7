@@ -4,17 +4,12 @@
 -- -- ! DO NOT RUN THE FOLLOWING BLOCK IF NOT NESESERY !
 -- -- Only do so in case the database schema is recreated
 
-<<<<<<< HEAD
+
 -- INSERT INTO Progr.Restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_tel, restaurant_afm, restaurant_email, restaurant_rating, restaurant_password)
 -- VALUES
 --     (1, 'La Pasteria', 'Patision 28, Athens', 2101234567, 123456789012, 'despinalab@gmail.com', 4.5, 'password123'),
 --     (2, 'Shisan', 'Ermou 8, Athens', 2109876543, 987654321098, 'stella.panopoulou678@gmail.com', 4.8, 'password456');
-=======
-/*INSERT INTO Progr.Restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_tel, restaurant_afm, restaurant_email, restaurant_rating, restaurant_password)
-VALUES
-    (1, 'La Pasteria', 'Patision 28, Athens', 2101234567, 123456789012, 'despinalab@gmail.com', 4.5, 'password123'),
-    (2, 'Shisan', 'Ermou 8, Athens', 2109876543, 987654321098, 'stella.panopoulou678@gmail.com', 4.8, 'password456');
->>>>>>> c3ca8a42a7e51183d9a16994c866561deb66c18c
+
 
 -- INSERT INTO Progr.Dish (dish_id, dish_name, dish_category, dish_price, dish_image_url, dish_description, dish_availability)
 -- VALUES
@@ -122,13 +117,8 @@ VALUES
 --     (2, 9),
 --     (1, 10),
 --     (2, 11);
-    
--- INSERT INTO Progr.Review (review_id, restaurant_id, review_rating, review_comment)
--- VALUES
---     (1, 1, 5, 'Best pizza in town!!!'),
---     (2, 1, 3, 'The food was good, but the service could be better :(');
 
-<<<<<<< HEAD
+
 -- INSERT INTO Progr.OrderPerDish (dish_id, order_id, orderPerDish_quantity)
 -- VALUES
 --     (1, 1, 2),
@@ -137,14 +127,5 @@ VALUES
 --     (4, 2, 2),
 --     (5, 3, 1),
 --     (3, 4, 4);
-=======
-INSERT INTO Progr.OrderPerDish (dish_id, order_id, orderPerDish_quantity)
-VALUES
-    (1, 1, 2),
-    (2, 1, 1),
-    (3, 2, 1),
-    (4, 2, 2),
-    (5, 3, 1),
-    (3, 4, 4);
-*/
->>>>>>> c3ca8a42a7e51183d9a16994c866561deb66c18c
+
+
