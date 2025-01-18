@@ -1,3 +1,6 @@
+-- Licensed under the Apache License, Version 2.0
+-- For more details, see the LICENSE file in the root directory.
+
 -- ! DO NOT RUN THE FOLLOWING BLOCK IF NOT NESESERY !
 -- Only do so in case the database schema is recreated
 

@@ -1,3 +1,6 @@
+-- Licensed under the Apache License, Version 2.0
+-- For more details, see the LICENSE file in the root directory.
+
 --Creates the schema only if it doesn't exist (will only happen in the first time of running the application)
 CREATE SCHEMA IF NOT EXISTS Progr;
 SET SCHEMA Progr;

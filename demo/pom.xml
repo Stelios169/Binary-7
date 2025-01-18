@@ -16,8 +16,13 @@
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
+	<!-- Άδεια του έργου -->
 	<licenses>
-		<license/>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
 	</licenses>
 
 	<developers>
