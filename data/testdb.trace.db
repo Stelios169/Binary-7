@@ -4,3 +4,6 @@ PROGR.ORDERS S [42001-232]
 2025-01-18 16:43:22.501060+02:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS Progr.Review ( review_id INT [*]AUTO_INCREMENTNOT NULL PRIMARY KEY, restaurant_id INT NOT NULL, review_rating FLOAT NOT NULL CHECK (review_rating >= 0 AND review_rating <= 5), review_comment VARCHAR(2000), FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id) )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
 CREATE TABLE IF NOT EXISTS Progr.Review ( review_id INT AUTO_INCREMENTNOT NULL PRIMARY KEY, restaurant_id INT NOT NULL, review_rating FLOAT NOT NULL CHECK (review_rating >= 0 AND review_rating <= 5), review_comment VARCHAR(2000), FOREIGN KEY (restaurant_id) REFERENCES Progr.Restaurant (restaurant_id) ) [42001-232]
+2025-01-18 17:27:13.620137+02:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]clear"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+clear [42001-232]
