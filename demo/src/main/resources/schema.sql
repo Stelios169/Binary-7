@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Progr.RestaurantDishes (
 -- Stores customer reviews for restaurants
 
 CREATE TABLE IF NOT EXISTS Progr.Review (
-    review_id INT NOT NULL PRIMARY KEY,
+    review_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     restaurant_id INT NOT NULL,
     review_rating FLOAT NOT NULL CHECK (review_rating >= 0 AND review_rating <= 5),
     review_comment VARCHAR(2000),

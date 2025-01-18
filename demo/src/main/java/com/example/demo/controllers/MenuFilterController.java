@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
- package com.example.demo.controllers;
+package com.example.demo.controllers;
 
 import com.example.demo.models.Dish;
 import com.example.demo.services.MenuFilterService;
@@ -23,8 +23,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/menu")
@@ -36,33 +38,43 @@ public class MenuFilterController {
     }
 
     // Μέθοδος για την εμφάνιση του μενού ταξινομημένου
-    @GetMapping("/view")
-    public String viewMenu(Model model) {
-        Map<String, List<Dish>> menu = menuFilterService.viewMenu();
-        model.addAttribute("menu", menu);
-        return "menuView";
-    }
 
-    // Μέθοδος για το φιλτράρισμα του μενού με βάση τον προϋπολογισμό, κατηγορίες και αλλεργιογόνα
-    @GetMapping("/filter")
+    // Μέθοδος για το φιλτράρισμα του μενού με βάση τον προϋπολογισμό, κατηγορίες
+    // και αλλεργιογόνα
+    @GetMapping("/menu")
     public String filterMenu(@RequestParam(required = false) Double budget,
-                             @RequestParam(required = false) String[] categories,
-                             @RequestParam(required = false) String[] allergies,
-                             Model model) {
+            @RequestParam(required = false) String[] categories,
+            @RequestParam(required = false) String[] allergies,
+            Model model) {
 
-        // Φιλτράρισμα με βάση τον προϋπολογισμό
         List<Dish> filteredDishes = menuFilterService.filterMenu(budget != null ? budget : Double.MAX_VALUE);
 
-        // Φιλτράρισμα με βάση τις κατηγορίες, αν δίνονται
         if (categories != null && categories.length > 0) {
             filteredDishes = menuFilterService.filterByCategory(categories);
         }
 
-        // Φιλτράρισμα με βάση τα αλλεργιογόνα, αν δίνονται
         if (allergies != null && allergies.length > 0) {
             filteredDishes = menuFilterService.filterByAllergens(allergies);
         }
 
+        // if (budget != null) {
+        // filteredDishes = filteredDishes.stream()
+        // .filter(dish -> dish.getDish_price() <= budget)
+        // .collect(Collectors.toList());
+        // }
+
+        // if (categories != null && categories.length > 0) {
+        // filteredDishes = filteredDishes.stream()
+        // .filter(dish -> Arrays.asList(categories).contains(dish.getDish_category()))
+        // .collect(Collectors.toList());
+        // }
+
+        // if (allergies != null && allergies.length > 0) {
+        // filteredDishes = filteredDishes.stream()
+        // .filter(dish -> Arrays.stream(allergies)
+        // .noneMatch(allergy -> dish.getIngredients().contains(allergy)))
+        // .collect(Collectors.toList());
+        // }
         // Προσθήκη των φίλτρων στο μοντέλο για την προβολή
         model.addAttribute("filteredDishes", filteredDishes);
         return "menu";

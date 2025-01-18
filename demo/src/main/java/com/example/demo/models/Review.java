@@ -30,19 +30,19 @@ public class Review {
     private int review_id;
     private String review_comment;
     private double review_rating;
-    
+
     public Review(int review_id, String review_comment, double review_rating) {
         this.review_comment = review_comment;
         this.review_id = review_id;
         this.review_rating = review_rating;
     }
-    
+
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
-    
-     // Getters and Setters
-     public int getReview_id() {
+
+    // Getters and Setters
+    public int getReview_id() {
         return review_id;
     }
 
@@ -66,8 +66,8 @@ public class Review {
         this.review_rating = review_rating;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurant() {
+        return restaurant.getRestaurant_name();
     }
 
     public void setRestaurant(Restaurant restaurant) {

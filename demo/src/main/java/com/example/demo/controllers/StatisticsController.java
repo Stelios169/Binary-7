@@ -32,8 +32,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.models.Ingredient;
 
-
-
 @Controller
 @RequestMapping("/login")
 
@@ -55,9 +53,8 @@ public class StatisticsController {
 
     // Ξεχωριστές μέθοδοι για κάθε λειτουργία
     private FavoriteDishDTO getFavoriteDishForMonth() {
-       return dishService.getFavoriteDishForLastMonth();
-        }
-    
+        return dishService.getFavoriteDishForLastMonth();
+    }
 
     private FavoriteDishDTO getFavoriteDishForWeek() {
         return dishService.getFavoriteDishForLastWeek();
@@ -83,12 +80,12 @@ public class StatisticsController {
         return dishService.getAnnualTotalProfit();
     }
 
-    @GetMapping("/ingredient")
+    @GetMapping("/tables")
     public String getPurchaseTime(@RequestParam(defaultValue = "1") int restaurant_id, Model model) {
         List<Ingredient> ingredients = dishService.getIngredients(restaurant_id);
         model.addAttribute("restaurant_id", restaurant_id);
         model.addAttribute("ingredients", ingredients);
-        return "ingredient";
+        return "tables";
     }
-    
+
 }

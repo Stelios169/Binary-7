@@ -49,8 +49,8 @@ limitations under the License.
                 <form action="/reviewList" method="get">
                     <label for="restaurant_id"><strong>Choose a restaurant:</strong></label>
                     <select name="restaurant_id" class="restaurant_id" onchange="this.form.submit()">
-                        <option value="1" th:selected="${restaurant_id == 1}">Restaurant 1</option>
-                        <option value="2" th:selected="${restaurant_id == 2}">Restaurant 2</option>
+                        <option value="1" th:selected="${restaurant_id == 1}">La Pasteria</option>
+                        <option value="2" th:selected="${restaurant_id == 2}">Shisan</option>
                     </select>
                 </form>
             </div>
@@ -68,12 +68,12 @@ limitations under the License.
                  
                     <label for="restaurant_id">Select Restaurant:</label>
                 
-                    <select th:field="*{restaurant.restaurant_id}" class="boxes" required>
-                        <option value="1" th:selected="${restaurant_id == 1}">Restaurant 1</option>
-                        <option value="2" th:selected="${restaurant_id == 2}">Restaurant 2</option>
+                    <select name="restaurant_id" class="boxes" required>
+                        <option value="1" th:selected="${restaurant_id == 1}">La Pasteria</option>
+                        <option value="2" th:selected="${restaurant_id == 2}">Shisan</option>
                     </select>
                     
-                    <input type="hidden" th:field="*{restaurant.restaurant_id}" value="${restaurant_id}" />
+                    <!-- <input type="hidden" th:field="{restaurant.restaurant_id}" value="${restaurant_id}" /> -->
 
                 
                
@@ -84,3 +84,5 @@ limitations under the License.
     </div>
 </body>
 </html>
+
+<!-- th:field="{restaurant.restaurant_id}" -->
