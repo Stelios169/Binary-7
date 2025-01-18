@@ -30,6 +30,10 @@
      private int review_id;
      private String review_comment;
      private double review_rating;
+
+     @ManyToOne
+     @JoinColumn(name = "restaurant_id")
+     private Restaurant restaurant;
  
      public Review(int review_id, String review_comment, double review_rating) {
          this.review_comment = review_comment;
@@ -37,10 +41,7 @@
          this.review_rating = review_rating;
      }
  
-     @ManyToOne
-     @JoinColumn(name = "restaurant_id")
-     private Restaurant restaurant;
- 
+     
      // Getters and Setters
      public int getReview_id() {
          return review_id;
@@ -67,7 +68,7 @@
      }
  
      public String getRestaurant() {
-         return restaurant.getRestaurant_name();
+        return restaurant != null ? restaurant.getRestaurant_name() : null;
      }
  
      public void setRestaurant(Restaurant restaurant) {
