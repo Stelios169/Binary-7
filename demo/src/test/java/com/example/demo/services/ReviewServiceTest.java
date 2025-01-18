@@ -27,8 +27,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
  import org.mockito.Mock;
  import org.mockito.junit.jupiter.MockitoExtension;
- 
- import java.util.List;
+
+import java.util.List;
  import java.util.Optional;
  
  import static org.mockito.Mockito.*;
@@ -51,17 +51,21 @@ import org.mockito.InjectMocks;
  
      @BeforeEach
      void setUp() {
-         restaurant = new Restaurant();
-         restaurant.setRestaurant_id(1);
-         restaurant.setRestaurant_name("Test Restaurant");
- 
-         review = new Review();
-         review.setReview_id(1);
-         review.setReviewRating(5);
-         review.setReviewComment("Great food!");
-     }
- 
-     @Test
+                  restaurant = new Restaurant(3, "1234hi", "Test Restaurant", "New York", "Italian@gmail.com", 5, 1234567, 1234567);
+                  restaurant.setRestaurant_id(1);
+                  restaurant.setRestaurant_name("Test Restaurant");
+          
+                  review = new Review(1, "Great food!", 5);
+                  review.setReview_id(1);
+                  review.setReviewRating(5);
+                  review.setReviewComment("Great food!");
+              }
+          
+              private Restaurant Restaurant(int i, String string, String string2, String string3, String string4, int j, int k) {
+                 throw new UnsupportedOperationException("Unimplemented method 'Restaurant'");
+              }
+         
+             @Test
      void testGetReviewsByRestaurant() {
          // Arrange
          when(reviewRepository.findByRestaurant_RestaurantId(1)).thenReturn(List.of(review));

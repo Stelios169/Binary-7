@@ -33,4 +33,3 @@ public class RecipeIngredientTest {
             assertEquals("tomato.jpg", ingredient.getImage());
     }
 }
-

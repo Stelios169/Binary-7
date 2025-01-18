@@ -22,7 +22,6 @@ import com.example.demo.statistics.dto.DishCostDTO;
 import com.example.demo.statistics.dto.DishProfitDTO;
 import com.example.demo.statistics.dto.SalesDTO;
 import com.example.demo.statistics.dto.TotalProfitDTO;
-import com.example.demo.models.Review;
 import com.example.demo.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

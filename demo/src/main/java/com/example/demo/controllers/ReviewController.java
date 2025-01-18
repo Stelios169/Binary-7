@@ -38,7 +38,7 @@ public class ReviewController {
         List<Review> reviews = reviewService.getReviewsByRestaurant(restaurant_id);
         model.addAttribute("restaurant_id", restaurant_id);
         model.addAttribute("reviews", reviews);
-        model.addAttribute("review", new Review()); // Empty review form for posting
+        model.addAttribute("review", new Review(reviews.size(),"", 0)); // Empty review form for posting
         return "reviewList"; // Return the correct view name
     }
 

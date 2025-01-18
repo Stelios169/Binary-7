@@ -57,8 +57,7 @@ public class RecipeOptimizerTest {
         // Mock δεδομένα
         LocalDate thresholdDate = LocalDate.now();
 
-        // Δημιουργία του αντικειμένου Ingredient με τον σωστό constructor
-        Ingredient ingredient = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", thresholdDate); // Σωστά ορίσματα
+        Ingredient ingredient = new Ingredient(1, "Tomato", 2.5, "kg", 10.0, thresholdDate);
 
         // Δημιουργία των αντικειμένων RecipeIngredient με τον σωστό constructor
         RecipeIngredient usedIngredient = new RecipeIngredient(1, 5.0, "kg", "Tomato", "Fresh tomato", "image_url");

@@ -133,18 +133,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import com.example.demo.models.Ingredient;
-import com.example.demo.services.SpoonacularClient;
+
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpMethod;
 import com.example.demo.models.Recipe;
 import java.util.Collections;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.mockito.MockitoAnnotations;
 import org.junit.jupiter.api.BeforeEach;
@@ -188,8 +185,8 @@ public class SpoonacularClientTest {
     @Test
     void testIngredientQueryConstruction() {
         // Δημιουργούμε mock συστατικά
-        Ingredient ingredient1 = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", null);
-        Ingredient ingredient2 = new Ingredient("Cheese", 5.0, 2, 4.5, "kg", null);
+        Ingredient ingredient1 = new Ingredient(1, "Tomato", 2.5, "kg", 10.0, null);
+        Ingredient ingredient2 = new Ingredient(1, "Cheese", 2, "kg", 5.0, null);
         List<Ingredient> ingredients = Arrays.asList(ingredient1, ingredient2);
 
         // Καλούμε την μέθοδο fetchRecipes
@@ -200,11 +197,12 @@ public class SpoonacularClientTest {
         assertEquals(expectedQuery, ingredientQuery, "The ingredient query is not correctly constructed!");
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     void testFetchRecipes() throws Exception {
         // Δημιουργούμε mock συστατικά
-        Ingredient ingredient1 = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", null);
-        Ingredient ingredient2 = new Ingredient("Cheese", 5.0, 2, 4.5, "kg", null);
+        Ingredient ingredient1 = new Ingredient(1, "Tomato", 2.5, "kg", 10.0, LocalDate.now());
+        Ingredient ingredient2 = new Ingredient(1, "Cheese", 2, "kg", 5.0, LocalDate.now());
         List<Ingredient> ingredients = Arrays.asList(ingredient1, ingredient2);
 
         // Mock για το RestTemplate response

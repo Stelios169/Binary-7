@@ -21,11 +21,9 @@ import com.example.demo.repositories.OrdersRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 
 
 class PaymentServiceTest {
@@ -42,11 +40,11 @@ class PaymentServiceTest {
         float orderTotal2 = 50.00f;
     
         // Mock orders
-        Orders mockOrder1 = new Orders();
+        Orders mockOrder1 = new Orders(1,orderTotal1, true,LocalDateTime.now());
         mockOrder1.setOrder_total(orderTotal1);
         mockOrder1.setOrder_status(true);
     
-        Orders mockOrder2 = new Orders();
+        Orders mockOrder2 = new Orders(2, orderTotal2, true, LocalDateTime.now());
         mockOrder2.setOrder_total(orderTotal2);
         mockOrder2.setOrder_status(true);
     

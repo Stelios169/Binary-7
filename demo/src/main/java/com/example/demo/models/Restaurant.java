@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.example.demo.models;
+ package com.example.demo.models;
 
 import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class Restaurant {
     private long restaurant_afm;
     private long restaurant_tel;
 
+    // No-argument constructor for Hibernate
+    public Restaurant() {
+    }
+
+    // Your existing constructor
     public Restaurant(int restaurant_id, String restaurant_password, String restaurant_name, String restaurant_address,
             String restaurant_email, double restaurant_rating, long restaurant_afm, long restaurant_tel) {
         this.restaurant_id = restaurant_id;
@@ -61,9 +67,6 @@ public class Restaurant {
 
     public void setRestaurant_id(int restaurant_id) {
         this.restaurant_id = restaurant_id;
-    }
-
-    public Restaurant() {
     }
 
     public String getRestaurant_password() {

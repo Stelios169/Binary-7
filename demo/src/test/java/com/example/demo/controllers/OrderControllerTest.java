@@ -28,6 +28,8 @@ import org.springframework.ui.Model;
  
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.time.LocalDateTime;
  
 class OrderControllerTest {
  
@@ -49,8 +51,8 @@ class OrderControllerTest {
     void createOrder_Success() {
         int tableId = 1;
         int restaurantId = 1;
-        Orders mockOrder = new Orders();
-        mockOrder.setOrder_id(10);
+        Orders mockOrder = new Orders(1, 234, true, LocalDateTime.now());
+        mockOrder.setOrder_id(1);
  
         when(orderService.createOrder(tableId, restaurantId)).thenReturn(mockOrder);
  

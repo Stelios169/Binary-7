@@ -19,12 +19,10 @@ package com.example.demo.models;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name = "Dish", schema = "Progr")
 public class Dish {
     @Id
@@ -46,8 +44,11 @@ public class Dish {
     @Transient
     private double score; // Σκορ προτεραιότητας πιάτων
 
-    public Dish(String dish_name, int dish_id, double dish_price, String dish_category, String dish_description,
-            boolean dish_availability, String dish_image_url) {
+    public Dish() {
+    }
+
+    public Dish(int dish_id, String dish_name, String dish_category, double dish_price, String dish_image_url, String dish_description,
+            boolean dish_availability) {
         this.dish_name = dish_name;
         this.dish_id = dish_id;
         this.dish_category = dish_category;
@@ -78,7 +79,7 @@ public class Dish {
         return dish_price;
     }
 
-    public void setDishPrice(double dish_price) {
+    public void setDish_price(double dish_price) {
         if (dish_price <= 0) {
             throw new IllegalArgumentException("Η τιμή του πιάτου πρέπει να είναι μεγαλύτερη από 0.");
         }

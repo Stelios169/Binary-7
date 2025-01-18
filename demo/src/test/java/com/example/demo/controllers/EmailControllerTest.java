@@ -58,10 +58,10 @@ public class EmailControllerTest {
             Restaurant restaurant = new Restaurant();
             restaurant.setRestaurant_id(2);
             restaurant.setRestaurant_email("stella.panopoulou678@gmail.com");
-            Ingredient ingredient = new Ingredient();
+            Ingredient ingredient = new Ingredient(1, "Tomato", 2.5, "Vegetable", 0.5, LocalDate.now());
             ingredient.setIngredient_name("Salmon");
-            ingredient.setIngredient_exp_date(LocalDate.now().plusDays(3));
-    
+            ingredient.setIngredient_exp_date(LocalDate.now().plusDays(3)); 
+
             // Mock συμπεριφορά
             when(emailService.findRestaurantsWithExpiringIngredients(any())).thenReturn(Collections.singletonList(restaurant));
             when(emailService.findExpiringIngredientsForRestaurant(eq(2), any())).thenReturn(Collections.singletonList(ingredient));

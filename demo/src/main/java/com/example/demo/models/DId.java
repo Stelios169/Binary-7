@@ -28,4 +28,12 @@ import lombok.Data;
 public class DId implements Serializable {
     private int ingredient_id;
     private int dish_id;
+
+    public void setIngredient_id(int ingredient_id) {
+        this.ingredient_id = ingredient_id;
+    }
+
+    public void setDish_id(int dish_id) {
+        this.dish_id = dish_id;
+    }
 }

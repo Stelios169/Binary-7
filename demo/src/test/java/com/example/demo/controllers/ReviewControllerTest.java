@@ -33,7 +33,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/*@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class)
 public class ReviewControllerTest {
 
     @Mock
@@ -44,6 +44,7 @@ public class ReviewControllerTest {
 
     private MockMvc mockMvc;
 
+    @Mock
     private Review review;
 
     @BeforeEach
@@ -57,9 +58,9 @@ public class ReviewControllerTest {
                 .setViewResolvers(viewResolver)
                 .build();
 
-        review = new Review();
+        review = new Review(1, "Great food!", 5.0);
         review.setReview_id(1);
-        review.setReviewRating(5);
+        review.setReviewRating(5.0);
         review.setReviewComment("Great food!");
     }
 
@@ -90,4 +91,4 @@ public class ReviewControllerTest {
             .andExpect(view().name("reviewList"))
             .andExpect(model().attribute("reviews", List.of(review)));
     } 
-} */
+}

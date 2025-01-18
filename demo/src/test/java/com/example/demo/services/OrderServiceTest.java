@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
- 
+
 import java.time.LocalDateTime;
 import java.util.Optional;
  
@@ -66,7 +66,7 @@ class OrderServiceTest {
         when(ordersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true))
                 .thenReturn(Optional.empty());
  
-        Orders mockOrder = new Orders();
+        Orders mockOrder = new Orders(1, 234, true, LocalDateTime.now());
         when(ordersRepository.save(any(Orders.class))).thenReturn(mockOrder);
  
         Orders result = orderService.createOrder(tableId, restaurantId);
@@ -95,11 +95,11 @@ class OrderServiceTest {
         int orderId = 10;
         int quantity = 2;
  
-        Orders mockOrder = new Orders();
+        Orders mockOrder = new Orders(orderId, 0.0f, true, LocalDateTime.now());
         mockOrder.setOrder_id(orderId);
         mockOrder.setOrder_total(0.0f);
  
-        Dish mockDish = new Dish();
+        Dish mockDish = new Dish(dishId, "Pasta", "Main courses", 10.0f, "pasta.jpg", "Pasta food", true);
         mockDish.setDish_id(dishId);
         mockDish.setDish_price(10.0f);
         mockDish.setDish_availability(true);
@@ -131,7 +131,7 @@ class OrderServiceTest {
     @Test
     void removeOrder_Success() {
         int orderId = 10;
-        Orders mockOrder = new Orders();
+        Orders mockOrder = new Orders(orderId, 0.0f, true, LocalDateTime.now());
         mockOrder.setOrder_id(orderId);
  
         when(ordersRepository.findById(orderId)).thenReturn(Optional.of(mockOrder));

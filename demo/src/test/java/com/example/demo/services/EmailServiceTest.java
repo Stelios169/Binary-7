@@ -50,7 +50,7 @@ public class EmailServiceTest {
     
     @Test
     void testSendExpiringIngredientsNotification_Success() {
-        Ingredient ingredient = new Ingredient();
+        Ingredient ingredient = new Ingredient(1, "Salmon", 2, "kg", 34, LocalDate.now());
         ingredient.setIngredient_name("Salmon");
         ingredient.setIngredient_exp_date(LocalDate.now().plusDays(3));
     

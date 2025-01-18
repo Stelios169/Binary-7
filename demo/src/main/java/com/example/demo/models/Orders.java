@@ -18,7 +18,6 @@ package com.example.demo.models;
 
 import jakarta.persistence.CascadeType;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ import jakarta.persistence.Id;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name = "Orders", schema = "Progr")
 public class Orders {
     @Id
@@ -45,6 +43,9 @@ public class Orders {
     private float order_total;
     private boolean order_status;
     private LocalDateTime order_datetime;
+
+    public Orders() {
+    }
 
     public Orders(int order_id, float order_total, boolean order_status, LocalDateTime order_datetime) {
         this.order_id = order_id;

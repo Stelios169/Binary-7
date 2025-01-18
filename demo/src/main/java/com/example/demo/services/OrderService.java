@@ -30,7 +30,6 @@ import com.example.demo.repositories.RTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -61,7 +60,7 @@ public class OrderService {
                             restaurantId);
         }
 
-        Orders order = new Orders();
+        Orders order = new Orders(0, 100.50f, true, LocalDateTime.now());
         order.setTable(optionalRTable.get());
         order.setOrder_total((float) 0.0); // Αρχική τιμή
         order.setOrder_status(true); // Ενεργή παραγγελία
