@@ -10,14 +10,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="payment">
-            <button onclick="location.href='/menu/payment';" class="pay">Payment</button>
-        </div>
-        
+                
         <div id="sidebar">
             <div id="keys">
                 <button onclick="location.href='/';" class="other-buttons">Home <i class='bx bxs-home-smile' ></i></button>
                 <button class="other-buttons">Menu/Order</button>
+                <button onclick="location.href='/menu/payment';" class="other-buttons">Payment</button>
                 <button onclick="location.href='/aboutUs';" class="other-buttons">About us</button>
                 <button onclick="location.href='/reviewList';" class="other-buttons">Reviews</button>
                 <button onclick="location.href='/login';" id="login">Login</button>
@@ -69,6 +67,7 @@
                         </div>
                         <p class="description">Classic Italian dessert with coffee-soaked ladyfingers</p>
                     </div>
+                    <div></div>
                     
                     <button onclick="location.href='/menu/create';" class="order">
                          Order Here
@@ -82,23 +81,33 @@
                         </div>
                         <h1>2. What categories of dishes are you interested in?</h1>
                         <div class="filter">
-                            <input type="checkbox" id="category1" name="categories" value="Appetizer">
-                            <label for="category1" class="labels">Appetizers</label>
-                            <input type="checkbox" id="category2" name="categories" value="Main Courses">
-                            <label for="category2" class="labels">Main Courses</label>
-                            <input type="checkbox" id="category3" name="categories" value="Desserts">
-                            <label for="category3" class="labels">Desserts</label>
+                            <div>
+                                <input type="checkbox" id="category1" name="categories" value="Appetizer">
+                                <label for="category1" class="labels">Appetizers</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="category2" name="categories" value="Main Courses">
+                                <label for="category2" class="labels">Main Courses</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="category3" name="categories" value="Desserts">
+                                <label for="category3" class="labels">Desserts</label>
+                            </div>
                         </div>
                         <h1>3. In case of an allergy, please enter the allergenic ingredient.</h1>
                         <div class="filter">
-                            <input type="checkbox" id="allergy1" name="allergies" value="Tomato">
-                            <label for="allergy1" class="labels">Tomato</label>
-            
-                            <input type="checkbox" id="allergy2" name="allergies" value="Pepperoni">
-                            <label for="allergy2" class="labels">Pepperoni</label>
-
-                            <input type="checkbox" id="allergy3" name="allergies" value="Garlic">
-                            <label for="allergy3" class="labels">Garlic</label>
+                            <div>
+                                <input type="checkbox" id="allergy1" name="allergies" value="Tomato">
+                                <label for="allergy1" class="labels">Tomato</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="allergy2" name="allergies" value="Pepperoni">
+                                <label for="allergy2" class="labels">Pepperoni</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="allergy3" name="allergies" value="Garlic">
+                                <label for="allergy3" class="labels">Garlic</label>
+                            </div>
                         </div>
                         <button type="submit" class="submit">
                             Submit Answers  
@@ -117,11 +126,7 @@
                     <div th:if="${filteredDishes == null}" class="wrong">
                         <p>No dishes found for the given criteria</p>
                     </div>
-                      
-                     
-                    <button onclick="location.href='/menu/create';" class="order2">
-                        Order Here
-                    </button>
+
                 </div>
             </div>
         </div>

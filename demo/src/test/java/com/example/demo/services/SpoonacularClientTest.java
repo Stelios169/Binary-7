@@ -206,5 +206,3 @@ verify(restTemplate, times(1)).exchange(anyString(), eq(HttpMethod.GET), eq(null
         assertEquals("Tomato Cheese Pizza", recipes.get(0).getTitle(), "The recipe title should be 'Tomato Cheese Pizza'");
     }
 }
-
-

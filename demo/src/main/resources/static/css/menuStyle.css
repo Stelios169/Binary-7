@@ -242,11 +242,6 @@ body, html {
 }
 
 .preferences {
-    position:relative;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
     width:36vw;
     height: 84vh;
     position: relative;
