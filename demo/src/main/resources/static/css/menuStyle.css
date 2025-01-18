@@ -375,6 +375,14 @@ body, html {
 }
 
 .wrong {
-    z-index:5;
-    font-weight: bold;
+    padding-right: 20px;
+    position: relative;
+    z-index: 2;
+    font-size: 2em;
+    color: red;
+    letter-spacing: 3.5px;
+    text-shadow: 
+        0 0 1px #000,   
+        0 0 2px #000,   
+        0 0 10px black;
 }

@@ -160,22 +160,24 @@ container{
     background: rgb(145, 169, 177);
 }
 
-.description p{
+.description p {
     cursor: pointer;
-    color:hsl(187, 100%, 83%);
+    color: hsl(188, 100%, 89%);
     text-align: center;
     position: relative;
     top: 40%;
     right: 4%;
     font-style: italic;
-    font-size: 25px;
-    background-color: rgba(145, 169, 177, 0.4);
+    font-size: 26px;
+    background-color: rgba(145, 169, 177, 0.7);
     border-radius: 10px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(7px);
     max-width: 80%;
-    max-height: 40%;
-    overflow: hidden;
+    overflow: visible;
+    padding: 10px;
+    height: auto;
 }
+
 .description:hover p{
     color:hsl(188, 100%, 89%);
     text-align: center;
@@ -217,4 +219,3 @@ container{
     font-size: 120%;
     background-size: 100% 100%;
 }
-
