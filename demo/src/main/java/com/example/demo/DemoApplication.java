@@ -75,4 +75,8 @@ public class DemoApplication {
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder();
     }
+    @Bean 
+    public String spoonacularApiKey() {         
+        return "your-dummy-api-key"; 
+    }
 }

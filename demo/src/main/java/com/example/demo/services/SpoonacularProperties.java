@@ -3,6 +3,7 @@ package com.example.demo.services;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+
 @Component
 @ConfigurationProperties(prefix = "spoonacular.api")
 public class SpoonacularProperties {

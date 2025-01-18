@@ -27,7 +27,9 @@
  void testPricePerServing() {
  Recipe recipe = new Recipe(1, "Test Recipe", "test_image.jpg", 2, 3, new
  ArrayList<>(), new ArrayList<>(), 100);
+ recipe.setPricePerServing(15.5); // Use the setter method
  //recipe.pricePerServing = 15.5;
+
 
  assertEquals(15.5, recipe.getPricePerServing());
  }

@@ -29,7 +29,7 @@ public class Recipe {
         this.usedIngredients = usedIngredients;
         this.missedIngredients = missedIngredients;
         this.likes = likes;
-        //this.pricePerServing = pricePerServing;
+        this.pricePerServing = pricePerServing;
     }
 
     public int getId() {

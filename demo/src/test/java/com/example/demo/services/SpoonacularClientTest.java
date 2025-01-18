@@ -126,10 +126,13 @@ import org.springframework.http.HttpMethod;
 import com.example.demo.models.Recipe;
 import java.util.Collections;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.type.TypeReference;
-
+import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.BeforeEach;
 
 public class SpoonacularClientTest {
 
@@ -140,18 +143,24 @@ public class SpoonacularClientTest {
     private SpoonacularProperties properties;
  
 
-    // Μόκ για το RestTemplate
-    private final RestTemplate restTemplate = mock(RestTemplate.class);
+    @Mock
+    private RestTemplate restTemplate;
 
-    // Μόκ για την SpoonacularClient
-    private final SpoonacularClient spoonacularClient;
+    @InjectMocks
+    private SpoonacularClient spoonacularClient;
 
-    public SpoonacularClientTest() {
+    @BeforeEach
+    public void setup() {              
+    MockitoAnnotations.openMocks(this);         
+    spoonacularClient = new SpoonacularClient(new SpoonacularProperties("dummy-api-key"), restTemplate, objectMapper); }
+
+    /*public SpoonacularClientTest() {
         // Χρησιμοποιούμε το mock RestTemplate για να δημιουργήσουμε την SpoonacularClient
         spoonacularClient = new SpoonacularClient(
             new SpoonacularProperties("dummy-api-key"), restTemplate, new ObjectMapper()
         );
-    }
+    }*/
+
 
     @Test
     void testIngredientQueryConstruction() {
@@ -169,7 +178,7 @@ public class SpoonacularClientTest {
     }
 
     @Test
-    void testFetchRecipes() {
+    void testFetchRecipes() throws Exception {
         // Δημιουργούμε mock συστατικά
         Ingredient ingredient1 = new Ingredient("Tomato", 10.0, 1, 2.5, "kg", null);
         Ingredient ingredient2 = new Ingredient("Cheese", 5.0, 2, 4.5, "kg", null);
@@ -183,7 +192,7 @@ public class SpoonacularClientTest {
             .thenReturn(mockResponse);
         
         List<Recipe> mockRecipes = List.of(new Recipe(1, "Recipe 1", "image1", 2, 1, Collections.emptyList(), Collections.emptyList(), 100));
-        //when(objectMapper.readValue(anyString(), any(TypeReference.class))).thenReturn(mockRecipes);
+        when(objectMapper.readValue(anyString(), any(TypeReference.class))).thenReturn(mockRecipes);
             
         
 

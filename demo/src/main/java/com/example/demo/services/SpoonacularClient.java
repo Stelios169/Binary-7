@@ -130,7 +130,8 @@ public class SpoonacularClient {
                 apiKey
             );
             System.out.println("Request URL: " + url);  // Έλεγχος της URL
-    
+            
+            String jsonResponse = null; // Declare jsonResponse outside the try block
             try {
                 // Κάντε την κλήση στο API
                 ResponseEntity<String> response = restTemplate.exchange(
@@ -141,7 +142,7 @@ public class SpoonacularClient {
                 );
     
                 // Διαχειριστείτε την απόκριση JSON
-                String jsonResponse = response.getBody();
+                jsonResponse = response.getBody();
                 System.out.println("Response Body: " + jsonResponse); 
     
                 // Μετατροπή JSON σε αντικείμενα Recipe
@@ -157,7 +158,7 @@ public class SpoonacularClient {
             } catch (Exception e) {
                 e.printStackTrace();  // Εκτύπωση του σφάλματος για αποσφαλμάτωση
                 return Collections.emptyList();
-            } */
+            }*/
             
         } 
     }

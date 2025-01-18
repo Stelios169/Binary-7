@@ -67,17 +67,8 @@ public class DishServiceTest {
         assertThat(result, equalTo(mockFavoriteDishes.get(0)));
         
         // Επιβεβαιώνουμε ότι το repository κλήθηκε σωστά
-        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);
-}
-        /*when(dishRepository.findFavoriteDish(expectedStartDate)).thenReturn(mockFavoriteDishes);
+        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate); }
 
-        FavoriteDishDTO result = dishService.getFavoriteDishForLastWeek();
-
-        assertEquals(mockFavoriteDishes, result);
-        verify(dishRepository, times(1)).findFavoriteDish(expectedStartDate);*/
-       // FavoriteDishDTO actualList = dishService.getFavoriteDishForLastWeek();
-
-        //assertThat(actualList).containsExactlyInAnyOrderElementsOf(expectedList);
     
 
     @Test
