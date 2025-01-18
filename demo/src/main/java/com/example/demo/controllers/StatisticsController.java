@@ -80,12 +80,11 @@ public class StatisticsController {
         return dishService.getAnnualTotalProfit();
     }
 
-    @GetMapping("/tables")
+    @GetMapping("/ingredient")
     public String getPurchaseTime(@RequestParam(defaultValue = "1") int restaurant_id, Model model) {
         List<Ingredient> ingredients = dishService.getIngredients(restaurant_id);
         model.addAttribute("restaurant_id", restaurant_id);
         model.addAttribute("ingredients", ingredients);
-        return "tables";
+        return "ingredient";
     }
-
 }

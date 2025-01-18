@@ -29,6 +29,10 @@ limitations under the License.
 .container2 {
     width:88vw;
     background:hsl(197, 14%, 10%);
+    display:flex;
+    gap:1em;
+    align-items: center;
+    flex-direction: column;
 }
 .container {
     height:100vh;
@@ -59,7 +63,7 @@ limitations under the License.
     box-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 2px #39FF14, 
                  0 0 4px #00FF00, 0 0 8px #00FF00, 0 0 20px #00FF00;
 }
-.tables {
+.ingredient {
     font-size: 1.5rem;
     color: #00FFFF;
     text-shadow: 0 0 1px hsl(180, 100%, 50%), 0 0 10px #00FFFF, 0 0 20px #00FFFF, 
@@ -72,14 +76,14 @@ limitations under the License.
     cursor:pointer;
 }
 
-.tables:active {
+.ingredient:active {
     color:black;
     background: hsl(180, 100%, 50%);
     box-shadow: 0 0 5px hsl(180, 100%, 50%), 0 0 10px hsl(180, 100%, 50%), 0 0 2px hsl(180, 100%, 50%), 
                  0 0 4px hsl(190, 100%, 46%), 0 0 8px hsl(190, 100%, 46%), 0 0 20px hsl(190, 100%, 46%);
 }
 
-.ingredients {
+.daily-dish {
     font-size: 1.5rem;
     color: #9400D3;
     text-shadow: 0 0 1px hsl(282, 100%, 41%), 0 0 1px #9400D3, 0 0 20px #9400D3, 
@@ -92,7 +96,7 @@ limitations under the License.
     cursor:pointer;
 }
 
-.ingredients:active {
+.daily-dish:active {
     color:black;
     background: hsl(282, 100%, 41%);
     box-shadow: 0 0 5px hsl(282, 100%, 41%), 0 0 10px hsl(282, 100%, 41%), 0 0 2px hsl(282, 100%, 41%), 
@@ -119,3 +123,46 @@ limitations under the License.
                  0 0 4px hsl(310, 100%, 45%), 0 0 8px hsl(310, 100%, 45%), 0 0 20px hsl(310, 100%, 45%);
 }
 
+.input {
+    height: 100%;
+    background:hsl(195, 17%, 63%);
+    border:none;
+    outline:none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius:40px;
+    -size:16px;
+    color:rgb(0, 0, 0);
+    padding:20px 45px 20px 20px;
+}
+
+.result {
+    font-size: 1rem;
+    padding:5px;
+    color: #39FF14;
+    text-shadow: 0 0 1px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 
+                 0 0 40px #00FF00, 0 0 40px #00FF00, 0 0 30px #00FF00;
+    width:100%;
+    
+    background: black;
+    outline:none;
+    border:2px solid #39FF14;
+}
+
+.submit {
+    padding:15px 20px;
+    border:none;
+    width:100%;
+    outline:none;
+    background-color: hsl(130, 87%, 55%);
+    box-shadow: 0 5px 0 hsl(115, 40%, 26%);
+    cursor:pointer;
+    border-radius: 15px;
+    font-size:1em;
+    font-weight: bold;
+    z-index: 2; 
+}
+
+.submit:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
