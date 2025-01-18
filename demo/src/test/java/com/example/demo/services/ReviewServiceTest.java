@@ -14,57 +14,90 @@
  * limitations under the License.
  */
 
-package com.example.demo.services;
+ package com.example.demo.services;
 
-import com.example.demo.controllers.ReviewController;
-import com.example.demo.models.Review;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+ import com.example.demo.models.Review;
+ import com.example.demo.models.Restaurant;
+ import com.example.demo.repositories.ReviewRepository;
+ import com.example.demo.repositories.RestaurantRepository;
+ import jakarta.persistence.EntityNotFoundException;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.ui.Model;
-
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-
-class ReviewControllerTest {
-/* 
-    @Mock
-    private ReviewService reviewService;
-
-    @InjectMocks
-    private ReviewController reviewController;
-
-    @Mock
-    private Model model;
-
-    private Review review1;
-    private Review review2;
-
-    @BeforeEach
-    void setUp() {
-        review1 = new Review(1, "Amazing!", 5.0);
-        review2 = new Review(2, "Not bad.", 3.5);
-    }
-
-    @Test
-    void testGetReviewsByRestaurant() {
-        // Mock the service call
-        when(reviewService.getReviewsByRestaurant(1)).thenReturn(Arrays.asList(review1, review2));
-
-        String viewName = reviewController.getReviewsByRestaurant(1, model);
-        assertEquals("reviewList", viewName);
-    }
-
-    @Test
-    void testAddReview() {
-        // Mock the service behavior
-        when(reviewService.addReview(any(Review.class), eq(1))).thenReturn(review1);
-        when(reviewService.getReviewsByRestaurant(1)).thenReturn(Arrays.asList(review1, review2));
-
-        String viewName = reviewController.addReview(review1, 1, model);
-        assertEquals("reviewList", viewName);
-    }*/
-}
+ import org.mockito.Mock;
+ import org.mockito.junit.jupiter.MockitoExtension;
+ 
+ import java.util.List;
+ import java.util.Optional;
+ 
+ import static org.mockito.Mockito.*;
+ import static org.junit.jupiter.api.Assertions.*;
+ 
+ @ExtendWith(MockitoExtension.class)
+ public class ReviewServiceTest {
+ 
+     @Mock
+     private ReviewRepository reviewRepository;
+ 
+     @Mock
+     private RestaurantRepository restaurantRepository;
+ 
+     @InjectMocks
+     private ReviewService reviewService;
+ 
+     private Restaurant restaurant;
+     private Review review;
+ 
+     @BeforeEach
+     void setUp() {
+         restaurant = new Restaurant();
+         restaurant.setRestaurant_id(1);
+         restaurant.setRestaurant_name("Test Restaurant");
+ 
+         review = new Review();
+         review.setReview_id(1);
+         review.setReviewRating(5);
+         review.setReviewComment("Great food!");
+     }
+ 
+     @Test
+     void testGetReviewsByRestaurant() {
+         // Arrange
+         when(reviewRepository.findByRestaurant_RestaurantId(1)).thenReturn(List.of(review));
+ 
+         // Act
+         List<Review> reviews = reviewService.getReviewsByRestaurant(1);
+ 
+         // Assert
+         assertEquals(1, reviews.size());
+         assertEquals("Great food!", reviews.get(0).getReviewComment());
+         verify(reviewRepository, times(1)).findByRestaurant_RestaurantId(1);
+     }
+ 
+     @Test
+     void testAddReview() {
+         // Arrange
+         when(restaurantRepository.findById(1)).thenReturn(Optional.of(restaurant));
+         when(reviewRepository.save(review)).thenReturn(review);
+ 
+         // Act
+         Review savedReview = reviewService.addReview(review, 1);
+ 
+         // Assert
+         assertNotNull(savedReview);
+         assertEquals("Great food!", savedReview.getReviewComment());
+         verify(restaurantRepository, times(1)).findById(1);
+         verify(reviewRepository, times(1)).save(review);
+     }
+ 
+     @Test
+     void testAddReview_RestaurantNotFound() {
+         // Arrange
+         when(restaurantRepository.findById(1)).thenReturn(Optional.empty());
+ 
+         // Act & Assert
+         assertThrows(EntityNotFoundException.class, () -> reviewService.addReview(review, 1));
+     }
+ }
+ 

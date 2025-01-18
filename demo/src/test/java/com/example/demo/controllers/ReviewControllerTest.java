@@ -13,63 +13,81 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.example.demo.controllers;
 
 import com.example.demo.models.Review;
 import com.example.demo.services.ReviewService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.ui.Model;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@ExtendWith(MockitoExtension.class)
 public class ReviewControllerTest {
-/* 
-    private ReviewController reviewController;
+
+    @Mock
     private ReviewService reviewService;
-    private Model model;
+
+    @InjectMocks
+    private ReviewController reviewController;
+
+    private MockMvc mockMvc;
+
+    private Review review;
 
     @BeforeEach
     void setUp() {
-        reviewService = mock(ReviewService.class);
-        model = mock(Model.class);
-        reviewController = new ReviewController(reviewService);
+        // Ορίζουμε τον ViewResolver για τις δοκιμές
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+
+        mockMvc = MockMvcBuilders.standaloneSetup(reviewController)
+                .setViewResolvers(viewResolver)
+                .build();
+
+        review = new Review();
+        review.setReview_id(1);
+        review.setReviewRating(5);
+        review.setReviewComment("Great food!");
     }
 
     @Test
-    void getReviewsByRestaurant() {
-        List<Review> reviews = Arrays.asList(new Review(), new Review());
-        when(reviewService.getReviewsByRestaurant(anyInt())).thenReturn(reviews);
+    void testGetReviewsByRestaurant() throws Exception {
+        // Arrange
+        when(reviewService.getReviewsByRestaurant(1)).thenReturn(List.of(review));
 
-        String viewName = reviewController.getReviewsByRestaurant(1, model);
-
-        assertEquals("reviewList", viewName);
-        verify(reviewService, times(1)).getReviewsByRestaurant(1);
-        verify(model, times(1)).addAttribute("restaurant_id", 1);
-        verify(model, times(1)).addAttribute("reviews", reviews);
-        verify(model, times(1)).addAttribute("review", new Review());
+        // Act & Assert
+        mockMvc.perform(get("/reviewList?restaurant_id=1"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("reviewList"))
+            .andExpect(model().attributeExists("reviews"))
+            .andExpect(model().attribute("reviews", List.of(review)));
     }
 
     @Test
-    void addReview() {
-        Review review = new Review();
-        Review savedReview = new Review();
-        when(reviewService.addReview(any(Review.class), anyInt())).thenReturn(savedReview);
+    void testAddReview() throws Exception {
+        // Arrange
+        when(reviewService.addReview(any(Review.class), eq(1))).thenReturn(review);
+        when(reviewService.getReviewsByRestaurant(1)).thenReturn(List.of(review));
 
-        String viewName = reviewController.addReview(review, 1, model);
-
-        assertEquals("reviewList", viewName);
-        verify(reviewService, times(1)).addReview(review, 1);
-        verify(reviewService, times(1)).getReviewsByRestaurant(1);
-        verify(model, times(1)).addAttribute("restaurant_id", 1);
-        verify(model, times(1)).addAttribute("review", savedReview);
-        verify(model, times(1)).addAttribute("reviews", reviewService.getReviewsByRestaurant(1));
-    } */
+        // Act & Assert
+        mockMvc.perform(post("/reviewList")
+            .param("restaurant_id", "1")
+            .flashAttr("review", review))
+            .andExpect(status().isOk())
+            .andExpect(view().name("reviewList"))
+            .andExpect(model().attribute("reviews", List.of(review)));
+    }
 }
