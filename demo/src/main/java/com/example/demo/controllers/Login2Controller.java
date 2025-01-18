@@ -31,43 +31,43 @@ import org.springframework.ui.Model;
 public class Login2Controller {
 
     private final RestaurantRepository restaurantRepository;
+
     public Login2Controller(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
     }
 
-    /*@Autowired
-    private LoginService loginService;*/
+    /*
+     * @Autowired
+     * private LoginService loginService;
+     */
 
     @PostMapping("/login")
     public String processLogin(
             @RequestParam("email") String email,
             @RequestParam("password") String password,
             Model model) {
-                 Optional<Restaurant> restaurant = restaurantRepository.findByEmail(email);
-                 if (restaurant.isPresent()) {
-                    if (restaurant.get().getRestaurant_password().equals(password)) {
-                        return "tables"; // Redirect if login successful
-                    } else {
-                        model.addAttribute("error", "Invalid password");
-                        return "login";
-                    }
-                } else {
-                    model.addAttribute("error", "Email not found");
-                    return "login";
-                }
+        Optional<Restaurant> restaurant = restaurantRepository.findByEmail(email);
+        if (restaurant.isPresent()) {
+            if (restaurant.get().getRestaurant_password().equals(password)) {
+                return "redirect:/login/ingredient"; // Redirect if login successful
+            } else {
+                model.addAttribute("error", "Invalid password");
+                return "login";
             }
-
-
-                /*if (loginService.validateLogin(email, password)) {
-                    return "tables"; // Αν η σύνδεση είναι επιτυχής
-                } else {
-                    model.addAttribute("error", "Invalid email or password");
-                    return "login"; // Επιστροφή στη φόρμα με μήνυμα λάθους
-                }
-            }*/
-
-        
-
+        } else {
+            model.addAttribute("error", "Email not found");
+            return "login";
+        }
     }
 
+    /*
+     * if (loginService.validateLogin(email, password)) {
+     * return "tables"; // Αν η σύνδεση είναι επιτυχής
+     * } else {
+     * model.addAttribute("error", "Invalid email or password");
+     * return "login"; // Επιστροφή στη φόρμα με μήνυμα λάθους
+     * }
+     * }
+     */
 
+}

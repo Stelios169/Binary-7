@@ -55,7 +55,7 @@ public class RecipeControllerTest {
         verify(model).addAttribute("budget", 0);
 
         // Assert the returned view name
-        assertEquals("ingredients", viewName);
+        assertEquals("daily-dish", viewName);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class RecipeControllerTest {
         verify(model).addAttribute("budget", budget);
 
         // Assert the returned view name
-        assertEquals("ingredients", viewName);
+        assertEquals("daily-dish", viewName);
     }
 }
     

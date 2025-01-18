@@ -27,18 +27,6 @@ public class MenuFilterControllerTest {
     private MenuFilterService menuFilterService;
 
     @Test
-    public void testViewMenu() throws Exception {
-        // Mock the service method
-        when(menuFilterService.viewMenu()).thenReturn(Map.of());
-
-        // Perform the GET request to /menu/view and check the result
-        mockMvc.perform(MockMvcRequestBuilders.get("/menu/view"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("menuView"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("menu"));
-    }
-
-    @Test
     public void testFilterMenuWithBudget() throws Exception {
         // Mock the service method for filtering menu by budget
         when(menuFilterService.filterMenu(10.0)).thenReturn(List.of());

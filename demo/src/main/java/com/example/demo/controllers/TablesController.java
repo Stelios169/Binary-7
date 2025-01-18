@@ -21,18 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TablesController {
-    @RequestMapping("/login/tables")
+    @RequestMapping("/login/ingredient")
     public String login() {
-        return "tables";
+        return "ingredient";
     }
 
-    @RequestMapping("/login/ingredients")
+    @RequestMapping("/login/daily-dish")
     public String ingr() {
-        return "ingredients";
+        return "daily-dish";
     }
-
-    // @RequestMapping("/login/statistics")
-    // public String stats() {
-    // return "statistics";
-    // }
 }

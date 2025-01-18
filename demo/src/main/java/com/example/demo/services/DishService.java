@@ -81,5 +81,5 @@ public class DishService {
     public List<Ingredient> getIngredients(int restaurant_id) {
         return ingredientRepository.findIngredients(restaurant_id);
     }
-
+    
 }

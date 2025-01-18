@@ -87,7 +87,7 @@ body, html {
     background-color:hsl(187, 100%, 83%);
 }
 
-container{
+.container{
     max-height: fit-content;
     display: flex;
     flex-direction: row;
@@ -119,7 +119,6 @@ container{
     transform: translateY(-50%);
 }
 .hello h1 {
-    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: center;
@@ -161,7 +160,6 @@ container{
 }
 
 .description p {
-    cursor: pointer;
     color: hsl(188, 100%, 89%);
     text-align: center;
     position: relative;
