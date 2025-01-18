@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.demo.controllers;
+ package com.example.demo.controllers;
 
 import com.example.demo.models.Dish;
 import com.example.demo.services.MenuFilterService;
@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-
 @RequestMapping("/menu")
 public class MenuFilterController {
     private final MenuFilterService menuFilterService;
@@ -36,6 +35,7 @@ public class MenuFilterController {
         this.menuFilterService = menuFilterService;
     }
 
+    // Μέθοδος για την εμφάνιση του μενού ταξινομημένου
     @GetMapping("/view")
     public String viewMenu(Model model) {
         Map<String, List<Dish>> menu = menuFilterService.viewMenu();
@@ -43,14 +43,28 @@ public class MenuFilterController {
         return "menuView";
     }
 
-    @GetMapping("/menu")
-    public String filterMenu(@RequestParam double budget,
-            @RequestParam String[] categories,
-            @RequestParam String[] allergies,
-            Model model) {
-        List<Dish> filteredDishes = menuFilterService.filterMenu(budget);
+    // Μέθοδος για το φιλτράρισμα του μενού με βάση τον προϋπολογισμό, κατηγορίες και αλλεργιογόνα
+    @GetMapping("/filter")
+    public String filterMenu(@RequestParam(required = false) Double budget,
+                             @RequestParam(required = false) String[] categories,
+                             @RequestParam(required = false) String[] allergies,
+                             Model model) {
+
+        // Φιλτράρισμα με βάση τον προϋπολογισμό
+        List<Dish> filteredDishes = menuFilterService.filterMenu(budget != null ? budget : Double.MAX_VALUE);
+
+        // Φιλτράρισμα με βάση τις κατηγορίες, αν δίνονται
+        if (categories != null && categories.length > 0) {
+            filteredDishes = menuFilterService.filterByCategory(categories);
+        }
+
+        // Φιλτράρισμα με βάση τα αλλεργιογόνα, αν δίνονται
+        if (allergies != null && allergies.length > 0) {
+            filteredDishes = menuFilterService.filterByAllergens(allergies);
+        }
+
+        // Προσθήκη των φίλτρων στο μοντέλο για την προβολή
         model.addAttribute("filteredDishes", filteredDishes);
         return "menu";
     }
-
 }
