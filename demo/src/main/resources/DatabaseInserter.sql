@@ -4,7 +4,7 @@
 -- ! DO NOT RUN THE FOLLOWING BLOCK IF NOT NESESERY !
 -- Only do so in case the database schema is recreated
 
-INSERT INTO Progr.Restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_tel, restaurant_afm, restaurant_email, restaurant_rating, restaurant_password)
+/*INSERT INTO Progr.Restaurant (restaurant_id, restaurant_name, restaurant_address, restaurant_tel, restaurant_afm, restaurant_email, restaurant_rating, restaurant_password)
 VALUES
     (1, 'La Pasteria', 'Patision 28, Athens', 2101234567, 123456789012, 'despinalab@gmail.com', 4.5, 'password123'),
     (2, 'Shisan', 'Ermou 8, Athens', 2109876543, 987654321098, 'stella.panopoulou678@gmail.com', 4.8, 'password456');
@@ -129,3 +129,4 @@ VALUES
     (4, 2, 2),
     (5, 3, 1),
     (3, 4, 4);
+*/

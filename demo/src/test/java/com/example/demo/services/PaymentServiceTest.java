@@ -21,6 +21,7 @@ import com.example.demo.repositories.OrdersRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,59 +29,43 @@ import static org.mockito.ArgumentMatchers.any;
 
 
 class PaymentServiceTest {
-/* 
+
     @Test
     void testProcessPayment_OrderExists() {
         // Mock dependencies
         OrdersRepository mockOrdersRepository = Mockito.mock(OrdersRepository.class);
-
+    
         // Test data
         int tableId = 1;
         int restaurantId = 101;
-        float orderTotal = 75.50f;
-
-        // Mock order
-        Orders mockOrder = new Orders();
-        mockOrder.setOrder_total(orderTotal);
-        mockOrder.setOrder_status(true);
-
+        float orderTotal1 = 75.50f;
+        float orderTotal2 = 50.00f;
+    
+        // Mock orders
+        Orders mockOrder1 = new Orders();
+        mockOrder1.setOrder_total(orderTotal1);
+        mockOrder1.setOrder_status(true);
+    
+        Orders mockOrder2 = new Orders();
+        mockOrder2.setOrder_total(orderTotal2);
+        mockOrder2.setOrder_status(true);
+    
         // Stub the repository method
-        Mockito.when(mockOrdersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true))
-                .thenReturn(Optional.of(mockOrder));
-
+        Mockito.when(mockOrdersRepository.findAllByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true))
+                .thenReturn(List.of(mockOrder1, mockOrder2));
+    
         // Instantiate the service
         PaymentService paymentService = new PaymentService(mockOrdersRepository);
-
+    
         // Call the method under test
         float result = paymentService.processPayment(tableId, restaurantId);
-
+    
         // Verify interactions and assertions
-        Mockito.verify(mockOrdersRepository).save(mockOrder);
-        assertEquals(orderTotal, result);
-        assertEquals(false, mockOrder.isOrder_status());
+        Mockito.verify(mockOrdersRepository).save(mockOrder1); // Verify save for the first order
+        Mockito.verify(mockOrdersRepository).save(mockOrder2); // Verify save for the second order
+        assertEquals(orderTotal1 + orderTotal2, result); // Ensure total amount matches
+        assertEquals(false, mockOrder1.isOrder_status()); // Ensure first order status is updated
+        assertEquals(false, mockOrder2.isOrder_status()); // Ensure second order status is updated
     }
-
-    @Test
-    void testProcessPayment_NoActiveOrder() {
-        // Mock dependencies
-        OrdersRepository mockOrdersRepository = Mockito.mock(OrdersRepository.class);
-
-        // Test data
-        int tableId = 1;
-        int restaurantId = 101;
-
-        // Stub the repository method
-        Mockito.when(mockOrdersRepository.findByTableIdAndRestaurantIdAndOrderStatus(tableId, restaurantId, true))
-                .thenReturn(Optional.empty());
-
-        // Instantiate the service
-        PaymentService paymentService = new PaymentService(mockOrdersRepository);
-
-        // Call the method under test
-        float result = paymentService.processPayment(tableId, restaurantId);
-
-        // Verify interactions and assertions
-        Mockito.verify(mockOrdersRepository, Mockito.never()).save(any());
-        assertEquals(0f, result);
-    }*/
+    
 }
